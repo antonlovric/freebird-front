@@ -15,7 +15,7 @@
             class="inline-flex gap-3 flex-col justify-center items-center text-center w-full h-full mt-auto"
         >
             <h1 class="text-white px-3 text-4xl sm:text-6xl">Free Bird Music shop</h1>
-            <h2 class="text-white px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan Hrvatske</h2>
+            <h2 class="text-white px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan u Hrvatskoj</h2>
         </div>
         <img
             src="../../assets/HeroSplashImage.png"
@@ -28,7 +28,7 @@
 
 <script setup></script>
 
-<style>
+<style scoped>
 h1 {
     font-family: 'Roboto Mono', monospace;
 }

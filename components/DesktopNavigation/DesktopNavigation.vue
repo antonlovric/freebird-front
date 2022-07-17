@@ -1,6 +1,6 @@
 <template>
     <ul
-        class="inline-flex flex-row items-center justify-center w-full px-4 bg-transparent fixed top-3 z-50"
+        class="inline-flex flex-row items-center justify-center w-full px-4 bg-primary bg-opacity-40 fixed pt-3 z-50"
     >
         <div class="flex items-center justify-around w-1/3">
             <navigation-item class="inline-flex justify-start" text="Naslovnica" />
@@ -15,7 +15,12 @@
                 text="Registracija"
             />
             <navigation-item class="inline-flex justify-end" path="/login" text="Prijava" />
-            <navigation-item class="inline-flex justify-end" icon icon-name="shopping_cart" />
+            <navigation-item
+                class="inline-flex justify-end"
+                path="/checkout"
+                icon
+                icon-name="shopping_cart"
+            />
         </div>
     </ul>
 </template>
