@@ -1,6 +1,6 @@
 <template>
     <div
-        class="homepage-hero-container h-[100vh] w-[100vw] flex justify-center items-center flex-col"
+        class="homepage-hero-container relative h-[100vh] w-[100vw] flex justify-center items-center flex-col"
     >
         <Head>
             <Link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,10 +12,10 @@
             />
         </Head>
         <div
-            class="inline-flex flex-col justify-center items-center text-center w-full h-full mt-auto z-20"
+            class="inline-flex gap-3 flex-col justify-center items-center text-center w-full h-full mt-auto"
         >
-            <h1 class="text-white text-6xl">Free Bird Music shop</h1>
-            <h2 class="text-white text-3xl">Najveći glazbeni dućan Hrvatske</h2>
+            <h1 class="text-white px-3 text-4xl sm:text-6xl">Free Bird Music shop</h1>
+            <h2 class="text-white px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan Hrvatske</h2>
         </div>
         <img
             src="../../assets/HeroSplashImage.png"

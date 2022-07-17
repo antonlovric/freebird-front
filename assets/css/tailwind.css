@@ -9,5 +9,9 @@
 }
 
 .router-link-exact-active {
-    border-bottom: 1px solid #F97316;
+    border-bottom: 1px solid #f97316;
+}
+
+body {
+    overflow-x: hidden;
 }

@@ -118,6 +118,8 @@ __vite_ssr_exports__.default = (ctx) => entry(ctx);
 // - /components/MobileNavigation/MobileNavigation.vue ($id_FDpunUnPbC)
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
 // - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/ProductCard/ProductCard.vue ($id_GwG8UtqH1Q)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
@@ -1581,7 +1583,7 @@ const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vuestic-u
 
 // --------------------
 const $id_91VI4YQFtU = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-__vite_ssr_exports__.default = "/*\n! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}::before,\n::after {\n  --tw-content: '';\n}/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/html {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/body {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/hr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/abbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}/*\nRemove the default font size and weight for headings.\n*/h1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/a {\n  color: inherit;\n  text-decoration: inherit;\n}/*\nAdd the correct font weight in Edge and Safari.\n*/b,\nstrong {\n  font-weight: bolder;\n}/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/code,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}/*\nAdd the correct font size in all browsers.\n*/small {\n  font-size: 80%;\n}/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/sub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}sub {\n  bottom: -0.25em;\n}sup {\n  top: -0.5em;\n}/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/table {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/button,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  font-weight: inherit; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/button,\nselect {\n  text-transform: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/button,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}/*\nUse the modern Firefox focus style for all focusable elements.\n*/:-moz-focusring {\n  outline: auto;\n}/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/:-moz-ui-invalid {\n  box-shadow: none;\n}/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/progress {\n  vertical-align: baseline;\n}/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/::-webkit-search-decoration {\n  -webkit-appearance: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}/*\nAdd the correct display in Chrome and Safari.\n*/summary {\n  display: list-item;\n}/*\nRemoves the default spacing and border for appropriate elements.\n*/blockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}fieldset {\n  margin: 0;\n  padding: 0;\n}legend {\n  padding: 0;\n}ol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}/*\nPrevent resizing textareas horizontally by default.\n*/textarea {\n  resize: vertical;\n}/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/input::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}input::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}/*\nSet the default cursor for buttons.\n*/button,\n[role=\"button\"] {\n  cursor: pointer;\n}/*\nMake sure disabled buttons don't get the pointer cursor.\n*/:disabled {\n  cursor: default;\n}/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/img,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/img,\nvideo {\n  max-width: 100%;\n  height: auto;\n}*, ::before, ::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::-webkit-backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}.absolute {\n  position: absolute;\n}.relative {\n  position: relative;\n}.top-3 {\n  top: 0.75rem;\n}.top-0 {\n  top: 0px;\n}.z-10 {\n  z-index: 10;\n}.z-20 {\n  z-index: 20;\n}.-z-10 {\n  z-index: -10;\n}.mt-auto {\n  margin-top: auto;\n}.block {\n  display: block;\n}.inline {\n  display: inline;\n}.flex {\n  display: flex;\n}.inline-flex {\n  display: inline-flex;\n}.h-\\[100vh\\] {\n  height: 100vh;\n}.h-full {\n  height: 100%;\n}.h-\\[100vh\\!important\\] {\n  height: 100vh !important;\n}.w-full {\n  width: 100%;\n}.w-1\\/3 {\n  width: 33.333333%;\n}.w-\\[100vw\\] {\n  width: 100vw;\n}.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}.resize {\n  resize: both;\n}.flex-row {\n  flex-direction: row;\n}.flex-col {\n  flex-direction: column;\n}.items-center {\n  align-items: center;\n}.justify-start {\n  justify-content: flex-start;\n}.justify-end {\n  justify-content: flex-end;\n}.justify-center {\n  justify-content: center;\n}.justify-around {\n  justify-content: space-around;\n}.bg-transparent {\n  background-color: transparent;\n}.object-cover {\n  -o-object-fit: cover;\n     object-fit: cover;\n}.px-4 {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}.text-center {\n  text-align: center;\n}.text-6xl {\n  font-size: 3.75rem;\n  line-height: 1;\n}.text-3xl {\n  font-size: 1.875rem;\n  line-height: 2.25rem;\n}.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}.brightness-50 {\n  --tw-brightness: brightness(.5);\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}.router-link-exact-active {\n    border-bottom: 1px solid #F97316;\n}";
+__vite_ssr_exports__.default = "/*\n! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}::before,\n::after {\n  --tw-content: '';\n}/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/html {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/body {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/hr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/abbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}/*\nRemove the default font size and weight for headings.\n*/h1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/a {\n  color: inherit;\n  text-decoration: inherit;\n}/*\nAdd the correct font weight in Edge and Safari.\n*/b,\nstrong {\n  font-weight: bolder;\n}/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/code,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}/*\nAdd the correct font size in all browsers.\n*/small {\n  font-size: 80%;\n}/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/sub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}sub {\n  bottom: -0.25em;\n}sup {\n  top: -0.5em;\n}/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/table {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/button,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  font-weight: inherit; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/button,\nselect {\n  text-transform: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/button,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}/*\nUse the modern Firefox focus style for all focusable elements.\n*/:-moz-focusring {\n  outline: auto;\n}/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/:-moz-ui-invalid {\n  box-shadow: none;\n}/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/progress {\n  vertical-align: baseline;\n}/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/::-webkit-search-decoration {\n  -webkit-appearance: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}/*\nAdd the correct display in Chrome and Safari.\n*/summary {\n  display: list-item;\n}/*\nRemoves the default spacing and border for appropriate elements.\n*/blockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}fieldset {\n  margin: 0;\n  padding: 0;\n}legend {\n  padding: 0;\n}ol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}/*\nPrevent resizing textareas horizontally by default.\n*/textarea {\n  resize: vertical;\n}/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/input::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}input::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}/*\nSet the default cursor for buttons.\n*/button,\n[role=\"button\"] {\n  cursor: pointer;\n}/*\nMake sure disabled buttons don't get the pointer cursor.\n*/:disabled {\n  cursor: default;\n}/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/img,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/img,\nvideo {\n  max-width: 100%;\n  height: auto;\n}*, ::before, ::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::-webkit-backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}.fixed {\n  position: fixed;\n}.absolute {\n  position: absolute;\n}.\\!absolute {\n  position: absolute !important;\n}.relative {\n  position: relative;\n}.top-3 {\n  top: 0.75rem;\n}.top-0 {\n  top: 0px;\n}.\\!right-6 {\n  right: 1.5rem !important;\n}.top-5 {\n  top: 1.25rem;\n}.z-50 {\n  z-index: 50;\n}.-z-10 {\n  z-index: -10;\n}.z-40 {\n  z-index: 40;\n}.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}.my-8 {\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}.mb-3 {\n  margin-bottom: 0.75rem;\n}.mt-10 {\n  margin-top: 2.5rem;\n}.mt-auto {\n  margin-top: auto;\n}.block {\n  display: block;\n}.inline {\n  display: inline;\n}.flex {\n  display: flex;\n}.inline-flex {\n  display: inline-flex;\n}.h-auto {\n  height: auto;\n}.h-0\\.5 {\n  height: 0.125rem;\n}.h-0 {\n  height: 0px;\n}.h-\\[100vh\\] {\n  height: 100vh;\n}.h-full {\n  height: 100%;\n}.w-full {\n  width: 100%;\n}.w-1\\/3 {\n  width: 33.333333%;\n}.w-\\[100vw\\] {\n  width: 100vw;\n}.w-4\\/5 {\n  width: 80%;\n}.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}.resize {\n  resize: both;\n}.flex-row {\n  flex-direction: row;\n}.flex-col {\n  flex-direction: column;\n}.items-center {\n  align-items: center;\n}.justify-start {\n  justify-content: flex-start;\n}.justify-end {\n  justify-content: flex-end;\n}.justify-center {\n  justify-content: center;\n}.justify-around {\n  justify-content: space-around;\n}.gap-14 {\n  gap: 3.5rem;\n}.gap-3 {\n  gap: 0.75rem;\n}.bg-primary {\n  --tw-bg-opacity: 1;\n  background-color: rgb(23 25 30 / var(--tw-bg-opacity));\n}.bg-orange {\n  --tw-bg-opacity: 1;\n  background-color: rgb(249 115 22 / var(--tw-bg-opacity));\n}.bg-transparent {\n  background-color: transparent;\n}.object-cover {\n  -o-object-fit: cover;\n     object-fit: cover;\n}.px-4 {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}.px-3 {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}.pb-3 {\n  padding-bottom: 0.75rem;\n}.text-center {\n  text-align: center;\n}.text-2xl {\n  font-size: 1.5rem;\n  line-height: 2rem;\n}.text-xl {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}.text-4xl {\n  font-size: 2.25rem;\n  line-height: 2.5rem;\n}.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}.shadow-none {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: 0 0 #0000, 0 0 #0000, var(--tw-shadow);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}.brightness-50 {\n  --tw-brightness: brightness(.5);\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}.router-link-exact-active {\n    border-bottom: 1px solid #f97316;\n}body {\n    overflow-x: hidden;\n}@media (min-width: 640px) {.sm\\:w-11\\/12 {\n    width: 91.666667%;\n  }.sm\\:flex-row {\n    flex-direction: row;\n  }.sm\\:text-6xl {\n    font-size: 3.75rem;\n    line-height: 1;\n  }.sm\\:text-2xl {\n    font-size: 1.5rem;\n    line-height: 2rem;\n  }.sm\\:text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }\n}\n";
 }
 
 
@@ -2826,6 +2828,8 @@ Object.defineProperty(__vite_ssr_exports__, "meta", { enumerable: true, configur
 // - /components/MobileNavigation/MobileNavigation.vue ($id_FDpunUnPbC)
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
 // - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/ProductCard/ProductCard.vue ($id_GwG8UtqH1Q)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
@@ -2861,6 +2865,8 @@ import("file:///C:/freebird/node_modules/vue/server-renderer/index.js")
 // - /components/MobileNavigation/MobileNavigation.vue ($id_FDpunUnPbC)
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
 // - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/ProductCard/ProductCard.vue ($id_GwG8UtqH1Q)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
@@ -2893,6 +2899,7 @@ __vite_ssr_exports__.default = (sfc, props) => {
 // Dependencies: 
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
 // - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
 // - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
 // - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
@@ -2902,34 +2909,38 @@ const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/TheHeader/T
 
 const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/HomepageHero/HomepageHero.vue");
 
-const _sfc_main = {}
-const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/CatalogueSection/CatalogueSection.vue");
 
-const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+const _sfc_main = {}
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
 
 
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_the_header = __vite_ssr_import_0__.default
   const _component_homepage_hero = __vite_ssr_import_1__.default
+  const _component_catalogue_section = __vite_ssr_import_2__.default
 
   _push(`<!--[-->`)
-  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_the_header, null, null, _parent))
-  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_header, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_catalogue_section, null, null, _parent))
   _push(`<!--]-->`)
 }
 
 
-const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
 const _sfc_setup = _sfc_main.setup
 _sfc_main.setup = (props, ctx) => {
-  const ssrContext = __vite_ssr_import_4__.useSSRContext()
+  const ssrContext = __vite_ssr_import_5__.useSSRContext()
   ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/index.vue")
   return _sfc_setup ? _sfc_setup(props, ctx) : undefined
 }
-const __vite_ssr_import_5__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
 
-__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_5__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]])
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_6__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]])
 const meta = undefined
 Object.defineProperty(__vite_ssr_exports__, "meta", { enumerable: true, configurable: true, get(){ return meta }});;
 }
@@ -3035,7 +3046,7 @@ const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/serve
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_navigation_item = __vite_ssr_import_0__.default
 
-  _push(`<ul${__vite_ssr_import_2__.ssrRenderAttrs(__vite_ssr_import_1__.mergeProps({ class: "inline-flex flex-row items-center justify-center w-full px-4 bg-transparent absolute top-3 z-10" }, _attrs))}><div class="flex items-center justify-around w-1/3">`)
+  _push(`<ul${__vite_ssr_import_2__.ssrRenderAttrs(__vite_ssr_import_1__.mergeProps({ class: "inline-flex flex-row items-center justify-center w-full px-4 bg-transparent fixed top-3 z-50" }, _attrs))}><div class="flex items-center justify-around w-1/3">`)
   _push(__vite_ssr_import_2__.ssrRenderComponent(_component_navigation_item, {
     class: "inline-flex justify-start",
     text: "Naslovnica"
@@ -3208,6 +3219,14 @@ const _sfc_main = {
   setup(__props, { expose }) {
   expose();
 
+const isShown = __vite_ssr_import_0__.reactive({ minimized: true });
+
+__vite_ssr_import_0__.onMounted(() => {
+    document.querySelector('#menu-button').addEventListener('click', () => {
+        isShown.minimized = !isShown.minimized;
+    });
+});
+
 const notLoggedUser = __vite_ssr_import_0__.ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
@@ -3220,11 +3239,11 @@ const loggedInUser = __vite_ssr_import_0__.ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
     { name: 'Novosti', icon: 'feed', route: '/posts' },
-    { name: 'Profil', icon: 'account_circle', route: '/prfile' },
+    { name: 'Profil', icon: 'account_circle', route: '/profile' },
     { name: 'Odjava', icon: 'logout', route: '/logout' },
 ]);
 
-const __returned__ = { notLoggedUser, loggedInUser }
+const __returned__ = { isShown, notLoggedUser, loggedInUser }
 Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })
 return __returned__
 }
@@ -3242,8 +3261,14 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   const _component_va_sidebar_item_content = __vite_ssr_import_2__.resolveComponent("va-sidebar-item-content")
   const _component_va_icon = __vite_ssr_import_2__.resolveComponent("va-icon")
   const _component_va_sidebar_item_title = __vite_ssr_import_2__.resolveComponent("va-sidebar-item-title")
+  const _component_va_button = __vite_ssr_import_2__.resolveComponent("va-button")
 
-  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_va_sidebar, __vite_ssr_import_2__.mergeProps({ class: "h-[100vh!important]" }, _attrs), {
+  _push(`<div${__vite_ssr_import_3__.ssrRenderAttrs(_attrs)}>`)
+  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_va_sidebar, {
+    minimized: $setup.isShown.minimized,
+    minimizedWidth: "0",
+    class: "!absolute"
+  }, {
     default: __vite_ssr_import_2__.withCtx((_, _push, _parent, _scopeId) => {
       if (_push) {
         _push(`<!--[-->`)
@@ -3380,6 +3405,16 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
     }),
     _: 1 /* STABLE */
   }, _parent))
+  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_va_button, {
+    id: "menu-button",
+    size: "large",
+    color: "#f97316",
+    icon: "menu",
+    class: "!absolute !right-6 top-5 z-40",
+    modelValue: $setup.isShown.minimized,
+    "onUpdate:modelValue": $event => (($setup.isShown.minimized) = $event)
+  }, null, _parent))
+  _push(`</div>`)
 }
 
 
@@ -3419,7 +3454,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_Head = __vite_ssr_import_0__.resolveComponent("Head")
   const _component_Link = __vite_ssr_import_0__.resolveComponent("Link")
 
-  _push(`<div${__vite_ssr_import_1__.ssrRenderAttrs(__vite_ssr_import_0__.mergeProps({ class: "homepage-hero-container h-[100vh] w-[100vw] flex justify-center items-center flex-col" }, _attrs))}>`)
+  _push(`<div${__vite_ssr_import_1__.ssrRenderAttrs(__vite_ssr_import_0__.mergeProps({ class: "homepage-hero-container relative h-[100vh] w-[100vw] flex justify-center items-center flex-col" }, _attrs))}>`)
   _push(__vite_ssr_import_1__.ssrRenderComponent(_component_Head, null, {
     default: __vite_ssr_import_0__.withCtx((_, _push, _parent, _scopeId) => {
       if (_push) {
@@ -3470,7 +3505,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
     }),
     _: 1 /* STABLE */
   }, _parent))
-  _push(`<div class="inline-flex flex-col justify-center items-center text-center w-full h-full mt-auto z-20"><h1 class="text-white text-6xl">Free Bird Music shop</h1><h2 class="text-white text-3xl">Najveći glazbeni dućan Hrvatske</h2></div><img src="/_nuxt/assets/HeroSplashImage.png" class="object-cover absolute w-full h-full brightness-50 top-0 -z-10" alt=""><div class="arrow down"></div></div>`)
+  _push(`<div class="inline-flex gap-3 flex-col justify-center items-center text-center w-full h-full mt-auto"><h1 class="text-white px-3 text-4xl sm:text-6xl">Free Bird Music shop</h1><h2 class="text-white px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan Hrvatske</h2></div><img src="/_nuxt/assets/HeroSplashImage.png" class="object-cover absolute w-full h-full brightness-50 top-0 -z-10" alt=""><div class="arrow down"></div></div>`)
 }
 
 const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/HomepageHero/HomepageHero.vue?vue&type=style&index=0&lang.css");
@@ -3499,6 +3534,188 @@ __vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_4__.default(_sfc_m
 // --------------------
 const $id_bPhs5QssTO = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
 __vite_ssr_exports__.default = "\nh1 {\r\n    font-family: 'Roboto Mono', monospace;\n}\n.arrow {\r\n    width: 100px;\r\n    height: 100px;\r\n    margin: 20px;\r\n    display: inline-block;\r\n    position: relative;\n}\n.arrow::before {\r\n    content: '';\r\n    display: block;\r\n    width: 30px;\r\n    height: 30px;\r\n    top: 50%;\r\n    left: 50%;\r\n    border-style: solid;\r\n    border-color: #fff;\r\n    border-width: 2px 2px 0 0;\r\n    position: absolute;\r\n    transform-origin: 50% 50%;\n}\n.down::before {\r\n    transform: rotate(135deg);\r\n    margin: -20px 0 0 -15px;\n}\r\n";
+}
+
+
+// --------------------
+// Request: /components/CatalogueSection/CatalogueSection.vue
+// Parents: 
+// - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /pages/index.vue ($id_zKWOlz8EPO)
+// Dependencies: 
+// - /components/ProductCard/ProductCard.vue ($id_GwG8UtqH1Q)
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
+// --------------------
+const $id_RMkA02g6vl = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/ProductCard/ProductCard.vue");
+
+const _sfc_main = {}
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
+  const _component_product_card = __vite_ssr_import_0__.default
+
+  _push(`<div${__vite_ssr_import_2__.ssrRenderAttrs(__vite_ssr_import_1__.mergeProps({ class: "bg-primary pb-3 text-white text-center h-auto" }, _attrs))}><div class="inline-flex flex-col justify-center items-center w-full"><div class="h-0.5 w-full mx-auto bg-orange mb-3 sm:w-11/12"></div><h2 class="text-2xl sm:text-6xl">Katalog</h2><p class="text-xl sm:text-2xl my-8"> Pretražite naš katalog kako biste pronašli vinil koji bi vam upotpunio kolekciju! </p><div class="mt-10 inline-flex flex-col justify-center gap-14 sm:flex-row">`)
+  _push(__vite_ssr_import_2__.ssrRenderComponent(_component_product_card, { imageSource: "https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG" }, null, _parent))
+  _push(__vite_ssr_import_2__.ssrRenderComponent(_component_product_card, { imageSource: "https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg" }, null, _parent))
+  _push(__vite_ssr_import_2__.ssrRenderComponent(_component_product_card, { imageSource: "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png" }, null, _parent))
+  _push(`</div></div></div>`)
+}
+
+
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_3__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("components/CatalogueSection/CatalogueSection.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_4__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/components/CatalogueSection/CatalogueSection.vue"]]);
+}
+
+
+// --------------------
+// Request: /components/ProductCard/ProductCard.vue
+// Parents: 
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
+// Dependencies: 
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
+// --------------------
+const $id_GwG8UtqH1Q = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const _sfc_main = {
+  __name: 'ProductCard',
+  props: {
+    imageSource: {
+        type: String,
+        default: '',
+    },
+},
+  setup(__props, { expose }) {
+  expose();
+
+const props = __props
+
+
+
+const __returned__ = { props }
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })
+return __returned__
+}
+
+}
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_va_card = __vite_ssr_import_0__.resolveComponent("va-card")
+  const _component_va_card_actions = __vite_ssr_import_0__.resolveComponent("va-card-actions")
+  const _component_va_button = __vite_ssr_import_0__.resolveComponent("va-button")
+
+  _push(__vite_ssr_import_1__.ssrRenderComponent(_component_va_card, _attrs, {
+    default: __vite_ssr_import_0__.withCtx((_, _push, _parent, _scopeId) => {
+      if (_push) {
+        _push(`<img${
+          __vite_ssr_import_1__.ssrRenderAttr("src", $setup.props.imageSource)
+        } style="${
+          __vite_ssr_import_1__.ssrRenderStyle({"width":"250px","height":"250px"})
+        }" alt=""${
+          _scopeId
+        }>`)
+        _push(__vite_ssr_import_1__.ssrRenderComponent(_component_va_card_actions, {
+          align: "center",
+          class: "bg-primary shadow-none"
+        }, {
+          default: __vite_ssr_import_0__.withCtx((_, _push, _parent, _scopeId) => {
+            if (_push) {
+              _push(__vite_ssr_import_1__.ssrRenderComponent(_component_va_button, {
+                class: "justify-center",
+                color: "#f97316",
+                "text-color": "#fff"
+              }, {
+                default: __vite_ssr_import_0__.withCtx((_, _push, _parent, _scopeId) => {
+                  if (_push) {
+                    _push(`Vidi Detalje`)
+                  } else {
+                    return [
+                      __vite_ssr_import_0__.createTextVNode("Vidi Detalje")
+                    ]
+                  }
+                }),
+                _: 1 /* STABLE */
+              }, _parent, _scopeId))
+            } else {
+              return [
+                __vite_ssr_import_0__.createVNode(_component_va_button, {
+                  class: "justify-center",
+                  color: "#f97316",
+                  "text-color": "#fff"
+                }, {
+                  default: __vite_ssr_import_0__.withCtx(() => [
+                    __vite_ssr_import_0__.createTextVNode("Vidi Detalje")
+                  ]),
+                  _: 1 /* STABLE */
+                })
+              ]
+            }
+          }),
+          _: 1 /* STABLE */
+        }, _parent, _scopeId))
+      } else {
+        return [
+          __vite_ssr_import_0__.createVNode("img", {
+            src: $setup.props.imageSource,
+            style: {"width":"250px","height":"250px"},
+            alt: ""
+          }, null, 8 /* PROPS */, ["src"]),
+          __vite_ssr_import_0__.createVNode(_component_va_card_actions, {
+            align: "center",
+            class: "bg-primary shadow-none"
+          }, {
+            default: __vite_ssr_import_0__.withCtx(() => [
+              __vite_ssr_import_0__.createVNode(_component_va_button, {
+                class: "justify-center",
+                color: "#f97316",
+                "text-color": "#fff"
+              }, {
+                default: __vite_ssr_import_0__.withCtx(() => [
+                  __vite_ssr_import_0__.createTextVNode("Vidi Detalje")
+                ]),
+                _: 1 /* STABLE */
+              })
+            ]),
+            _: 1 /* STABLE */
+          })
+        ]
+      }
+    }),
+    _: 1 /* STABLE */
+  }, _parent))
+}
+
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_2__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("components/ProductCard/ProductCard.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_3__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/components/ProductCard/ProductCard.vue"]]);
 }
 
 
@@ -3542,6 +3759,7 @@ __vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_2__.default(_sfc_m
 // Dependencies: 
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
 // - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
 // - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
 // - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
@@ -3551,34 +3769,38 @@ const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/TheHeader/T
 
 const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/HomepageHero/HomepageHero.vue");
 
-const _sfc_main = {}
-const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/CatalogueSection/CatalogueSection.vue");
 
-const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+const _sfc_main = {}
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
 
 
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_the_header = __vite_ssr_import_0__.default
   const _component_homepage_hero = __vite_ssr_import_1__.default
+  const _component_catalogue_section = __vite_ssr_import_2__.default
 
   _push(`<!--[-->`)
-  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_the_header, null, null, _parent))
-  _push(__vite_ssr_import_3__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_header, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_catalogue_section, null, null, _parent))
   _push(`<!--]-->`)
 }
 
 
-const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
 const _sfc_setup = _sfc_main.setup
 _sfc_main.setup = (props, ctx) => {
-  const ssrContext = __vite_ssr_import_4__.useSSRContext()
+  const ssrContext = __vite_ssr_import_5__.useSSRContext()
   ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/index.vue")
   return _sfc_setup ? _sfc_setup(props, ctx) : undefined
 }
-const __vite_ssr_import_5__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
 
-__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_5__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]]);
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_6__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]]);
 }
 
 
@@ -36919,6 +37141,8 @@ const __modules__ = {
   "/components/MobileNavigation/MobileNavigation.vue": $id_FDpunUnPbC,
   "/components/HomepageHero/HomepageHero.vue": $id_34JdZX6att,
   "/components/HomepageHero/HomepageHero.vue?vue&type=style&index=0&lang.css": $id_bPhs5QssTO,
+  "/components/CatalogueSection/CatalogueSection.vue": $id_RMkA02g6vl,
+  "/components/ProductCard/ProductCard.vue": $id_GwG8UtqH1Q,
   "/pages/about.vue": $id_qTzNC3iToF,
   "/pages/index.vue": $id_zKWOlz8EPO,
   "/@id/virtual:nuxt:C:/freebird/.nuxt/router.options.mjs": $id_GRiSZa6zNi,
