@@ -7,6 +7,7 @@ export default {
     "node_modules/vuestic-ui/dist/vuestic-ui.css",
     "components/HomepageHero/HomepageHero.vue?vue&type=style&index=0&scoped=true&lang.css",
     "components/CatalogueSection/CatalogueSection.vue?vue&type=style&index=0&scoped=true&lang.css",
+    "components/TheFooter/TheFooter.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-dev.vue?vue&type=style&index=0&scoped=true&lang.css"
@@ -18,6 +19,7 @@ export default {
     "node_modules/vuestic-ui/dist/vuestic-ui.css",
     "components/HomepageHero/HomepageHero.vue?vue&type=style&index=0&scoped=true&lang.css",
     "components/CatalogueSection/CatalogueSection.vue?vue&type=style&index=0&scoped=true&lang.css",
+    "components/TheFooter/TheFooter.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue?vue&type=style&index=0&scoped=true&lang.css",
     "node_modules/@nuxt/ui-templates/dist/templates/error-dev.vue?vue&type=style&index=0&scoped=true&lang.css"

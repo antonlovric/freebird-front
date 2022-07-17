@@ -15,7 +15,7 @@
             size="large"
             color="#f97316"
             icon="menu"
-            class="!absolute !right-6 top-5 z-40"
+            class="!fixed !right-6 top-5 z-40"
             v-model="isShown.minimized"
         ></va-button>
     </div>
