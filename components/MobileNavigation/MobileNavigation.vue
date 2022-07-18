@@ -29,12 +29,16 @@ const handleMenuClick = () => {
 };
 
 onMounted(() => {
-    this.$nextTick(() => {
-        document.querySelector('#menu-button').addEventListener('click', handleMenuClick);
-    });
+    try {
+        nextTick(() => {
+            document.querySelector('#menu-button')?.addEventListener('click', handleMenuClick);
+        });
+    } catch (e) {
+        console.log(e);
+    }
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
     document.querySelector('#menu-button').removeEventListener('click', handleMenuClick);
 });
 

@@ -7,14 +7,16 @@
 
 <script setup>
 import { onMounted, onBeforeUnmount, reactive } from 'vue';
-const screen = reactive({ isMobile: false });
+const screen = reactive({ isMobile: true });
 
 const checkIfMobile = () => {
     screen.isMobile = window.screen.width < 768;
 };
 
 onMounted(() => {
-    screen.isMobile = window.screen.width < 768;
+    checkIfMobile();
+    console.log('checked');
+    alert(screen.isMobile);
     window.addEventListener('resize', checkIfMobile);
 });
 
