@@ -15,8 +15,6 @@ const checkIfMobile = () => {
 
 onMounted(() => {
     checkIfMobile();
-    console.log('checked');
-    alert(screen.isMobile);
     window.addEventListener('resize', checkIfMobile);
 });
 
