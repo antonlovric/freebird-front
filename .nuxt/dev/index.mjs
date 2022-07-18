@@ -21,7 +21,7 @@ import { renderToString } from 'file://C:/freebird/node_modules/vue/server-rende
 import { snakeCase } from 'file://C:/freebird/node_modules/scule/dist/index.mjs';
 import htmlTemplate from 'file://C:/freebird/.nuxt/views/document.template.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"API_BASE_URL":"http://127.0.0.1:8000/api","public":{"API_BASE_URL":"http://127.0.0.1:8000/api"}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {

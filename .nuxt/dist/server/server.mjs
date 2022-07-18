@@ -125,8 +125,7 @@ __vite_ssr_exports__.default = (ctx) => entry(ctx);
 // - /components/NewsSection/NewsSection.vue ($id_T6mniJiAFX)
 // - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
-// - /pages/about.vue ($id_qTzNC3iToF)
-// - /pages/index.vue ($id_zKWOlz8EPO)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
 // - /node_modules/vuestic-ui/dist/esm/main.js ($id_cXl7RDHXQv)
 // - /node_modules/vuestic-ui/dist/esm/global-config.js ($id_P5uQSso2pl)
 // - /node_modules/vuestic-ui/dist/esm/usePopover.js ($id_6eoRc1nUaI)
@@ -224,6 +223,10 @@ __vite_ssr_exports__.default = (ctx) => entry(ctx);
 // - /node_modules/vuestic-ui/dist/esm/vuestic-plugin.js ($id_5IUhxts5Yt)
 // - /node_modules/vuestic-ui/dist/esm/vuestic-plugin-without-components.js ($id_FSlnOTvwiJ)
 // - /node_modules/vuestic-ui/dist/esm/useModal.js ($id_HOvoElxp0d)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
+// - /pages/about.vue ($id_qTzNC3iToF)
+// - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // - /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs ($id_rJiOLDO41N)
 // - /node_modules/nuxt/dist/app/components/nuxt-root.vue ($id_6btoGdWLJh)
 // - /node_modules/nuxt/dist/app/compat/capi.mjs ($id_DFcXpE295m)
@@ -341,6 +344,7 @@ import("file:///C:/freebird/node_modules/ufo/dist/index.mjs")
 // - /node_modules/nuxt/dist/head/runtime/plugin.mjs ($id_omUDQe4IGe)
 // - /node_modules/nuxt/dist/pages/runtime/page.mjs ($id_X8FM3AG1sA)
 // - /node_modules/nuxt/dist/pages/runtime/router.mjs ($id_oJCXe6nyyh)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
 // - /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs ($id_rJiOLDO41N)
 // - /node_modules/nuxt/dist/app/components/nuxt-root.vue ($id_6btoGdWLJh)
 // - /@id/virtual:nuxt:C:/freebird/.nuxt/imports.mjs ($id_FfaGr2ZHjE)
@@ -1587,7 +1591,7 @@ const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vuestic-u
 
 // --------------------
 const $id_91VI4YQFtU = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-__vite_ssr_exports__.default = "/*\n! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}::before,\n::after {\n  --tw-content: '';\n}/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/html {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/body {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/hr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/abbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}/*\nRemove the default font size and weight for headings.\n*/h1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/a {\n  color: inherit;\n  text-decoration: inherit;\n}/*\nAdd the correct font weight in Edge and Safari.\n*/b,\nstrong {\n  font-weight: bolder;\n}/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/code,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}/*\nAdd the correct font size in all browsers.\n*/small {\n  font-size: 80%;\n}/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/sub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}sub {\n  bottom: -0.25em;\n}sup {\n  top: -0.5em;\n}/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/table {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/button,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  font-weight: inherit; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/button,\nselect {\n  text-transform: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/button,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}/*\nUse the modern Firefox focus style for all focusable elements.\n*/:-moz-focusring {\n  outline: auto;\n}/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/:-moz-ui-invalid {\n  box-shadow: none;\n}/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/progress {\n  vertical-align: baseline;\n}/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/::-webkit-search-decoration {\n  -webkit-appearance: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}/*\nAdd the correct display in Chrome and Safari.\n*/summary {\n  display: list-item;\n}/*\nRemoves the default spacing and border for appropriate elements.\n*/blockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}fieldset {\n  margin: 0;\n  padding: 0;\n}legend {\n  padding: 0;\n}ol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}/*\nPrevent resizing textareas horizontally by default.\n*/textarea {\n  resize: vertical;\n}/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/input::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}input::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}/*\nSet the default cursor for buttons.\n*/button,\n[role=\"button\"] {\n  cursor: pointer;\n}/*\nMake sure disabled buttons don't get the pointer cursor.\n*/:disabled {\n  cursor: default;\n}/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/img,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/img,\nvideo {\n  max-width: 100%;\n  height: auto;\n}*, ::before, ::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::-webkit-backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}.fixed {\n  position: fixed;\n}.\\!fixed {\n  position: fixed !important;\n}.absolute {\n  position: absolute;\n}.\\!absolute {\n  position: absolute !important;\n}.relative {\n  position: relative;\n}.top-0 {\n  top: 0px;\n}.\\!right-6 {\n  right: 1.5rem !important;\n}.top-5 {\n  top: 1.25rem;\n}.z-50 {\n  z-index: 50;\n}.-z-10 {\n  z-index: -10;\n}.z-40 {\n  z-index: 40;\n}.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}.my-8 {\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}.my-12 {\n  margin-top: 3rem;\n  margin-bottom: 3rem;\n}.my-24 {\n  margin-top: 6rem;\n  margin-bottom: 6rem;\n}.my-5 {\n  margin-top: 1.25rem;\n  margin-bottom: 1.25rem;\n}.mb-24 {\n  margin-bottom: 6rem;\n}.mb-4 {\n  margin-bottom: 1rem;\n}.mt-10 {\n  margin-top: 2.5rem;\n}.mt-auto {\n  margin-top: auto;\n}.mb-14 {\n  margin-bottom: 3.5rem;\n}.mt-4 {\n  margin-top: 1rem;\n}.mb-2 {\n  margin-bottom: 0.5rem;\n}.mt-2 {\n  margin-top: 0.5rem;\n}.mt-3 {\n  margin-top: 0.75rem;\n}.block {\n  display: block;\n}.inline {\n  display: inline;\n}.flex {\n  display: flex;\n}.inline-flex {\n  display: inline-flex;\n}.grid {\n  display: grid;\n}.h-0\\.5 {\n  height: 0.125rem;\n}.h-0 {\n  height: 0px;\n}.h-\\[100vh\\] {\n  height: 100vh;\n}.h-full {\n  height: 100%;\n}.w-full {\n  width: 100%;\n}.w-11\\/12 {\n  width: 91.666667%;\n}.w-1\\/3 {\n  width: 33.333333%;\n}.w-\\[100vw\\] {\n  width: 100vw;\n}.w-9\\/12 {\n  width: 75%;\n}.w-\\[30ch\\] {\n  width: 30ch;\n}.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}.resize {\n  resize: both;\n}.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}.grid-rows-3 {\n  grid-template-rows: repeat(3, minmax(0, 1fr));\n}.flex-row {\n  flex-direction: row;\n}.flex-col {\n  flex-direction: column;\n}.items-center {\n  align-items: center;\n}.justify-start {\n  justify-content: flex-start;\n}.justify-end {\n  justify-content: flex-end;\n}.justify-center {\n  justify-content: center;\n}.justify-around {\n  justify-content: space-around;\n}.gap-14 {\n  gap: 3.5rem;\n}.gap-8 {\n  gap: 2rem;\n}.gap-3 {\n  gap: 0.75rem;\n}.gap-7 {\n  gap: 1.75rem;\n}.gap-2 {\n  gap: 0.5rem;\n}.bg-primary {\n  --tw-bg-opacity: 1;\n  background-color: rgb(23 25 30 / var(--tw-bg-opacity));\n}.bg-orange {\n  --tw-bg-opacity: 1;\n  background-color: rgb(249 115 22 / var(--tw-bg-opacity));\n}.bg-grey {\n  --tw-bg-opacity: 1;\n  background-color: rgb(217 217 217 / var(--tw-bg-opacity));\n}.bg-opacity-40 {\n  --tw-bg-opacity: 0.4;\n}.object-cover {\n  -o-object-fit: cover;\n     object-fit: cover;\n}.px-4 {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}.px-3 {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}.px-8 {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}.py-8 {\n  padding-top: 2rem;\n  padding-bottom: 2rem;\n}.pt-3 {\n  padding-top: 0.75rem;\n}.text-center {\n  text-align: center;\n}.text-2xl {\n  font-size: 1.5rem;\n  line-height: 2rem;\n}.text-xl {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}.text-4xl {\n  font-size: 2.25rem;\n  line-height: 2.5rem;\n}.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}.shadow-none {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: 0 0 #0000, 0 0 #0000, var(--tw-shadow);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}.brightness-50 {\n  --tw-brightness: brightness(.5);\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}.transition {\n  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n  transition-duration: 150ms;\n}* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}.router-link-exact-active {\n    border-bottom: 1px solid #f97316;\n}body {\n    overflow-x: hidden;\n    background-color: #17191e;\n}@media (min-width: 640px) {.sm\\:\\!absolute {\n    position: absolute !important;\n  }.sm\\:top-0 {\n    top: 0px;\n  }.sm\\:right-0 {\n    right: 0px;\n  }.sm\\:right-40 {\n    right: 10rem;\n  }.sm\\:mb-0 {\n    margin-bottom: 0px;\n  }.sm\\:mt-0 {\n    margin-top: 0px;\n  }.sm\\:w-11\\/12 {\n    width: 91.666667%;\n  }.sm\\:w-\\[50ch\\] {\n    width: 50ch;\n  }.sm\\:translate-y-1\\/2 {\n    --tw-translate-y: 50%;\n    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n  }.sm\\:grid-cols-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }.sm\\:grid-rows-1 {\n    grid-template-rows: repeat(1, minmax(0, 1fr));\n  }.sm\\:flex-row {\n    flex-direction: row;\n  }.sm\\:text-6xl {\n    font-size: 3.75rem;\n    line-height: 1;\n  }.sm\\:text-2xl {\n    font-size: 1.5rem;\n    line-height: 2rem;\n  }.sm\\:text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }\n}\n";
+__vite_ssr_exports__.default = "/*\n! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}::before,\n::after {\n  --tw-content: '';\n}/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/html {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/body {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/hr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/abbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}/*\nRemove the default font size and weight for headings.\n*/h1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/a {\n  color: inherit;\n  text-decoration: inherit;\n}/*\nAdd the correct font weight in Edge and Safari.\n*/b,\nstrong {\n  font-weight: bolder;\n}/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/code,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}/*\nAdd the correct font size in all browsers.\n*/small {\n  font-size: 80%;\n}/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/sub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}sub {\n  bottom: -0.25em;\n}sup {\n  top: -0.5em;\n}/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/table {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/button,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  font-weight: inherit; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/button,\nselect {\n  text-transform: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/button,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}/*\nUse the modern Firefox focus style for all focusable elements.\n*/:-moz-focusring {\n  outline: auto;\n}/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/:-moz-ui-invalid {\n  box-shadow: none;\n}/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/progress {\n  vertical-align: baseline;\n}/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/::-webkit-search-decoration {\n  -webkit-appearance: none;\n}/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}/*\nAdd the correct display in Chrome and Safari.\n*/summary {\n  display: list-item;\n}/*\nRemoves the default spacing and border for appropriate elements.\n*/blockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}fieldset {\n  margin: 0;\n  padding: 0;\n}legend {\n  padding: 0;\n}ol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}/*\nPrevent resizing textareas horizontally by default.\n*/textarea {\n  resize: vertical;\n}/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/input::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}input::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}/*\nSet the default cursor for buttons.\n*/button,\n[role=\"button\"] {\n  cursor: pointer;\n}/*\nMake sure disabled buttons don't get the pointer cursor.\n*/:disabled {\n  cursor: default;\n}/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/img,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/img,\nvideo {\n  max-width: 100%;\n  height: auto;\n}*, ::before, ::after {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::-webkit-backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}::backdrop {\n  --tw-border-spacing-x: 0;\n  --tw-border-spacing-y: 0;\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}.fixed {\n  position: fixed;\n}.\\!fixed {\n  position: fixed !important;\n}.absolute {\n  position: absolute;\n}.\\!absolute {\n  position: absolute !important;\n}.relative {\n  position: relative;\n}.top-0 {\n  top: 0px;\n}.\\!right-6 {\n  right: 1.5rem !important;\n}.top-5 {\n  top: 1.25rem;\n}.z-50 {\n  z-index: 50;\n}.-z-10 {\n  z-index: -10;\n}.z-40 {\n  z-index: 40;\n}.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}.my-8 {\n  margin-top: 2rem;\n  margin-bottom: 2rem;\n}.my-12 {\n  margin-top: 3rem;\n  margin-bottom: 3rem;\n}.my-24 {\n  margin-top: 6rem;\n  margin-bottom: 6rem;\n}.my-5 {\n  margin-top: 1.25rem;\n  margin-bottom: 1.25rem;\n}.my-10 {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n}.mb-24 {\n  margin-bottom: 6rem;\n}.mb-4 {\n  margin-bottom: 1rem;\n}.mt-10 {\n  margin-top: 2.5rem;\n}.mt-auto {\n  margin-top: auto;\n}.mb-14 {\n  margin-bottom: 3.5rem;\n}.mt-4 {\n  margin-top: 1rem;\n}.mb-5 {\n  margin-bottom: 1.25rem;\n}.mb-2 {\n  margin-bottom: 0.5rem;\n}.mt-2 {\n  margin-top: 0.5rem;\n}.mt-3 {\n  margin-top: 0.75rem;\n}.block {\n  display: block;\n}.inline {\n  display: inline;\n}.flex {\n  display: flex;\n}.inline-flex {\n  display: inline-flex;\n}.grid {\n  display: grid;\n}.h-0\\.5 {\n  height: 0.125rem;\n}.h-0 {\n  height: 0px;\n}.h-\\[100vh\\] {\n  height: 100vh;\n}.h-full {\n  height: 100%;\n}.w-full {\n  width: 100%;\n}.w-11\\/12 {\n  width: 91.666667%;\n}.w-1\\/3 {\n  width: 33.333333%;\n}.w-\\[100vw\\] {\n  width: 100vw;\n}.w-9\\/12 {\n  width: 75%;\n}.w-3\\/4 {\n  width: 75%;\n}.w-\\[30ch\\] {\n  width: 30ch;\n}.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}.resize {\n  resize: both;\n}.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}.grid-rows-3 {\n  grid-template-rows: repeat(3, minmax(0, 1fr));\n}.flex-row {\n  flex-direction: row;\n}.flex-col {\n  flex-direction: column;\n}.items-center {\n  align-items: center;\n}.justify-start {\n  justify-content: flex-start;\n}.justify-end {\n  justify-content: flex-end;\n}.justify-center {\n  justify-content: center;\n}.justify-around {\n  justify-content: space-around;\n}.gap-14 {\n  gap: 3.5rem;\n}.gap-8 {\n  gap: 2rem;\n}.gap-3 {\n  gap: 0.75rem;\n}.gap-7 {\n  gap: 1.75rem;\n}.gap-6 {\n  gap: 1.5rem;\n}.gap-2 {\n  gap: 0.5rem;\n}.bg-primary {\n  --tw-bg-opacity: 1;\n  background-color: rgb(23 25 30 / var(--tw-bg-opacity));\n}.bg-orange {\n  --tw-bg-opacity: 1;\n  background-color: rgb(249 115 22 / var(--tw-bg-opacity));\n}.bg-grey {\n  --tw-bg-opacity: 1;\n  background-color: rgb(217 217 217 / var(--tw-bg-opacity));\n}.bg-opacity-40 {\n  --tw-bg-opacity: 0.4;\n}.object-cover {\n  -o-object-fit: cover;\n     object-fit: cover;\n}.px-4 {\n  padding-left: 1rem;\n  padding-right: 1rem;\n}.px-3 {\n  padding-left: 0.75rem;\n  padding-right: 0.75rem;\n}.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}.px-8 {\n  padding-left: 2rem;\n  padding-right: 2rem;\n}.py-8 {\n  padding-top: 2rem;\n  padding-bottom: 2rem;\n}.pt-3 {\n  padding-top: 0.75rem;\n}.pt-\\[10vh\\] {\n  padding-top: 10vh;\n}.text-center {\n  text-align: center;\n}.text-2xl {\n  font-size: 1.5rem;\n  line-height: 2rem;\n}.text-xl {\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}.text-4xl {\n  font-size: 2.25rem;\n  line-height: 2.5rem;\n}.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}.shadow-none {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: 0 0 #0000, 0 0 #0000, var(--tw-shadow);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}.brightness-50 {\n  --tw-brightness: brightness(.5);\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}.transition {\n  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;\n  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n  transition-duration: 150ms;\n}* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}.router-link-exact-active {\n    border-bottom: 1px solid #f97316;\n}body {\n    overflow-x: hidden;\n    background-color: #17191e;\n}@media (min-width: 640px) {.sm\\:\\!absolute {\n    position: absolute !important;\n  }.sm\\:top-0 {\n    top: 0px;\n  }.sm\\:right-0 {\n    right: 0px;\n  }.sm\\:right-40 {\n    right: 10rem;\n  }.sm\\:mb-0 {\n    margin-bottom: 0px;\n  }.sm\\:mt-0 {\n    margin-top: 0px;\n  }.sm\\:w-11\\/12 {\n    width: 91.666667%;\n  }.sm\\:w-1\\/5 {\n    width: 20%;\n  }.sm\\:w-\\[50ch\\] {\n    width: 50ch;\n  }.sm\\:translate-y-1\\/2 {\n    --tw-translate-y: 50%;\n    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n  }.sm\\:grid-cols-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }.sm\\:grid-rows-1 {\n    grid-template-rows: repeat(1, minmax(0, 1fr));\n  }.sm\\:flex-row {\n    flex-direction: row;\n  }.sm\\:text-6xl {\n    font-size: 3.75rem;\n    line-height: 1;\n  }.sm\\:text-2xl {\n    font-size: 1.5rem;\n    line-height: 2rem;\n  }.sm\\:text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }.sm\\:text-5xl {\n    font-size: 3rem;\n    line-height: 1;\n  }\n}\n";
 }
 
 
@@ -2757,13 +2761,17 @@ Object.defineProperty(__vite_ssr_exports__, "_wrapIf", { enumerable: true, confi
 // Dependencies: 
 // - /pages/about.vue?macro=true ($id_ndwxjJaUzT)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // --------------------
 const $id_f9fg2b3oFx = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
 const __vite_ssr_import_0__ = await __vite_ssr_import__("/pages/about.vue?macro=true");
 
 const __vite_ssr_import_1__ = await __vite_ssr_import__("/pages/index.vue?macro=true");
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/pages/registration.vue?macro=true");
 
 __vite_ssr_exports__.default = [
   {
@@ -2783,6 +2791,15 @@ __vite_ssr_exports__.default = [
     meta: __vite_ssr_import_1__.meta,
     alias: __vite_ssr_import_1__.meta?.alias || [],
     component: () => __vite_ssr_dynamic_import__('/pages/index.vue')
+  },
+  {
+    name: "registration",
+    path: "/registration",
+    file: "C:/freebird/pages/registration.vue",
+    children: [],
+    meta: __vite_ssr_import_2__.meta,
+    alias: __vite_ssr_import_2__.meta?.alias || [],
+    component: () => __vite_ssr_dynamic_import__('/pages/registration.vue')
   }
 ];
 }
@@ -2839,8 +2856,11 @@ Object.defineProperty(__vite_ssr_exports__, "meta", { enumerable: true, configur
 // - /components/NewsSection/NewsSection.vue ($id_T6mniJiAFX)
 // - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-404.vue ($id_uQ1ND2iuUo)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-500.vue ($id_FMi1dBhUQk)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-dev.vue ($id_vC10oUHchO)
@@ -2880,8 +2900,11 @@ import("file:///C:/freebird/node_modules/vue/server-renderer/index.js")
 // - /components/NewsSection/NewsSection.vue ($id_T6mniJiAFX)
 // - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
 // - /pages/about.vue ($id_qTzNC3iToF)
 // - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-404.vue ($id_uQ1ND2iuUo)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-500.vue ($id_FMi1dBhUQk)
 // - /node_modules/@nuxt/ui-templates/dist/templates/error-dev.vue ($id_vC10oUHchO)
@@ -2942,13 +2965,13 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_news_section = __vite_ssr_import_3__.default
   const _component_the_footer = __vite_ssr_import_4__.default
 
-  _push(`<!--[-->`)
+  _push(`<div${__vite_ssr_import_6__.ssrRenderAttrs(_attrs)}>`)
   _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_header, null, null, _parent))
   _push(__vite_ssr_import_6__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
   _push(__vite_ssr_import_6__.ssrRenderComponent(_component_catalogue_section, null, null, _parent))
   _push(__vite_ssr_import_6__.ssrRenderComponent(_component_news_section, null, null, _parent))
   _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_footer, null, null, _parent))
-  _push(`<!--]-->`)
+  _push(`</div>`)
 }
 
 
@@ -2972,7 +2995,9 @@ Object.defineProperty(__vite_ssr_exports__, "meta", { enumerable: true, configur
 // Request: /components/TheHeader/TheHeader.vue
 // Parents: 
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
 // - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // Dependencies: 
 // - /components/DesktopNavigation/DesktopNavigation.vue ($id_Q3XEPaNHrr)
 // - /components/MobileNavigation/MobileNavigation.vue ($id_FDpunUnPbC)
@@ -2988,13 +3013,12 @@ const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/MobileNavig
 const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
 
-
 const _sfc_main = {
   __name: 'TheHeader',
   setup(__props, { expose }) {
   expose();
 
-const screen = __vite_ssr_import_2__.reactive({ isMobile: true });
+const screen = __vite_ssr_import_2__.reactive({ isMobile: false });
 
 const checkIfMobile = () => {
     screen.isMobile = window.screen.width < 768;
@@ -3024,11 +3048,13 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   const _component_desktop_navigation = __vite_ssr_import_0__.default
   const _component_mobile_navigation = __vite_ssr_import_1__.default
 
+  _push(`<div${__vite_ssr_import_4__.ssrRenderAttrs(_attrs)}>`)
   if (!$setup.screen.isMobile) {
-    _push(__vite_ssr_import_4__.ssrRenderComponent(_component_desktop_navigation, _attrs, null, _parent))
+    _push(__vite_ssr_import_4__.ssrRenderComponent(_component_desktop_navigation, null, null, _parent))
   } else {
-    _push(__vite_ssr_import_4__.ssrRenderComponent(_component_mobile_navigation, _attrs, null, _parent))
+    _push(__vite_ssr_import_4__.ssrRenderComponent(_component_mobile_navigation, null, null, _parent))
   }
+  _push(`</div>`)
 }
 
 
@@ -3244,10 +3270,18 @@ const _sfc_main = {
 
 const isShown = __vite_ssr_import_0__.reactive({ minimized: true });
 
+const handleMenuClick = () => {
+    isShown.minimized = !isShown.minimized;
+};
+
 __vite_ssr_import_0__.onMounted(() => {
-    document.querySelector('#menu-button').addEventListener('click', () => {
-        isShown.minimized = !isShown.minimized;
+    this.$nextTick(() => {
+        document.querySelector('#menu-button').addEventListener('click', handleMenuClick);
     });
+});
+
+__vite_ssr_import_0__.onUnmounted(() => {
+    document.querySelector('#menu-button').removeEventListener('click', handleMenuClick);
 });
 
 const notLoggedUser = __vite_ssr_import_0__.ref([
@@ -3266,7 +3300,7 @@ const loggedInUser = __vite_ssr_import_0__.ref([
     { name: 'Odjava', icon: 'logout', route: '/logout' },
 ]);
 
-const __returned__ = { isShown, notLoggedUser, loggedInUser }
+const __returned__ = { isShown, handleMenuClick, notLoggedUser, loggedInUser }
 Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })
 return __returned__
 }
@@ -4070,7 +4104,9 @@ __vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_3__.default(_sfc_m
 // Request: /components/TheFooter/TheFooter.vue
 // Parents: 
 // - /pages/index.vue?macro=true ($id_XdcCQB7w7V)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
 // - /pages/index.vue ($id_zKWOlz8EPO)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // Dependencies: 
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
 // - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
@@ -4100,7 +4136,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   const _component_va_input = __vite_ssr_import_0__.resolveComponent("va-input")
   const _component_va_icon = __vite_ssr_import_0__.resolveComponent("va-icon")
 
-  _push(`<section${__vite_ssr_import_1__.ssrRenderAttrs(__vite_ssr_import_0__.mergeProps({ class: "bg-grey flex flex-col sm:flex-row px-8 justify-center py-8" }, _attrs))} data-v-00cfb8de><div class="" data-v-00cfb8de><h2 data-v-00cfb8de>O nama</h2><ul class="flex flex-col mb-4 mt-2 gap-2" data-v-00cfb8de><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Povijest</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Dostava</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Uvjeti Korištenja</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Sustav Ocjenjivanja</a></li></ul></div><div class="" data-v-00cfb8de><h2 data-v-00cfb8de>Služba za korisnike</h2><ul class="flex flex-col mb-4 mt-2 gap-2" data-v-00cfb8de><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Kontakt</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Otvoreni Upit</a></li></ul></div><div data-v-00cfb8de><h2 data-v-00cfb8de>Ne propustite nove akcije</h2><div class="flex flex-col gap-3" data-v-00cfb8de><label class="mt-3" for="newsletter" data-v-00cfb8de> Prijavite se na naš newsletter i ostanite u toku sa svim novim ponudama!</label>`)
+  _push(`<section${__vite_ssr_import_1__.ssrRenderAttrs(__vite_ssr_import_0__.mergeProps({ class: "bg-grey flex flex-col sm:flex-row px-8 justify-center py-8 w-full" }, _attrs))} data-v-00cfb8de><div class="" data-v-00cfb8de><h2 data-v-00cfb8de>O nama</h2><ul class="flex flex-col mb-4 mt-2 gap-2" data-v-00cfb8de><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Povijest</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Dostava</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Uvjeti Korištenja</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Sustav Ocjenjivanja</a></li></ul></div><div class="" data-v-00cfb8de><h2 data-v-00cfb8de>Služba za korisnike</h2><ul class="flex flex-col mb-4 mt-2 gap-2" data-v-00cfb8de><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Kontakt</a></li><li data-v-00cfb8de><a href="#" data-v-00cfb8de>Otvoreni Upit</a></li></ul></div><div data-v-00cfb8de><h2 data-v-00cfb8de>Ne propustite nove akcije</h2><div class="flex flex-col gap-3" data-v-00cfb8de><label class="mt-3" for="newsletter" data-v-00cfb8de> Prijavite se na naš newsletter i ostanite u toku sa svim novim ponudama!</label>`)
   _push(__vite_ssr_import_1__.ssrRenderComponent(_component_va_input, {
     inputmode: "email",
     id: "newsletter",
@@ -4152,166 +4188,249 @@ __vite_ssr_exports__.default = "\na[data-v-00cfb8de] {\r\n    font-size: 20px;\r
 
 
 // --------------------
-// Request: /pages/about.vue
-// Parents: 
-// - /@id/virtual:nuxt:C:/freebird/.nuxt/routes.mjs ($id_f9fg2b3oFx)
-// Dependencies: 
-// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
-// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
-// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
-// --------------------
-const $id_qTzNC3iToF = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-const _sfc_main = {}
-const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
-
-
-function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  _push(`<h1${__vite_ssr_import_0__.ssrRenderAttrs(_attrs)}>this is the about page</h1>`)
-}
-
-
-const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
-
-const _sfc_setup = _sfc_main.setup
-_sfc_main.setup = (props, ctx) => {
-  const ssrContext = __vite_ssr_import_1__.useSSRContext()
-  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/about.vue")
-  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
-}
-const __vite_ssr_import_2__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
-
-__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_2__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/about.vue"]]);
-}
-
-
-// --------------------
-// Request: /pages/index.vue
+// Request: /pages/registration.vue?macro=true
 // Parents: 
 // - /@id/virtual:nuxt:C:/freebird/.nuxt/routes.mjs ($id_f9fg2b3oFx)
 // Dependencies: 
 // - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
-// - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
-// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
-// - /components/NewsSection/NewsSection.vue ($id_T6mniJiAFX)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
 // - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
 // - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
 // - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
 // --------------------
-const $id_zKWOlz8EPO = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const $id_0EpuPd6N3y = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
 const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/TheHeader/TheHeader.vue");
 
-const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/HomepageHero/HomepageHero.vue");
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/RegistrationForm/RegistrationForm.vue");
 
-const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/CatalogueSection/CatalogueSection.vue");
-
-const __vite_ssr_import_3__ = await __vite_ssr_import__("/components/NewsSection/NewsSection.vue");
-
-const __vite_ssr_import_4__ = await __vite_ssr_import__("/components/TheFooter/TheFooter.vue");
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/TheFooter/TheFooter.vue");
 
 const _sfc_main = {}
-const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
-const __vite_ssr_import_6__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
 
 
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_the_header = __vite_ssr_import_0__.default
-  const _component_homepage_hero = __vite_ssr_import_1__.default
-  const _component_catalogue_section = __vite_ssr_import_2__.default
-  const _component_news_section = __vite_ssr_import_3__.default
-  const _component_the_footer = __vite_ssr_import_4__.default
+  const _component_registration_form = __vite_ssr_import_1__.default
+  const _component_the_footer = __vite_ssr_import_2__.default
 
-  _push(`<!--[-->`)
-  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_header, null, null, _parent))
-  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
-  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_catalogue_section, null, null, _parent))
-  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_news_section, null, null, _parent))
-  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_footer, null, null, _parent))
-  _push(`<!--]-->`)
+  _push(`<div${__vite_ssr_import_4__.ssrRenderAttrs(_attrs)}>`)
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_header, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_registration_form, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_footer, null, null, _parent))
+  _push(`</div>`)
 }
 
 
-const __vite_ssr_import_7__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
 const _sfc_setup = _sfc_main.setup
 _sfc_main.setup = (props, ctx) => {
-  const ssrContext = __vite_ssr_import_7__.useSSRContext()
-  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/index.vue")
+  const ssrContext = __vite_ssr_import_5__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/registration.vue")
   return _sfc_setup ? _sfc_setup(props, ctx) : undefined
 }
-const __vite_ssr_import_8__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
 
-__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_8__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]]);
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_6__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/registration.vue"]])
+const meta = undefined
+Object.defineProperty(__vite_ssr_exports__, "meta", { enumerable: true, configurable: true, get(){ return meta }});;
 }
 
 
 // --------------------
-// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/router.options.mjs
+// Request: /components/RegistrationForm/RegistrationForm.vue
 // Parents: 
-// - /node_modules/nuxt/dist/pages/runtime/router.mjs ($id_oJCXe6nyyh)
+// - /pages/registration.vue?macro=true ($id_0EpuPd6N3y)
+// - /pages/registration.vue ($id_xgo7qDAzj4)
 // Dependencies: 
-
-// --------------------
-const $id_GRiSZa6zNi = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-const configRouterOptions = {}
-__vite_ssr_exports__.default = {
-...configRouterOptions,
-};
-}
-
-
-// --------------------
-// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/middleware.mjs
-// Parents: 
-// - /node_modules/nuxt/dist/pages/runtime/router.mjs ($id_oJCXe6nyyh)
-// Dependencies: 
-
-// --------------------
-const $id_yFOVdnWfQW = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-const globalMiddleware = []
-Object.defineProperty(__vite_ssr_exports__, "globalMiddleware", { enumerable: true, configurable: true, get(){ return globalMiddleware }});
-const namedMiddleware = {}
-Object.defineProperty(__vite_ssr_exports__, "namedMiddleware", { enumerable: true, configurable: true, get(){ return namedMiddleware }});;
-}
-
-
-// --------------------
-// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs
-// Parents: 
-// - /@id/virtual:nuxt:C:/freebird/.nuxt/plugins/server.mjs ($id_nZV97u09eZ)
-// Dependencies: 
-// - /node_modules/vuestic-ui/dist/esm/main.js ($id_cXl7RDHXQv)
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/@vuestic/nuxt/dist/runtime/composables.mjs ($id_1lLuaH6yht)
 // - /node_modules/nuxt/dist/app/index.mjs ($id_NpJ0d20vMd)
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
 // --------------------
-const $id_rJiOLDO41N = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vuestic-ui/dist/esm/main.js");
+const $id_fMeoPIQ3Mw = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
-const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/@vuestic/nuxt/dist/runtime/composables.mjs");
 
 const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/nuxt/dist/app/index.mjs");
 
-function getGlobalProperty(app, key) {
-  return app.config.globalProperties[key];
-}
-__vite_ssr_exports__.default = __vite_ssr_import_2__.defineNuxtPlugin((nuxtApp) => {
-  const { vueApp: app } = nuxtApp;
-  const { config } = JSON.parse(`{"config":{}}`);
-  const withoutComponents = false;
-  app.use(withoutComponents ? __vite_ssr_import_0__.createVuesticEssential({ config }) : __vite_ssr_import_0__.createVuestic({ config }));
-  const head = getGlobalProperty(app, "$head");
-  if (head) {
-    const colorConfig = getGlobalProperty(app, "$vaColorConfig");
-    if (colorConfig) {
-      head.addHeadObjs(__vite_ssr_import_1__.ref({
-        htmlAttrs: {
-          style: colorConfig.renderCSSVarialbes()
-        }
-      }));
-    }
-  }
+const _sfc_main = {
+  __name: 'RegistrationForm',
+  setup(__props, { expose }) {
+  expose();
+
+const registrationData = __vite_ssr_import_0__.ref({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    firstName: '',
+    lastName: '',
 });
+const { init, close } = __vite_ssr_import_1__.useToast();
+
+const handleSubmit = async (event) => {
+    const inputElements = event.target.elements;
+    const config = __vite_ssr_import_2__.useRuntimeConfig();
+
+    const formData = {
+        username: inputElements['username']?.value,
+        email: inputElements['email']?.value,
+        password: inputElements['password']?.value,
+        password_confirmation: inputElements['password_confirmation']?.value,
+        first_name: inputElements['first_name']?.value,
+        last_name: inputElements['last_name']?.value,
+    };
+
+    const start = init({
+        title: 'Registracija',
+        position: 'top-right',
+        message: 'Pričekajte...',
+    });
+
+    const response = await __vite_ssr_import_2__.useFetch(`${config.API_BASE_URL}/auth/register`, {
+        method: 'POST',
+        body: formData,
+    }, '$KMwhtSg9FQ');
+
+    close(start);
+    if (response.error) {
+        init({
+            title: 'Registracija',
+            position: 'top-right',
+            message: 'Neuspješna registracija! Pokušajte kasnije.',
+            color: 'error',
+            duration: 5000,
+        });
+    }
+
+    if (response.data.value?.status === 201) {
+        init({
+            title: 'Registracija',
+            position: 'top-right',
+            message: 'Uspješna registracija! Pratite upute na mailu i aktivirajte svoj račun!',
+            color: 'success',
+            duration: 5000,
+        });
+    }
+};
+
+const __returned__ = { registrationData, init, close, handleSubmit }
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true })
+return __returned__
+}
+
+}
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_va_input = __vite_ssr_import_3__.resolveComponent("va-input")
+  const _component_va_button = __vite_ssr_import_3__.resolveComponent("va-button")
+
+  _push(`<div${__vite_ssr_import_4__.ssrRenderAttrs(__vite_ssr_import_3__.mergeProps({ class: "minh-[80vh] pt-[10vh] text-white relative" }, _attrs))}><h1 class="px-3 my-10 text-4xl text-center sm:text-5xl">Registracija</h1><form id="registration-form" class="flex flex-col w-3/4 sm:w-1/5 mx-auto gap-6 mb-5">`)
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.firstName,
+    "onUpdate:modelValue": $event => (($setup.registrationData.firstName) = $event),
+    color: "#000",
+    label: "Ime",
+    id: "first_name"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.lastName,
+    "onUpdate:modelValue": $event => (($setup.registrationData.lastName) = $event),
+    color: "#000",
+    label: "Prezime",
+    id: "last_name"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.username,
+    "onUpdate:modelValue": $event => (($setup.registrationData.username) = $event),
+    color: "#000",
+    label: "Korisničko Ime",
+    id: "username"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.email,
+    "onUpdate:modelValue": $event => (($setup.registrationData.email) = $event),
+    color: "#000",
+    label: "Email",
+    type: "email",
+    id: "email"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.password,
+    "onUpdate:modelValue": $event => (($setup.registrationData.password) = $event),
+    color: "#000",
+    label: "Lozinka",
+    type: "password",
+    id: "password"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_input, {
+    modelValue: $setup.registrationData.passwordConfirmation,
+    "onUpdate:modelValue": $event => (($setup.registrationData.passwordConfirmation) = $event),
+    color: "#000",
+    label: "Potvrda Lozinke",
+    type: "password",
+    id: "password_confirmation"
+  }, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_va_button, {
+    type: "submit",
+    color: "#f97316",
+    "text-color": "#fff"
+  }, {
+    default: __vite_ssr_import_3__.withCtx((_, _push, _parent, _scopeId) => {
+      if (_push) {
+        _push(`Potvrda`)
+      } else {
+        return [
+          __vite_ssr_import_3__.createTextVNode("Potvrda")
+        ]
+      }
+    }),
+    _: 1 /* STABLE */
+  }, _parent))
+  _push(`</form></div>`)
+}
+
+
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_5__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("components/RegistrationForm/RegistrationForm.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_6__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/components/RegistrationForm/RegistrationForm.vue"]]);
+}
+
+
+// --------------------
+// Request: /node_modules/@vuestic/nuxt/dist/runtime/composables.mjs
+// Parents: 
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/imports.mjs ($id_FfaGr2ZHjE)
+// Dependencies: 
+// - /node_modules/vuestic-ui/dist/esm/main.js ($id_cXl7RDHXQv)
+// --------------------
+const $id_1lLuaH6yht = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vuestic-ui/dist/esm/main.js");
+
+Object.defineProperty(__vite_ssr_exports__, "useGlobalConfig", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useGlobalConfig }});
+Object.defineProperty(__vite_ssr_exports__, "useColors", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useColors }});
+Object.defineProperty(__vite_ssr_exports__, "useToast", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useToast }});
+Object.defineProperty(__vite_ssr_exports__, "useModal", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useModal }});
 ;
 }
 
@@ -4319,8 +4438,8 @@ __vite_ssr_exports__.default = __vite_ssr_import_2__.defineNuxtPlugin((nuxtApp) 
 // --------------------
 // Request: /node_modules/vuestic-ui/dist/esm/main.js
 // Parents: 
-// - /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs ($id_rJiOLDO41N)
 // - /node_modules/@vuestic/nuxt/dist/runtime/composables.mjs ($id_1lLuaH6yht)
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs ($id_rJiOLDO41N)
 // Dependencies: 
 // - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
 // - /node_modules/vuestic-ui/dist/esm/usePopover.js ($id_6eoRc1nUaI)
@@ -36637,6 +36756,223 @@ Object.defineProperty(__vite_ssr_exports__, "u", { enumerable: true, configurabl
 
 
 // --------------------
+// Request: /pages/about.vue
+// Parents: 
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/routes.mjs ($id_f9fg2b3oFx)
+// Dependencies: 
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
+// --------------------
+const $id_qTzNC3iToF = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const _sfc_main = {}
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
+  _push(`<h1${__vite_ssr_import_0__.ssrRenderAttrs(_attrs)}>this is the about page</h1>`)
+}
+
+
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_1__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/about.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_2__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/about.vue"]]);
+}
+
+
+// --------------------
+// Request: /pages/index.vue
+// Parents: 
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/routes.mjs ($id_f9fg2b3oFx)
+// Dependencies: 
+// - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
+// - /components/HomepageHero/HomepageHero.vue ($id_34JdZX6att)
+// - /components/CatalogueSection/CatalogueSection.vue ($id_RMkA02g6vl)
+// - /components/NewsSection/NewsSection.vue ($id_T6mniJiAFX)
+// - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
+// --------------------
+const $id_zKWOlz8EPO = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/TheHeader/TheHeader.vue");
+
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/HomepageHero/HomepageHero.vue");
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/CatalogueSection/CatalogueSection.vue");
+
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/components/NewsSection/NewsSection.vue");
+
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/components/TheFooter/TheFooter.vue");
+
+const _sfc_main = {}
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
+  const _component_the_header = __vite_ssr_import_0__.default
+  const _component_homepage_hero = __vite_ssr_import_1__.default
+  const _component_catalogue_section = __vite_ssr_import_2__.default
+  const _component_news_section = __vite_ssr_import_3__.default
+  const _component_the_footer = __vite_ssr_import_4__.default
+
+  _push(`<div${__vite_ssr_import_6__.ssrRenderAttrs(_attrs)}>`)
+  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_header, null, null, _parent))
+  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_homepage_hero, null, null, _parent))
+  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_catalogue_section, null, null, _parent))
+  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_news_section, null, null, _parent))
+  _push(__vite_ssr_import_6__.ssrRenderComponent(_component_the_footer, null, null, _parent))
+  _push(`</div>`)
+}
+
+
+const __vite_ssr_import_7__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_7__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/index.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_8__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_8__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/index.vue"]]);
+}
+
+
+// --------------------
+// Request: /pages/registration.vue
+// Parents: 
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/routes.mjs ($id_f9fg2b3oFx)
+// Dependencies: 
+// - /components/TheHeader/TheHeader.vue ($id_XPzU0zf78B)
+// - /components/RegistrationForm/RegistrationForm.vue ($id_fMeoPIQ3Mw)
+// - /components/TheFooter/TheFooter.vue ($id_hoyGdU2FhP)
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/vue/server-renderer/index.js ($id_shX6HK8fbb)
+// - /@id/plugin-vue:export-helper ($id_u7hjwQB3Fl)
+// --------------------
+const $id_xgo7qDAzj4 = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/components/TheHeader/TheHeader.vue");
+
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/components/RegistrationForm/RegistrationForm.vue");
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/components/TheFooter/TheFooter.vue");
+
+const _sfc_main = {}
+const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_4__ = await __vite_ssr_import__("/node_modules/vue/server-renderer/index.js");
+
+
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
+  const _component_the_header = __vite_ssr_import_0__.default
+  const _component_registration_form = __vite_ssr_import_1__.default
+  const _component_the_footer = __vite_ssr_import_2__.default
+
+  _push(`<div${__vite_ssr_import_4__.ssrRenderAttrs(_attrs)}>`)
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_header, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_registration_form, null, null, _parent))
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_the_footer, null, null, _parent))
+  _push(`</div>`)
+}
+
+
+const __vite_ssr_import_5__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const _sfc_setup = _sfc_main.setup
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = __vite_ssr_import_5__.useSSRContext()
+  ;(ssrContext.modules || (ssrContext.modules = new Set())).add("pages/registration.vue")
+  return _sfc_setup ? _sfc_setup(props, ctx) : undefined
+}
+const __vite_ssr_import_6__ = await __vite_ssr_import__("/@id/plugin-vue:export-helper");
+
+__vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_6__.default(_sfc_main, [['ssrRender',_sfc_ssrRender],['__file',"C:/freebird/pages/registration.vue"]]);
+}
+
+
+// --------------------
+// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/router.options.mjs
+// Parents: 
+// - /node_modules/nuxt/dist/pages/runtime/router.mjs ($id_oJCXe6nyyh)
+// Dependencies: 
+
+// --------------------
+const $id_GRiSZa6zNi = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const configRouterOptions = {}
+__vite_ssr_exports__.default = {
+...configRouterOptions,
+};
+}
+
+
+// --------------------
+// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/middleware.mjs
+// Parents: 
+// - /node_modules/nuxt/dist/pages/runtime/router.mjs ($id_oJCXe6nyyh)
+// Dependencies: 
+
+// --------------------
+const $id_yFOVdnWfQW = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const globalMiddleware = []
+Object.defineProperty(__vite_ssr_exports__, "globalMiddleware", { enumerable: true, configurable: true, get(){ return globalMiddleware }});
+const namedMiddleware = {}
+Object.defineProperty(__vite_ssr_exports__, "namedMiddleware", { enumerable: true, configurable: true, get(){ return namedMiddleware }});;
+}
+
+
+// --------------------
+// Request: /@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs
+// Parents: 
+// - /@id/virtual:nuxt:C:/freebird/.nuxt/plugins/server.mjs ($id_nZV97u09eZ)
+// Dependencies: 
+// - /node_modules/vuestic-ui/dist/esm/main.js ($id_cXl7RDHXQv)
+// - /node_modules/vue/dist/vue.cjs.js ($id_YPBhX5dq3F)
+// - /node_modules/nuxt/dist/app/index.mjs ($id_NpJ0d20vMd)
+// --------------------
+const $id_rJiOLDO41N = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
+const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vuestic-ui/dist/esm/main.js");
+
+const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
+
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/nuxt/dist/app/index.mjs");
+
+function getGlobalProperty(app, key) {
+  return app.config.globalProperties[key];
+}
+__vite_ssr_exports__.default = __vite_ssr_import_2__.defineNuxtPlugin((nuxtApp) => {
+  const { vueApp: app } = nuxtApp;
+  const { config } = JSON.parse(`{"config":{}}`);
+  const withoutComponents = false;
+  app.use(withoutComponents ? __vite_ssr_import_0__.createVuesticEssential({ config }) : __vite_ssr_import_0__.createVuestic({ config }));
+  const head = getGlobalProperty(app, "$head");
+  if (head) {
+    const colorConfig = getGlobalProperty(app, "$vaColorConfig");
+    if (colorConfig) {
+      head.addHeadObjs(__vite_ssr_import_1__.ref({
+        htmlAttrs: {
+          style: colorConfig.renderCSSVarialbes()
+        }
+      }));
+    }
+  }
+});
+;
+}
+
+
+// --------------------
 // Request: /@id/virtual:nuxt:C:/freebird/.nuxt/root-component.mjs
 // Parents: 
 // - C:/freebird/node_modules/nuxt/dist/app/entry ($id_K3jXcnBbXj)
@@ -37139,24 +37475,6 @@ Object.defineProperty(__vite_ssr_exports__, "del", { enumerable: true, configura
 
 
 // --------------------
-// Request: /node_modules/@vuestic/nuxt/dist/runtime/composables.mjs
-// Parents: 
-// - /@id/virtual:nuxt:C:/freebird/.nuxt/imports.mjs ($id_FfaGr2ZHjE)
-// Dependencies: 
-// - /node_modules/vuestic-ui/dist/esm/main.js ($id_cXl7RDHXQv)
-// --------------------
-const $id_1lLuaH6yht = async function (global, module, exports, __vite_ssr_exports__, __vite_ssr_import_meta__, __vite_ssr_import__, __vite_ssr_dynamic_import__, __vite_ssr_exportAll__) {
-const __vite_ssr_import_0__ = await __vite_ssr_import__("/node_modules/vuestic-ui/dist/esm/main.js");
-
-Object.defineProperty(__vite_ssr_exports__, "useGlobalConfig", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useGlobalConfig }});
-Object.defineProperty(__vite_ssr_exports__, "useColors", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useColors }});
-Object.defineProperty(__vite_ssr_exports__, "useToast", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useToast }});
-Object.defineProperty(__vite_ssr_exports__, "useModal", { enumerable: true, configurable: true, get(){ return __vite_ssr_import_0__.useModal }});
-;
-}
-
-
-// --------------------
 // Request: /node_modules/nuxt/dist/pages/runtime/composables.mjs
 // Parents: 
 // - /@id/virtual:nuxt:C:/freebird/.nuxt/imports.mjs ($id_FfaGr2ZHjE)
@@ -37591,11 +37909,9 @@ const __modules__ = {
   "/components/PostComponent/PostComponent.vue": $id_q8LnpQrHVN,
   "/components/TheFooter/TheFooter.vue": $id_hoyGdU2FhP,
   "/components/TheFooter/TheFooter.vue?vue&type=style&index=0&scoped=true&lang.css": $id_AJTd7xQ29F,
-  "/pages/about.vue": $id_qTzNC3iToF,
-  "/pages/index.vue": $id_zKWOlz8EPO,
-  "/@id/virtual:nuxt:C:/freebird/.nuxt/router.options.mjs": $id_GRiSZa6zNi,
-  "/@id/virtual:nuxt:C:/freebird/.nuxt/middleware.mjs": $id_yFOVdnWfQW,
-  "/@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs": $id_rJiOLDO41N,
+  "/pages/registration.vue?macro=true": $id_0EpuPd6N3y,
+  "/components/RegistrationForm/RegistrationForm.vue": $id_fMeoPIQ3Mw,
+  "/node_modules/@vuestic/nuxt/dist/runtime/composables.mjs": $id_1lLuaH6yht,
   "/node_modules/vuestic-ui/dist/esm/main.js": $id_cXl7RDHXQv,
   "/node_modules/vuestic-ui/dist/esm/usePopover.js": $id_6eoRc1nUaI,
   "/node_modules/vuestic-ui/dist/esm/global-config.js": $id_P5uQSso2pl,
@@ -37714,6 +38030,12 @@ const __modules__ = {
   "/node_modules/vuestic-ui/dist/esm/vuestic-plugin.js": $id_5IUhxts5Yt,
   "/node_modules/vuestic-ui/dist/esm/vuestic-plugin-without-components.js": $id_FSlnOTvwiJ,
   "/node_modules/vuestic-ui/dist/esm/useModal.js": $id_HOvoElxp0d,
+  "/pages/about.vue": $id_qTzNC3iToF,
+  "/pages/index.vue": $id_zKWOlz8EPO,
+  "/pages/registration.vue": $id_xgo7qDAzj4,
+  "/@id/virtual:nuxt:C:/freebird/.nuxt/router.options.mjs": $id_GRiSZa6zNi,
+  "/@id/virtual:nuxt:C:/freebird/.nuxt/middleware.mjs": $id_yFOVdnWfQW,
+  "/@id/virtual:nuxt:C:/freebird/.nuxt/plugin.mjs": $id_rJiOLDO41N,
   "/@id/virtual:nuxt:C:/freebird/.nuxt/root-component.mjs": $id_lnU3WKJvR6,
   "/node_modules/nuxt/dist/app/components/nuxt-root.vue": $id_6btoGdWLJh,
   "/@id/virtual:nuxt:C:/freebird/.nuxt/error-component.mjs": $id_CdbavsTrTK,
@@ -37722,7 +38044,6 @@ const __modules__ = {
   "/@id/virtual:nuxt:C:/freebird/.nuxt/imports.mjs": $id_FfaGr2ZHjE,
   "/node_modules/nuxt/dist/app/compat/vue-demi.mjs": $id_qBEL58R1ls,
   "/node_modules/nuxt/dist/app/compat/capi.mjs": $id_DFcXpE295m,
-  "/node_modules/@vuestic/nuxt/dist/runtime/composables.mjs": $id_1lLuaH6yht,
   "/node_modules/nuxt/dist/pages/runtime/composables.mjs": $id_27UVWcb1VH,
   "/node_modules/@nuxt/ui-templates/dist/templates/error-404.vue?vue&type=style&index=0&scoped=true&lang.css": $id_5otrOPr3UP,
   "/node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": $id_FMi1dBhUQk,

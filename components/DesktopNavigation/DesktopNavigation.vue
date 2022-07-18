@@ -24,3 +24,5 @@
         </div>
     </ul>
 </template>
+
+<script setup></script>

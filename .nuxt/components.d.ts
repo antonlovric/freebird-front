@@ -6,9 +6,10 @@ declare module 'vue' {
     'HomepageHero': typeof import("../components/HomepageHero/HomepageHero.vue")['default'],
     'NavigationItem': typeof import("../components/NavigationItem/NavigationItem.vue")['default'],
     'MobileNavigation': typeof import("../components/MobileNavigation/MobileNavigation.vue")['default'],
-    'NewsSection': typeof import("../components/NewsSection/NewsSection.vue")['default'],
     'PostComponent': typeof import("../components/PostComponent/PostComponent.vue")['default'],
+    'NewsSection': typeof import("../components/NewsSection/NewsSection.vue")['default'],
     'ProductCard': typeof import("../components/ProductCard/ProductCard.vue")['default'],
+    'RegistrationForm': typeof import("../components/RegistrationForm/RegistrationForm.vue")['default'],
     'StoreFeature': typeof import("../components/StoreFeature/StoreFeature.vue")['default'],
     'TheFooter': typeof import("../components/TheFooter/TheFooter.vue")['default'],
     'TheHeader': typeof import("../components/TheHeader/TheHeader.vue")['default'],
@@ -24,9 +25,10 @@ declare module 'vue' {
     'LazyHomepageHero': typeof import("../components/HomepageHero/HomepageHero.vue")['default'],
     'LazyNavigationItem': typeof import("../components/NavigationItem/NavigationItem.vue")['default'],
     'LazyMobileNavigation': typeof import("../components/MobileNavigation/MobileNavigation.vue")['default'],
-    'LazyNewsSection': typeof import("../components/NewsSection/NewsSection.vue")['default'],
     'LazyPostComponent': typeof import("../components/PostComponent/PostComponent.vue")['default'],
+    'LazyNewsSection': typeof import("../components/NewsSection/NewsSection.vue")['default'],
     'LazyProductCard': typeof import("../components/ProductCard/ProductCard.vue")['default'],
+    'LazyRegistrationForm': typeof import("../components/RegistrationForm/RegistrationForm.vue")['default'],
     'LazyStoreFeature': typeof import("../components/StoreFeature/StoreFeature.vue")['default'],
     'LazyTheFooter': typeof import("../components/TheFooter/TheFooter.vue")['default'],
     'LazyTheHeader': typeof import("../components/TheHeader/TheHeader.vue")['default'],
@@ -44,9 +46,10 @@ export const DesktopNavigation: typeof import("../components/DesktopNavigation/D
 export const HomepageHero: typeof import("../components/HomepageHero/HomepageHero.vue")['default']
 export const NavigationItem: typeof import("../components/NavigationItem/NavigationItem.vue")['default']
 export const MobileNavigation: typeof import("../components/MobileNavigation/MobileNavigation.vue")['default']
-export const NewsSection: typeof import("../components/NewsSection/NewsSection.vue")['default']
 export const PostComponent: typeof import("../components/PostComponent/PostComponent.vue")['default']
+export const NewsSection: typeof import("../components/NewsSection/NewsSection.vue")['default']
 export const ProductCard: typeof import("../components/ProductCard/ProductCard.vue")['default']
+export const RegistrationForm: typeof import("../components/RegistrationForm/RegistrationForm.vue")['default']
 export const StoreFeature: typeof import("../components/StoreFeature/StoreFeature.vue")['default']
 export const TheFooter: typeof import("../components/TheFooter/TheFooter.vue")['default']
 export const TheHeader: typeof import("../components/TheHeader/TheHeader.vue")['default']
@@ -62,9 +65,10 @@ export const LazyDesktopNavigation: typeof import("../components/DesktopNavigati
 export const LazyHomepageHero: typeof import("../components/HomepageHero/HomepageHero.vue")['default']
 export const LazyNavigationItem: typeof import("../components/NavigationItem/NavigationItem.vue")['default']
 export const LazyMobileNavigation: typeof import("../components/MobileNavigation/MobileNavigation.vue")['default']
-export const LazyNewsSection: typeof import("../components/NewsSection/NewsSection.vue")['default']
 export const LazyPostComponent: typeof import("../components/PostComponent/PostComponent.vue")['default']
+export const LazyNewsSection: typeof import("../components/NewsSection/NewsSection.vue")['default']
 export const LazyProductCard: typeof import("../components/ProductCard/ProductCard.vue")['default']
+export const LazyRegistrationForm: typeof import("../components/RegistrationForm/RegistrationForm.vue")['default']
 export const LazyStoreFeature: typeof import("../components/StoreFeature/StoreFeature.vue")['default']
 export const LazyTheFooter: typeof import("../components/TheFooter/TheFooter.vue")['default']
 export const LazyTheHeader: typeof import("../components/TheHeader/TheHeader.vue")['default']
