@@ -24,10 +24,18 @@
 <script setup>
 const isShown = reactive({ minimized: true });
 
+const handleMenuClick = () => {
+    isShown.minimized = !isShown.minimized;
+};
+
 onMounted(() => {
-    document.querySelector('#menu-button').addEventListener('click', () => {
-        isShown.minimized = !isShown.minimized;
+    this.$nextTick(() => {
+        document.querySelector('#menu-button').addEventListener('click', handleMenuClick);
     });
+});
+
+onUnmounted(() => {
+    document.querySelector('#menu-button').removeEventListener('click', handleMenuClick);
 });
 
 const notLoggedUser = ref([
