@@ -92,7 +92,7 @@ const handleSubmit = async (event) => {
             title: 'Registracija',
             position: 'top-right',
             message: 'Neuspješna registracija! Pokušajte kasnije.',
-            color: 'error',
+            color: 'danger',
             duration: 5000,
         });
     }

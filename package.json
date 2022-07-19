@@ -20,6 +20,7 @@
     "nuxt": "3.0.0-rc.5"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.3.0",
     "@vuestic/nuxt": "^1.0.3"
   }
 }

@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     css: ['~/assets/css/tailwind.css'],
     modules: ['@vuestic/nuxt'],
 
-    buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
+    buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@pinia/nuxt'],
 
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',

@@ -39,7 +39,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    document.querySelector('#menu-button').removeEventListener('click', handleMenuClick);
+    document.querySelector('#menu-button')?.removeEventListener('click', handleMenuClick);
 });
 
 const notLoggedUser = ref([
