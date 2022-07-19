@@ -1,13 +1,39 @@
 <template>
     <div>
-        <va-sidebar :minimized="isShown.minimized" minimizedWidth="0" class="!absolute">
-            <va-sidebar-item v-for="item in notLoggedUser" :key="item.name">
+        <va-sidebar
+            v-if="userData.token == ''"
+            :minimized="isShown.minimized"
+            minimizedWidth="0"
+            class="!absolute"
+        >
+            <va-sidebar-item v-for="(item, index) in notLoggedUser" :key="index">
                 <nuxt-link :to="item.route">
                     <va-sidebar-item-content>
                         <va-icon :name="item.icon" />
                         <va-sidebar-item-title>{{ item.name }}</va-sidebar-item-title>
                     </va-sidebar-item-content>
                 </nuxt-link>
+            </va-sidebar-item>
+        </va-sidebar>
+        <va-sidebar
+            v-if="userData.token != ''"
+            :minimized="isShown.minimized"
+            minimizedWidth="0"
+            class="!absolute"
+        >
+            <va-sidebar-item v-for="(item, index) in loggedInUser" :key="index">
+                <nuxt-link v-if="!item.span" :to="item.route">
+                    <va-sidebar-item-content>
+                        <va-icon :name="item.icon" />
+                        <va-sidebar-item-title>{{ item.name }}</va-sidebar-item-title>
+                    </va-sidebar-item-content>
+                </nuxt-link>
+                <span @click="handleLogout" :id="item.id" v-else :to="item.route">
+                    <va-sidebar-item-content>
+                        <va-icon :name="item.icon" />
+                        <va-sidebar-item-title>{{ item.name }}</va-sidebar-item-title>
+                    </va-sidebar-item-content>
+                </span>
             </va-sidebar-item>
         </va-sidebar>
         <va-button
@@ -17,30 +43,23 @@
             icon="menu"
             class="!fixed !right-6 top-5 z-40"
             v-model="isShown.minimized"
+            @click="handleMenuClick"
         ></va-button>
     </div>
 </template>
 
 <script setup>
+import { useUserStore } from '~~/stores/user';
+
 const isShown = reactive({ minimized: true });
+const userData = useUserStore();
+const errorStatus = ref(null);
+const { init } = useToast();
+const config = useRuntimeConfig();
 
 const handleMenuClick = () => {
     isShown.minimized = !isShown.minimized;
 };
-
-onMounted(() => {
-    try {
-        nextTick(() => {
-            document.querySelector('#menu-button')?.addEventListener('click', handleMenuClick);
-        });
-    } catch (e) {
-        console.log(e);
-    }
-});
-
-onBeforeUnmount(() => {
-    document.querySelector('#menu-button')?.removeEventListener('click', handleMenuClick);
-});
 
 const notLoggedUser = ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
@@ -55,6 +74,42 @@ const loggedInUser = ref([
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
     { name: 'Novosti', icon: 'feed', route: '/posts' },
     { name: 'Profil', icon: 'account_circle', route: '/profile' },
-    { name: 'Odjava', icon: 'logout', route: '/logout' },
+    { name: 'Odjava', icon: 'logout', span: 'true', id: 'logout' },
 ]);
+
+const handleLogout = async (event) => {
+    init({
+        title: 'Odjava',
+        position: 'top-right',
+        message: 'Pričekajte...',
+        duration: 5000,
+    });
+    const response = await useFetch(`${config.API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Odjava',
+                position: 'top-right',
+                message: 'Greška prilikom odjave!',
+                color: 'danger',
+                duration: 5000,
+            });
+        },
+    });
+
+    if (response.data.value?.status === 204) {
+        userData.$reset();
+        init({
+            title: 'Odjava',
+            position: 'top-right',
+            message: 'Uspješna odjava!',
+            color: 'success',
+            duration: 5000,
+        });
+    }
+};
 </script>
