@@ -42,6 +42,7 @@ const handleSubmit = async (event) => {
     const config = useRuntimeConfig();
     const errorStatus = ref(null);
     const userStore = useUserStore();
+    const router = useRouter();
 
     const formData = {
         email: inputElements['email']?.value,
@@ -91,9 +92,13 @@ const handleSubmit = async (event) => {
             color: 'success',
             duration: 5000,
         });
-        console.log(response.data.value.responseData);
+
         userStore.token = response.data.value.responseData['token'];
         userStore.type = response.data.value.responseData.user['user_type_id'];
+
+        setTimeout(() => {
+            router.push({ path: '/' });
+        }, 500);
     }
 };
 </script>

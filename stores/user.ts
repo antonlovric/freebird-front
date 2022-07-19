@@ -11,4 +11,5 @@ export const useUserStore = defineStore('user-store', {
     getters: {
         userData: (state) => state,
     },
+    persist: true,
 });
