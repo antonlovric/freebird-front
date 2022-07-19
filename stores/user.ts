@@ -1,4 +1,4 @@
-import { defineStore } from '@pinia/nuxt/dist/runtime/composables';
+import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user-store', {
     state: () => {
