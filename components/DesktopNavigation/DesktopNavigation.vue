@@ -21,8 +21,19 @@
                 path="/login"
                 text="Prijava"
             />
-            <navigation-item v-if="userData.token" text="Odjava" />
-            <navigation-item path="/profile" v-if="userData.token" text="Profil" />
+            <navigation-item
+                class="inline-flex justify-end"
+                v-if="userData.token"
+                type="span"
+                text="Odjava"
+                @click="handleLogout"
+            />
+            <navigation-item
+                class="inline-flex justify-end"
+                path="/profile"
+                v-if="userData.token"
+                text="Profil"
+            />
             <navigation-item
                 class="inline-flex justify-end"
                 path="/checkout"
@@ -37,4 +48,43 @@
 import { useUserStore } from '~~/stores/user';
 
 const userData = useUserStore();
+const errorStatus = ref(null);
+const { init, close } = useToast();
+const config = useRuntimeConfig();
+
+const handleLogout = async (event) => {
+    init({
+        title: 'Odjava',
+        position: 'top-right',
+        message: 'Pričekajte...',
+        duration: 5000,
+    });
+    const response = await useFetch(`${config.API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Odjava',
+                position: 'top-right',
+                message: 'Greška prilikom odjave!',
+                color: 'danger',
+                duration: 5000,
+            });
+        },
+    });
+
+    if (response.data.value?.status === 204) {
+        userData.$reset();
+        init({
+            title: 'Odjava',
+            position: 'top-right',
+            message: 'Uspješna odjava!',
+            color: 'success',
+            duration: 5000,
+        });
+    }
+};
 </script>

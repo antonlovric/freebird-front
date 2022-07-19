@@ -3,10 +3,15 @@
         <NuxtLink
             :to="props.path"
             class="inline-flex items-center justify-center px-1 py-1 text-white"
+            v-if="props.type === 'link'"
         >
             <va-icon v-if="props.icon" :name="props.iconName" />
             <span v-else>{{ props.text }}</span>
         </NuxtLink>
+        <span v-else class="nav-span inline-flex items-center justify-center px-1 py-1 text-white">
+            <va-icon v-if="props.icon" :name="props.iconName" />
+            <span v-else>{{ props.text }}</span>
+        </span>
     </li>
 </template>
 
@@ -28,5 +33,15 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    type: {
+        type: String,
+        default: 'link',
+    },
 });
 </script>
+
+<style>
+.nav-span {
+    cursor: pointer;
+}
+</style>
