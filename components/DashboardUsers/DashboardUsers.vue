@@ -11,6 +11,7 @@
                 v-model="selectedItems"
                 @selection-change="selectHandler"
                 select-mode="multiple"
+                :loading="users.isLoading"
             >
             </va-data-table>
         </div>
@@ -34,7 +35,7 @@ const errorStatus = ref(null);
 const porukaBrisanje = ref('Sigurni ste da želite obrisati korisnika? ');
 const { init } = useToast();
 const config = useRuntimeConfig();
-const users = reactive({ userCollection: [] });
+const users = reactive({ userCollection: [], isLoading: true });
 const userData = useUserStore();
 const selectedItems = ref([]);
 const items = reactive({ ids: [] });
@@ -44,7 +45,7 @@ const selectHandler = (prop) => {
 };
 
 const removeHandler = async () => {
-    const response = await useFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
+    const response = await useLazyFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -74,7 +75,7 @@ const removeHandler = async () => {
     }
 };
 
-const response = await useFetch(`${config.API_BASE_URL}/users`, {
+const response = await useLazyFetch(`${config.API_BASE_URL}/users`, {
     method: 'GET',
     headers: {
         Authorization: `Bearer ${userData.token}`,
@@ -90,9 +91,12 @@ const response = await useFetch(`${config.API_BASE_URL}/users`, {
         });
     },
     initialCache: false,
+    async onResponse({ request, response, options }) {
+        users.userCollection = response._data.data;
+        users.isLoading = false;
+    },
 });
 
-users.userCollection = response.data.value?.data || [];
 const columns =
     [
         { key: 'id', name: 'id', label: 'ID' },
