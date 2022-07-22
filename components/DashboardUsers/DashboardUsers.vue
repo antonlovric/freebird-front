@@ -16,7 +16,11 @@
         </div>
         <div class="ml-16 inline-flex items-center gap-4 justify-start mt-5">
             <span>Šifre označenih računa: {{ items.ids.toString() }}</span>
-            <va-button @click="removeHandler" color="danger" icon="delete_forever"
+            <va-button
+                :disabled="items.ids.length === 0"
+                @click="removeHandler"
+                color="danger"
+                icon="delete_forever"
                 >Obriši</va-button
             >
         </div>
@@ -64,7 +68,7 @@ const removeHandler = async () => {
             title: 'Odjava',
             position: 'top-right',
             message: 'Korisnici uspješno obrisani!',
-            color: 'danger',
+            color: 'success',
             duration: 5000,
         });
     }
