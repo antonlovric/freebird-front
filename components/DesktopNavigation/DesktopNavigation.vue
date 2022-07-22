@@ -23,16 +23,16 @@
             />
             <navigation-item
                 class="inline-flex justify-end"
+                path="/profile"
+                v-if="userData.token"
+                text="Profil"
+            />
+            <navigation-item
+                class="inline-flex justify-end"
                 v-if="userData.token"
                 type="span"
                 text="Odjava"
                 @click="handleLogout"
-            />
-            <navigation-item
-                class="inline-flex justify-end"
-                path="/profile"
-                v-if="userData.token"
-                text="Profil"
             />
             <navigation-item
                 class="inline-flex justify-end"
