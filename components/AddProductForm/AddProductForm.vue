@@ -1,7 +1,12 @@
 <template>
     <div class="minh-[80vh] pt-[10vh] text-white relative">
         <h1 class="text-2xl mb-4 sm:mb-0 sm:text-4xl sm:mt-4 text-center">Dodavanje Proizvoda</h1>
-        <form id="form" class="flex flex-col w-3/4 sm:w-1/5 mx-auto gap-6 mb-5" @submit.prevent>
+        <form
+            enctype="multipart/form-data"
+            id="form"
+            class="flex flex-col w-3/4 sm:w-1/5 mx-auto gap-6 mb-5"
+            @submit.prevent
+        >
             <va-input
                 v-model="productData.title"
                 color="#000"
@@ -166,18 +171,39 @@ const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
 predefinedData.genres = responseGenres.data.value;
 
 const submitHandler = async () => {
+    const form = document.querySelector('#form');
+    const formData = new FormData(form);
     productData.value.image = file.value.files[0];
-    console.log(productData.value);
+
+    for (const prop in productData.value) formData.append(prop, productData.value[prop]);
+    init({
+        title: 'Kreiranje Proizvoda',
+        position: 'top-right',
+        message: 'Pričekajte...',
+    });
     const submitResponse = await useFetch(`${config.API_BASE_URL}/products`, {
         method: 'POST',
-        body: productData.value,
+        body: formData,
         headers: {
             Authorization: `Bearer ${userData.token}`,
-            'Content-Type': 'multipart/form-data',
         },
         initialCache: false,
         async onResponseError({ response }) {
             errorStatus.value = response.status;
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                color: 'danger',
+                message: 'Greška prilikom kreiranja proizvoda!',
+            });
+        },
+        async onResponse({ request, response, options }) {
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                color: 'success',
+                message: 'Proizvod uspješno kreiran!',
+            });
         },
     });
 };
