@@ -55,7 +55,7 @@ const selectHandler = (prop) => {
 };
 
 const removeHandler = async () => {
-    const response = await useFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
+    const response = await useLazyFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -89,7 +89,7 @@ const addHandler = () => {
     showModal.show = true;
 };
 
-const response = await useFetch(`${config.API_BASE_URL}/products`, {
+const response = await useLazyFetch(`${config.API_BASE_URL}/products`, {
     method: 'GET',
     headers: {
         Authorization: `Bearer ${userData.token}`,
