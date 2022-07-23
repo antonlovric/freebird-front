@@ -51,13 +51,6 @@
                 type="number"
                 id="price"
             />
-            <va-input
-                v-model="productData.author"
-                color="#000"
-                label="Autor"
-                type="text"
-                id="author"
-            />
             <va-select
                 v-model="productData.genre_id"
                 color="#000"
@@ -126,22 +119,22 @@ const predefinedData = reactive({
 const options = [{ label: 'prva', value: '1' }];
 
 const productData = ref({
-    title: 'naslov',
-    description: 'opis',
-    sleeve_condition: 1,
-    media_condition: 2,
-    sku: 'sku',
+    title: '',
+    description: '',
+    sleeve_condition: null,
+    media_condition: null,
+    sku: '',
     initial_price: 0,
     rating: 0,
-    product_type_id: 1,
-    author: 'author',
+    product_type_id: null,
     discount_id: null,
-    genre_id: 2,
-    edition: 'edition',
+    genre_id: null,
+    edition: '',
     stock: 0,
     number_of_ratings: 0,
     image: '',
 });
+const { init, close } = useToast();
 
 const responseProductTypes = await useFetch(`${config.API_BASE_URL}/productTypes`, {
     method: 'GET',
