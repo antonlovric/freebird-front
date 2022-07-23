@@ -12,6 +12,9 @@
                 @selection-change="selectHandler"
                 select-mode="multiple"
             >
+                <template #cell(image)="{ value }"
+                    ><img style="height: 100px" :src="value"
+                /></template>
             </va-data-table>
         </div>
         <div class="ml-16 inline-flex flex-column items-center gap-4 justify-start mt-5">
@@ -108,7 +111,14 @@ const response = await useLazyFetch(`${config.API_BASE_URL}/products`, {
 });
 
 users.userCollection = response.data.value?.data || [];
-const columns = [{ key: 'id', name: 'id', label: 'ID' }] || [];
+console.log(users.userCollection);
+const columns = [
+    { key: 'id', name: 'id', label: 'ID' },
+    { key: 'title', name: 'title', label: 'Naslov' },
+    { key: 'initial_price', name: 'initial_price', label: 'Cijena' },
+    { key: 'discount_id', name: 'discount_id', label: 'Šifra popusta' },
+    { key: 'url', name: 'image', label: 'image' },
+];
 </script>
 
 <style>
