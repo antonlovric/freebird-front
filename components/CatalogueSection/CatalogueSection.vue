@@ -14,16 +14,16 @@
                     Pregledajte artikle u našem katalogu i obogatite svoju kolekciju!
                 </p>
                 <div class="mt-10 inline-flex flex-col justify-center gap-14 sm:flex-row">
-                    <product-card
+                    <product-showcase-card
                         imageSource="https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG"
                     />
-                    <product-card
+                    <product-showcase-card
                         imageSource="https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg"
                     />
-                    <product-card
+                    <product-showcase-card
                         imageSource="https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png"
                     />
-                    <product-card
+                    <product-showcase-card
                         imageSource="https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg"
                     />
                 </div>
