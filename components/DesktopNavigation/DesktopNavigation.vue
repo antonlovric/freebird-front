@@ -4,7 +4,7 @@
     >
         <div class="flex items-center justify-around w-1/3">
             <navigation-item class="inline-flex justify-start" text="Naslovnica" />
-            <navigation-item class="inline-flex justify-start" path="/about" text="Katalog" />
+            <navigation-item class="inline-flex justify-start" path="/catalogue" text="Katalog" />
             <navigation-item class="inline-flex justify-start" path="/posts" text="Novosti" />
         </div>
         <img src="../../assets/logo_transparent 2.png" alt="Freebird logo" />
@@ -39,6 +39,7 @@
                 path="/checkout"
                 icon
                 icon-name="shopping_cart"
+                type="span"
             />
         </div>
     </ul>

@@ -3,7 +3,7 @@
         <div class="mx-auto max-w-[90%] overflow-x-scroll">
             <h3 class="mb-2">Korisnici</h3>
             <va-data-table
-                class="text-white"
+                class=""
                 striped
                 :items="users.userCollection"
                 :columns="columns"

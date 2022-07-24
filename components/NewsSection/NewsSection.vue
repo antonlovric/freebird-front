@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-primary text-white text-center">
+    <section class="bg-primary text-center">
         <div class="my-24 mb-14 h-0.5 w-full mx-auto bg-orange sm:w-11/12" />
         <div class="relative">
             <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl">Novosti</h2>

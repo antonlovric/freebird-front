@@ -1,5 +1,5 @@
 <template>
-    <div class="minh-[80vh] pt-[10vh] text-white relative">
+    <div class="min-h-[80vh] pt-[10vh] relative">
         <h1 class="text-2xl mb-4 sm:mb-0 sm:text-4xl sm:mt-4 text-center">Dodavanje Proizvoda</h1>
         <form
             enctype="multipart/form-data"

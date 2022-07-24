@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-grey flex flex-col sm:flex-row px-8 justify-center py-8 w-full">
+    <section class="bg-grey flex flex-col sm:flex-row px-8 justify-center py-8 w-full text-black">
         <div class="">
             <h2>O nama</h2>
             <ul class="flex flex-col mb-4 mt-2 gap-2">

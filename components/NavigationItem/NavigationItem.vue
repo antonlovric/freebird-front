@@ -2,13 +2,13 @@
     <li class="inline">
         <NuxtLink
             :to="props.path"
-            class="inline-flex items-center justify-center px-1 py-1 text-white"
+            class="inline-flex items-center justify-center px-1 py-1"
             v-if="props.type === 'link'"
         >
             <va-icon v-if="props.icon" :name="props.iconName" />
             <span v-else>{{ props.text }}</span>
         </NuxtLink>
-        <span v-else class="nav-span inline-flex items-center justify-center px-1 py-1 text-white">
+        <span v-else class="nav-span inline-flex items-center justify-center px-1 py-1">
             <va-icon v-if="props.icon" :name="props.iconName" />
             <span v-else>{{ props.text }}</span>
         </span>
