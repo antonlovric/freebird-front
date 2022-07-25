@@ -144,6 +144,7 @@ const responseGenres = await useLazyFetch(`${config.API_BASE_URL}/genres`, {
     async onResponse({ request, response, options }) {
         dropdownOptions[2].content = response._data;
     },
+    initialCache: false,
 });
 
 const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions`, {
@@ -162,10 +163,14 @@ const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions
         dropdownOptions[3].content = response._data;
         dropdownOptions[4].content = response._data;
     },
+    initialCache: false,
 });
 
 const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
     method: 'GET',
+    params: {
+        title: '',
+    },
     async onResponseError({ response }) {
         errorStatus.value = response.status;
         init({
@@ -181,6 +186,7 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
         products.isLoading = false;
         products.productCollection = response._data.data;
     },
+    initialCache: false,
 });
 
 const searchHandler = async () => {
