@@ -99,17 +99,16 @@ const handleLogout = async (event) => {
                 duration: 5000,
             });
         },
+        async onResponse() {
+            userData.$reset();
+            init({
+                title: 'Odjava',
+                position: 'top-right',
+                message: 'Uspješna odjava!',
+                color: 'success',
+                duration: 5000,
+            });
+        },
     });
-
-    if (response.data.value?.status === 204) {
-        userData.$reset();
-        init({
-            title: 'Odjava',
-            position: 'top-right',
-            message: 'Uspješna odjava!',
-            color: 'success',
-            duration: 5000,
-        });
-    }
 };
 </script>

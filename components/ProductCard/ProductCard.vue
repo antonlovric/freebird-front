@@ -12,7 +12,7 @@
         </div>
     </div> -->
     <va-card>
-        <va-image class="product-image" :src="props.imgSrc" />
+        <va-image v-on:mouseenter="handleHover" class="product-image" :src="props.imgSrc" />
         <va-card-content class="px-2 py-1">
             <div class="inline-flex items-center justify-between w-full mt-1">
                 <nuxt-link :to="`/products/${props.productId}`">{{ props.productTitle }}</nuxt-link>

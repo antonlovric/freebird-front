@@ -94,6 +94,7 @@ const handleSubmit = async (event) => {
         });
 
         userStore.token = response.data.value.responseData['token'];
+        userStore.session_id = response.data.value.responseData['session'];
         userStore.type = response.data.value.responseData.user['user_type_id'];
 
         setTimeout(() => {
