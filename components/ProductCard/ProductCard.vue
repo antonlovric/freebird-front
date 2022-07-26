@@ -11,11 +11,11 @@
             </div>
         </div>
     </div> -->
-    <va-card stripe stripe-color="success">
+    <va-card>
         <va-image class="product-image" :src="props.imgSrc" />
         <va-card-content class="px-2 py-1">
             <div class="inline-flex items-center justify-between w-full mt-1">
-                <nuxt-link>{{ props.productTitle }}</nuxt-link>
+                <nuxt-link :to="`/products/${props.productId}`">{{ props.productTitle }}</nuxt-link>
                 <va-icon name="shopping_cart" />
             </div>
         </va-card-content>

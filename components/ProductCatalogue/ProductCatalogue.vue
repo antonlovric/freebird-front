@@ -64,6 +64,7 @@
                             :imgSrc="product.url"
                             :imgAlt="product.title"
                             :productTitle="product.title"
+                            :productId="product.id"
                             :initialPrice="product.initial_price"
                         />
                     </li>
