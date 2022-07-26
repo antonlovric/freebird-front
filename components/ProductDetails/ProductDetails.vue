@@ -30,15 +30,16 @@
                             <span class="font-semibold">{{ props.product.initial_price }}kn</span>
                         </li>
                     </ul>
-                    <div class="">
+                    <div class="inline-flex sm_flex-row gap-4 items-center mt-3">
                         <va-button
-                            class="mt-3"
                             size="large"
                             color="#f97316"
                             text-color="#fff"
                             icon-right="shopping_cart"
+                            @click="handleAddToCart"
                             >Dodaj u košaricu</va-button
                         >
+                        <va-counter :min="1" color="#f97316" v-model="product.quantity" />
                     </div>
                 </div>
             </div>
@@ -51,8 +52,84 @@
     </div>
 </template>
 <script setup>
+import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
+
 const props = defineProps({
     product: Object,
 });
+const { init } = useToast();
+const config = useRuntimeConfig();
+const userData = useUserStore();
+const cartData = useCartStore();
+const product = reactive({ quantity: 1 });
 const isInStock = props.product.stock > 0;
+
+const addCartItem = async () => {
+    if (product.quantity > props.product.stock) {
+        init({
+            title: 'Kreiranje Proizvoda',
+            position: 'top-right',
+            message: 'Količina proizvoda koju pokušavate naručiti nije dostupna!',
+            color: 'warning',
+        });
+        return;
+    }
+
+    const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
+        method: 'POST',
+        body: {
+            cart_id: localStorage.getItem('cart_id'),
+            quantity: product.quantity,
+            product_id: props.product.id,
+            price: props.product.initial_price,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                color: 'warning',
+            });
+        },
+        async onResponse({ request, options, response }) {
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                message: 'Proizvod uspješno dodan u košaricu!',
+                color: 'success',
+            });
+            cartData.addItem({
+                title: props.product.title,
+                quantity: product.quantity,
+                url: props.product.url,
+            });
+        },
+    });
+};
+
+const handleAddToCart = async () => {
+    const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
+        method: 'POST',
+        body: {
+            session_id: userData.session_id,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Dodavanje Proizvoda',
+                position: 'top-right',
+                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                color: 'warning',
+            });
+        },
+        async onResponse({ request, options, response }) {
+            localStorage.setItem('cart_id', response._data.id);
+            addCartItem();
+        },
+    });
+};
 </script>

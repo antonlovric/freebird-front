@@ -5,6 +5,7 @@ export const useUserStore = defineStore('user-store', {
         return {
             type: 1,
             token: '',
+            session_id: '',
         };
     },
     actions: {},
