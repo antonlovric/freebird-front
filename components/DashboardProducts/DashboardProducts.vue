@@ -111,7 +111,6 @@ const response = await useLazyFetch(`${config.API_BASE_URL}/products`, {
 });
 
 users.userCollection = response.data.value?.data || [];
-console.log(users.userCollection);
 const columns = [
     { key: 'id', name: 'id', label: 'ID' },
     { key: 'title', name: 'title', label: 'Naslov' },

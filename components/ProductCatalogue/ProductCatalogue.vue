@@ -221,7 +221,6 @@ const resetHandler = () => {
 };
 
 const filterHandler = async () => {
-    console.log(filters.selectedFilters[3].activeFilters);
     await useFetch(`${config.API_BASE_URL}/products`, {
         method: 'GET',
         params: {
@@ -251,6 +250,4 @@ const filterHandler = async () => {
         initialCache: false,
     });
 };
-
-console.log(products.productCollection);
 </script>
