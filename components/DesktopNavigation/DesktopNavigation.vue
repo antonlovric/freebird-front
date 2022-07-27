@@ -36,7 +36,7 @@
             />
             <navigation-item
                 class="inline-flex justify-end"
-                path="/checkout"
+                path="/cart"
                 icon
                 icon-name="shopping_cart"
                 type="cart"

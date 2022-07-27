@@ -102,6 +102,7 @@ const addCartItem = async () => {
                 color: 'success',
             });
             cartData.addItem({
+                id: props.product.id,
                 title: props.product.title,
                 quantity: product.quantity,
                 url: props.product.url,
