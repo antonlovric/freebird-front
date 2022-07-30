@@ -106,6 +106,7 @@ const addCartItem = async () => {
                 title: props.product.title,
                 quantity: product.quantity,
                 url: props.product.url,
+                price: props.product.initial_price,
             });
         },
     });

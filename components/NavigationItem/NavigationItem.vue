@@ -27,17 +27,14 @@
                 class="absolute shadow-lg bg-[#121317] top-[110%] right-[40%] w-[350px]"
             >
                 <ul>
-                    <li
-                        class="inline-flex m-3 gap-2 items-center"
+                    <cart-preview-item
                         v-for="(item, index) in cartItems"
+                        :img="item.products.url"
+                        :title="item.products.title"
+                        :price="item.price"
+                        :quantity="item.quantity"
                         :key="index"
-                    >
-                        <img :src="item.url" :alt="item.title" class="h-[70px] w-[70px]" />
-                        <div class="inline-flex gap-4 flex-col justify-between py-1">
-                            <span>{{ item.title }}</span>
-                            <span>Količina: {{ item.quantity }}</span>
-                        </div>
-                    </li>
+                    />
                 </ul>
                 <div class="flex">
                     <va-button

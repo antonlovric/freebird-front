@@ -4,6 +4,7 @@ interface IProduct {
     title: string;
     quantity: number;
     url: string;
+    price: String;
 }
 
 export const useCartStore = defineStore('cart-store', {
@@ -18,13 +19,17 @@ export const useCartStore = defineStore('cart-store', {
             duplicateProduct ? duplicateProduct.quantity++ : this.cartItems.push(product);
         },
         removeItem(productId: number) {
-            this.cartItems = this.cartItems.filter((item: IProduct) => item.id !== productId);
+            this.cartItems = this.cartItems?.filter((item: IProduct) => item.id !== productId);
+        },
+        clearCart() {
+            this.cartItems = [];
         },
     },
     getters: {
         cartData: (state) => state,
-        cartQuantity: (state) => state.cartItems.reduce((prev, next) => prev + next.quantity, 0),
-        productIds: (state) => state.cartItems.map((item) => item.id),
+        cartQuantity: (state) => state.cartItems?.reduce((prev, next) => prev + next.quantity, 0),
+        cartPrice: (state) => state.cartItems?.reduce((prev, next) => prev + Number(next.price), 0),
+        productIds: (state) => state.cartItems?.map((item) => item.id),
     },
     persist: true,
 });

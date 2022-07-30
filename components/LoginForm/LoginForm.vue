@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
 const loginData = ref({
@@ -42,6 +43,7 @@ const handleSubmit = async (event) => {
     const config = useRuntimeConfig();
     const errorStatus = ref(null);
     const userStore = useUserStore();
+    const cartStore = useCartStore();
     const router = useRouter();
 
     const formData = {
@@ -62,6 +64,21 @@ const handleSubmit = async (event) => {
         initialCache: false,
         async onResponseError({ response }) {
             errorStatus.value = response.status;
+        },
+        async onResponse({ response }) {
+            const responseProduct = await useFetch(
+                `${config.API_BASE_URL}/cartItems/${localStorage.getItem('cart_id')}`,
+                {
+                    method: 'GET',
+                    initialCache: false,
+                    async onResponseError({ response }) {
+                        errorStatus.value = response.status;
+                    },
+                    async onResponse({ request, response, options }) {
+                        cartStore.cartItems = response._data;
+                    },
+                }
+            );
         },
     });
 

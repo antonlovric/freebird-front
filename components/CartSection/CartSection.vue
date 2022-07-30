@@ -11,7 +11,11 @@
             />
         </ul>
         <div class="inline-flex w-full justify-end" color="">
-            <va-button size="large" text-color="#fff" icon-right="shopping_bag">Naplata</va-button>
+            <nuxt-link to="/checkout">
+                <va-button size="large" text-color="#fff" icon-right="shopping_bag"
+                    >Naplata</va-button
+                ></nuxt-link
+            >
         </div>
     </div>
 </template>
@@ -27,7 +31,6 @@ const responseProduct = await useFetch(
     {
         method: 'GET',
         initialCache: false,
-        pick: ['products'],
         async onResponseError({ response }) {
             errorStatus.value = response.status;
         },
