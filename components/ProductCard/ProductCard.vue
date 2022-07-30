@@ -16,18 +16,27 @@
         <va-card-content class="px-2 py-1">
             <div class="inline-flex items-center justify-between w-full mt-1">
                 <nuxt-link :to="`/products/${props.productId}`">{{ props.productTitle }}</nuxt-link>
-                <va-icon name="shopping_cart" />
+                <span class="cursor-pointer"
+                    ><va-icon @click="handleAddToCart" name="shopping_cart"
+                /></span>
             </div>
         </va-card-content>
         <va-card-content class="px-2 py-1 pb-3">
             <div class="inline-flex items-center justify-between mt-2">
-                <span>{{ props.initialPrice }} HRK</span>
+                <span>{{ props.initialPrice }}kn</span>
             </div>
         </va-card-content>
     </va-card>
 </template>
 
 <script setup>
+import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
+
+const config = useRuntimeConfig();
+const { init } = useToast();
+const userData = useUserStore();
+const cartData = useCartStore();
 const props = defineProps({
     imgSrc: {
         type: String,
@@ -50,6 +59,67 @@ const props = defineProps({
         default: 0,
     },
 });
+
+const addCartItem = async () => {
+    const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
+        method: 'POST',
+        body: {
+            cart_id: localStorage.getItem('cart_id'),
+            quantity: 1,
+            product_id: props.productId,
+            price: props.initialPrice,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                color: 'warning',
+            });
+        },
+        async onResponse({ request, options, response }) {
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                message: 'Proizvod uspješno dodan u košaricu!',
+                color: 'success',
+            });
+
+            cartData.addItem({
+                id: props.productId,
+                title: props.title,
+                quantity: 1,
+                url: props.url,
+                price: props.initialPrice,
+            });
+        },
+    });
+};
+
+const handleAddToCart = async () => {
+    const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
+        method: 'POST',
+        body: {
+            session_id: userData.session_id,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            errorStatus.value = response.status;
+            init({
+                title: 'Dodavanje Proizvoda',
+                position: 'top-right',
+                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                color: 'warning',
+            });
+        },
+        async onResponse({ request, options, response }) {
+            localStorage.setItem('cart_id', response._data.id);
+            addCartItem();
+        },
+    });
+};
 </script>
 
 <style scoped>
