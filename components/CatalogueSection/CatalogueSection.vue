@@ -17,16 +17,10 @@
                 </p>
                 <div class="mt-10 inline-flex flex-col justify-center gap-14 sm:flex-row">
                     <product-showcase-card
-                        imageSource="https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG"
-                    />
-                    <product-showcase-card
-                        imageSource="https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg"
-                    />
-                    <product-showcase-card
-                        imageSource="https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png"
-                    />
-                    <product-showcase-card
-                        imageSource="https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg"
+                        v-for="(product, index) in products.productCollection"
+                        :key="index"
+                        :imageSource="product?.url"
+                        :productLink="`products/${product?.id}`"
                     />
                 </div>
                 <div class="w-11/12 mx-auto my-12 flex flex-col sm:flex-row justify-center gap-8">
@@ -50,6 +44,18 @@
         </div>
     </div>
 </template>
+
+<script setup>
+const config = useRuntimeConfig();
+const products = reactive({ productCollection: [] });
+const responseFeatured = await useFetch(`${config.API_BASE_URL}/products/featured`, {
+    method: 'GET',
+    initialCache: false,
+    onResponse: ({ response }) => {
+        products.productCollection = response._data.data;
+    },
+});
+</script>
 
 <style scoped>
 .va-card {
