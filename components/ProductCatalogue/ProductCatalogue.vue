@@ -55,10 +55,7 @@
                     >
                 </div>
                 <va-inner-loading :loading="products.isLoading">
-                    <ul
-                        v-if="products.isLoading === false"
-                        class="inline-flex gap-8 flex-wrap my-5 text-sm"
-                    >
+                    <ul class="inline-flex gap-8 flex-wrap my-5 text-sm">
                         <li v-for="product in products.productCollection" :key="product.id">
                             <product-card
                                 :imgSrc="product.url"
@@ -70,6 +67,12 @@
                         </li>
                     </ul>
                 </va-inner-loading>
+                <va-pagination
+                    :pages="input.totalPages"
+                    v-model="input.page"
+                    @update:model-value="handlePageChange"
+                    class="col-span-1 my-8 sm:col-span-2 md:col-span-3"
+                />
             </div>
         </div>
     </div>
@@ -84,6 +87,8 @@ const input = reactive({
         min: null,
         max: null,
     },
+    page: 1,
+    totalPages: 1,
 });
 
 const products = reactive({ productCollection: [], isLoading: true });
@@ -172,6 +177,8 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
     method: 'GET',
     params: {
         title: '',
+        page: input.page,
+        page_size: 3,
     },
     async onResponseError({ response }) {
         errorStatus.value = response.status;
@@ -187,15 +194,19 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
     async onResponse({ request, response, options }) {
         products.isLoading = false;
         products.productCollection = response._data.data;
+        input.totalPages = response._data.last_page;
     },
     initialCache: false,
 });
 
 const searchHandler = async () => {
+    products.isLoading = true;
     await useFetch(`${config.API_BASE_URL}/products`, {
         method: 'GET',
         params: {
             title: input.searchQuery,
+            page: input.page,
+            page_size: 3,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
@@ -250,5 +261,9 @@ const filterHandler = async () => {
         },
         initialCache: false,
     });
+};
+
+const handlePageChange = () => {
+    searchHandler();
 };
 </script>
