@@ -178,7 +178,7 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
     params: {
         title: '',
         page: input.page,
-        page_size: 3,
+        page_size: 10,
     },
     async onResponseError({ response }) {
         errorStatus.value = response.status;
@@ -206,7 +206,7 @@ const searchHandler = async () => {
         params: {
             title: input.searchQuery,
             page: input.page,
-            page_size: 3,
+            page_size: 10,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
