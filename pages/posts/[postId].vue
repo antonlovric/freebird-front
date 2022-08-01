@@ -24,6 +24,4 @@ const productResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
     },
     initialCache: false,
 });
-
-console.log(productResponse.data);
 </script>

@@ -64,7 +64,7 @@ const handleMenuClick = () => {
 const notLoggedUser = ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
-    { name: 'Novosti', icon: 'feed', route: '/posts' },
+    { name: 'Novosti', icon: 'feed', route: '/blogPosts' },
     { name: 'Registracija', icon: 'how_to_reg', route: '/registration' },
     { name: 'Prijava', icon: 'login', route: '/login' },
 ]);
@@ -72,7 +72,7 @@ const notLoggedUser = ref([
 const loggedInUser = ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
-    { name: 'Novosti', icon: 'feed', route: '/posts' },
+    { name: 'Novosti', icon: 'feed', route: '/blogPosts' },
     { name: 'Profil', icon: 'account_circle', route: '/profile' },
     { name: 'Odjava', icon: 'logout', span: 'true', id: 'logout' },
 ]);

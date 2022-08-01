@@ -53,11 +53,17 @@ const postData = ref({ image: '', displayImage: '', heading: '', subheading: '',
 const images = reactive({ imageCollection: [], displayImageId: null });
 const { init, close } = useToast();
 
+const getImageIds = () => {
+    const imageIds = images.imageCollection.map((image) => image.id);
+    imageIds.push(images.displayImageId);
+    return imageIds;
+};
+
 const assignImagesToPost = (postId) => {
     const responseAssign = useFetch(`${config.API_BASE_URL}/postImages/assign`, {
         method: 'POST',
         body: {
-            ids: images.imageCollection.map((image) => image.id).push(images.displayImageId),
+            ids: getImageIds(),
             post_id: postId,
         },
         headers: {
