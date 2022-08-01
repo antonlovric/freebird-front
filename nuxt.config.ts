@@ -1,6 +1,18 @@
 import { defineNuxtConfig } from 'nuxt';
+import { createIconsConfig } from 'vuestic-ui';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+const fonts = [
+    {
+        name: 'mdi-{icon}',
+        resolve: ({ icon }) => ({
+            class: 'material-icons-outlined',
+            content: icon,
+            attrs: '',
+            tag: 'span',
+        }),
+    },
+];
 export default defineNuxtConfig({
     build: {
         postcss: {
@@ -39,9 +51,24 @@ export default defineNuxtConfig({
 
     vuestic: {
         config: {
-            // Config here
+            colors: {
+                primary: '#f97316',
+            },
+            components: {
+                VaInput: {
+                    color: '#000',
+                },
+                VaSelect: {
+                    color: '#000',
+                },
+                VaButton: {
+                    textColor: '#fff',
+                },
+            },
         },
+        css: ['grid', 'reset', 'typography'],
     },
+
     publicRuntimeConfig: {
         API_BASE_URL: process.env.API_BASE_URL,
     },
