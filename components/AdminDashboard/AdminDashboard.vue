@@ -3,5 +3,6 @@
         <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Dashboard</h2>
         <dashboard-users />
         <dashboard-products />
+        <dashboard-posts />
     </div>
 </template>

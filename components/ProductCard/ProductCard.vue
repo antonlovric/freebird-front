@@ -1,16 +1,4 @@
 <template>
-    <!-- <div class="inline-flex flex-col">
-        <img :src="props.imgSrc" :alt="props.imgAlt" />
-        <div class="inline-flex flex-col">
-            <div class="inline-flex items-center justify-between mt-1">
-                <nuxt-link :to="products / id">{{ props.productTitle }}</nuxt-link>
-                <va-icon name="shopping_cart" />
-            </div>
-            <div class="inline-flex items-center justify-between mt-2">
-                <span>{{ props.initialPrice }} HRK</span>
-            </div>
-        </div>
-    </div> -->
     <va-card>
         <va-image v-on:mouseenter="handleHover" class="product-image" :src="props.imgSrc" />
         <va-card-content class="px-2 py-1">

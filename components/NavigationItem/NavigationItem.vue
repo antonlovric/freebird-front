@@ -16,7 +16,7 @@
             <span v-else>{{ props.text }}</span>
         </span>
         <nuxt-link
-            :to="props.path"
+            :to="cartQuantity > 0 ? props.path : ''"
             v-on:mouseenter="handleCartHover"
             v-on:mouseleave="handleCartHoverOut"
             v-if="props.type === 'cart'"
@@ -86,7 +86,7 @@ const { cartItems, cartQuantity } = storeToRefs(cartStore);
 
 const handleCartHover = () => {
     if (process.client) {
-        cartHover.isVisible = window.innerWidth > 768;
+        cartHover.isVisible = window.innerWidth > 768 && cartQuantity > 0;
     }
 };
 

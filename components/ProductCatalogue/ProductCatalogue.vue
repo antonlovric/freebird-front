@@ -54,21 +54,22 @@
                         >Pretraga</va-button
                     >
                 </div>
-
-                <ul
-                    v-if="products.isLoading === false"
-                    class="inline-flex gap-8 flex-wrap my-5 text-sm"
-                >
-                    <li v-for="product in products.productCollection" :key="product.id">
-                        <product-card
-                            :imgSrc="product.url"
-                            :imgAlt="product.title"
-                            :productTitle="product.title"
-                            :productId="product.id"
-                            :initialPrice="product.initial_price"
-                        />
-                    </li>
-                </ul>
+                <va-inner-loading :loading="products.isLoading">
+                    <ul
+                        v-if="products.isLoading === false"
+                        class="inline-flex gap-8 flex-wrap my-5 text-sm"
+                    >
+                        <li v-for="product in products.productCollection" :key="product.id">
+                            <product-card
+                                :imgSrc="product.url"
+                                :imgAlt="product.title"
+                                :productTitle="product.title"
+                                :productId="product.id"
+                                :initialPrice="product.initial_price"
+                            />
+                        </li>
+                    </ul>
+                </va-inner-loading>
             </div>
         </div>
     </div>

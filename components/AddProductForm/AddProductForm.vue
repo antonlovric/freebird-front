@@ -131,7 +131,6 @@ const productData = ref({
     genre_id: null,
     edition: '',
     stock: 0,
-    number_of_ratings: 0,
     image: '',
 });
 const { init, close } = useToast();

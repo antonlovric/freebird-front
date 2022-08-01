@@ -17,7 +17,7 @@
                 </p>
                 <div class="mt-10 inline-flex flex-col justify-center gap-14 sm:flex-row">
                     <product-showcase-card
-                        v-for="(product, index) in products.productCollection"
+                        v-for="(product, index) in products"
                         :key="index"
                         :imageSource="product?.url"
                         :productLink="`products/${product?.id}`"
@@ -46,15 +46,10 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig();
-const products = reactive({ productCollection: [] });
-const responseFeatured = await useFetch(`${config.API_BASE_URL}/products/featured`, {
-    method: 'GET',
-    initialCache: false,
-    onResponse: ({ response }) => {
-        products.productCollection = response._data.data;
-    },
+const props = defineProps({
+    products: Object,
 });
+const { products } = props;
 </script>
 
 <style scoped>

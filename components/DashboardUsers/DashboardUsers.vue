@@ -5,13 +5,13 @@
             <va-data-table
                 class=""
                 striped
-                :items="users.userCollection"
+                :items="users.data"
                 :columns="columns"
                 selectable
                 v-model="selectedItems"
                 @selection-change="selectHandler"
                 select-mode="multiple"
-                :loading="users.isLoading"
+                :loading="pending"
             >
             </va-data-table>
         </div>
@@ -35,7 +35,6 @@ const errorStatus = ref(null);
 const porukaBrisanje = ref('Sigurni ste da želite obrisati korisnika? ');
 const { init } = useToast();
 const config = useRuntimeConfig();
-const users = reactive({ userCollection: [], isLoading: true });
 const userData = useUserStore();
 const selectedItems = ref([]);
 const items = reactive({ ids: [] });
@@ -43,6 +42,19 @@ const items = reactive({ ids: [] });
 const selectHandler = (prop) => {
     items.ids = selectedItems.value.map((item) => item['id']);
 };
+
+const {
+    pending,
+    data: users,
+    refresh,
+} = useFetch(`${config.API_BASE_URL}/users`, {
+    method: 'GET',
+    headers: {
+        Authorization: `Bearer ${userData.token}`,
+    },
+    initialCache: false,
+    lazy: true,
+});
 
 const removeHandler = async () => {
     const response = await useLazyFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
@@ -65,6 +77,7 @@ const removeHandler = async () => {
         },
     });
     if (response.status === 204) {
+        refresh();
         init({
             title: 'Odjava',
             position: 'top-right',
@@ -74,28 +87,6 @@ const removeHandler = async () => {
         });
     }
 };
-
-const response = await useLazyFetch(`${config.API_BASE_URL}/users`, {
-    method: 'GET',
-    headers: {
-        Authorization: `Bearer ${userData.token}`,
-    },
-    async onResponseError({ response }) {
-        errorStatus.value = response.status;
-        init({
-            title: 'Odjava',
-            position: 'top-right',
-            message: 'Greška prilikom odjave!',
-            color: 'danger',
-            duration: 5000,
-        });
-    },
-    initialCache: false,
-    async onResponse({ request, response, options }) {
-        users.userCollection = response._data.data;
-        users.isLoading = false;
-    },
-});
 
 const columns =
     [

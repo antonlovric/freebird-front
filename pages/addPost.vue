@@ -1,7 +1,9 @@
 <template>
     <div>
         <the-header />
-        <add-product-form />
+        <add-post-form />
         <the-footer />
     </div>
 </template>
+
+<script setup></script>

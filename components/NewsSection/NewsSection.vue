@@ -16,21 +16,22 @@
                 class="gap-7 mx-auto grid grid-cols-1 grid-rows-3 my-5 sm:grid-rows-1 sm:grid-cols-3 w-9/12"
             >
                 <post-component
-                    postTitle="NOVI LP LOTOVI U FREE BIRDU!"
-                    postDescription="Ovo je opis objave na free bird blogu."
-                    image="https://freebird.hr/image/cache/catalog/blog/20220716/20220716_1A-1060x400w.webp"
-                />
-                <post-component
-                    postTitle="NOVI LP LOTOVI U FREE BIRDU!"
-                    postDescription="Ovo je opis objave na free bird blogu."
-                    image="https://freebird.hr/image/cache/catalog/blog/20220716/20220716_1A-1060x400w.webp"
-                />
-                <post-component
-                    postTitle="NOVI LP LOTOVI U FREE BIRDU!"
-                    postDescription="Ovo je opis objave na free bird blogu."
-                    image="https://freebird.hr/image/cache/catalog/blog/20220716/20220716_1A-1060x400w.webp"
+                    v-for="(post, index) in posts.postCollection"
+                    :key="index"
+                    :postTitle="post.heading"
+                    :postDescription="post.subheading"
+                    :image="post.images[0]?.url"
+                    :postId="post.id"
                 />
             </div>
         </div>
     </section>
 </template>
+
+<script setup>
+const posts = reactive({ postCollection: [] });
+
+const config = useRuntimeConfig();
+const responsePosts = await useFetch(`${config.API_BASE_URL}/posts/latest`);
+posts.postCollection = responsePosts.data.value;
+</script>

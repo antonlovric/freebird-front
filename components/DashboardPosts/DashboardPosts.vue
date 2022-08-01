@@ -1,41 +1,24 @@
 <template>
     <div class="px-4 my-5">
         <div class="mx-auto max-w-[90%] overflow-x-scroll">
-            <h3 class="mb-2">Proizvodi</h3>
+            <h3 class="mb-2">Objave</h3>
             <va-data-table
                 class=""
                 striped
-                :items="products.data"
+                :items="posts.data"
                 :columns="columns"
                 selectable
                 v-model="selectedItems"
                 @selection-change="selectHandler"
                 select-mode="multiple"
             >
-                <template #cell(image)="{ value }"
-                    ><img style="height: 100px" :src="value"
-                /></template>
             </va-data-table>
         </div>
         <div class="ml-16 inline-flex flex-column items-center gap-4 justify-start mt-5">
-            <span>Šifre označenih računa: {{ items.ids.toString() }}</span>
-            <nuxt-link to="addProducts">
+            <span>Šifre označenih objava: {{ items.ids.toString() }}</span>
+            <nuxt-link to="addPost">
                 <va-button @click="addHandler" color="success" icon="add_circle">Dodaj</va-button>
             </nuxt-link>
-            <va-button
-                :disabled="items.ids.length !== 1"
-                @click="updateHandler"
-                color="warning"
-                icon="update"
-                >Ažuriraj</va-button
-            >
-            <va-button
-                :disabled="items.ids.length === 0"
-                @click="removeHandler"
-                color="danger"
-                icon="delete_forever"
-                >Obriši</va-button
-            >
         </div>
     </div>
 </template>
@@ -47,25 +30,19 @@ const errorStatus = ref(null);
 const porukaBrisanje = ref('Sigurni ste da želite obrisati korisnika? ');
 const { init } = useToast();
 const config = useRuntimeConfig();
-const users = reactive({ userCollection: [] });
 const userData = useUserStore();
 const selectedItems = ref([]);
 const items = reactive({ ids: [] });
-const showModal = reactive({ show: false });
 
 const selectHandler = (prop) => {
     items.ids = selectedItems.value.map((item) => item['id']);
 };
 
-const addHandler = () => {
-    showModal.show = true;
-};
-
 const {
-    data: products,
+    data: posts,
     pending,
     refresh,
-} = useLazyFetch(`${config.API_BASE_URL}/products`, {
+} = useLazyFetch(`${config.API_BASE_URL}/posts`, {
     method: 'GET',
     headers: {
         Authorization: `Bearer ${userData.token}`,
@@ -84,7 +61,7 @@ const {
 });
 
 const removeHandler = async () => {
-    const response = await useLazyFetch(`${config.API_BASE_URL}/products/deleteProducts`, {
+    const response = await useLazyFetch(`${config.API_BASE_URL}/products/deletePosts`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -116,10 +93,8 @@ const removeHandler = async () => {
 
 const columns = [
     { key: 'id', name: 'id', label: 'ID' },
-    { key: 'title', name: 'title', label: 'Naslov' },
-    { key: 'initial_price', name: 'initial_price', label: 'Cijena' },
-    { key: 'discount_id', name: 'discount_id', label: 'Šifra popusta' },
-    { key: 'url', name: 'image', label: 'image' },
+    { key: 'heading', name: 'heading', label: 'Naslov' },
+    { key: 'created_at', name: 'created_at', label: 'Vrijeme Kreiranja' },
 ];
 </script>
 
