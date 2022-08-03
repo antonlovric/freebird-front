@@ -5,7 +5,7 @@
             <va-data-table
                 class=""
                 striped
-                :items="users.data"
+                :items="users?.data"
                 :columns="columns"
                 selectable
                 v-model="selectedItems"

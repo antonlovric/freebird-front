@@ -104,13 +104,16 @@
 <script setup>
 const { init } = useToast();
 const config = useRuntimeConfig();
+const props = defineProps({
+    details: Object,
+});
 const emits = defineEmits(['checkout']);
 const order = reactive({
     personalDetails: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
+        firstName: props.details.first_name,
+        lastName: props.details.last_name,
+        email: props.details.email,
+        phone: props.details.phone,
     },
     paymentDetails: {
         shippingType: [

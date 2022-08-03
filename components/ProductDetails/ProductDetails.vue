@@ -63,7 +63,7 @@ const config = useRuntimeConfig();
 const userData = useUserStore();
 const cartData = useCartStore();
 const product = reactive({ quantity: 1 });
-const isInStock = props.product.stock > 0;
+const isInStock = props.product?.stock > 0;
 
 const addCartItem = async () => {
     if (product.quantity > props.product.stock) {
@@ -81,8 +81,8 @@ const addCartItem = async () => {
         body: {
             cart_id: localStorage.getItem('cart_id'),
             quantity: product.quantity,
-            product_id: props.product.id,
-            price: props.product.initial_price,
+            product_id: props.product?.id,
+            price: props.product?.initial_price,
         },
         initialCache: false,
         async onResponseError({ response }) {
@@ -102,11 +102,11 @@ const addCartItem = async () => {
                 color: 'success',
             });
             cartData.addItem({
-                id: props.product.id,
-                title: props.product.title,
-                quantity: product.quantity,
-                url: props.product.url,
-                price: props.product.initial_price,
+                id: props.product?.id,
+                title: props.product?.title,
+                quantity: product?.quantity,
+                url: props.product?.url,
+                price: props.product?.initial_price,
             });
         },
     });
@@ -129,7 +129,7 @@ const handleAddToCart = async () => {
             });
         },
         async onResponse({ request, options, response }) {
-            localStorage.setItem('cart_id', response._data.id);
+            useCookie('cart_id').value = response._data.id;
             addCartItem();
         },
     });

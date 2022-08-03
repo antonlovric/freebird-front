@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-grey flex flex-col sm:flex-row px-8 sm:gap-32 justify-start py-8 w-full text-black"
+        class="bg-grey flex flex-col lg:flex-row px-8 sm:gap-32 justify-start py-8 w-full text-black"
     >
         <div class="">
             <h2>O nama</h2>

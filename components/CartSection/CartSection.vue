@@ -1,11 +1,10 @@
 <template>
     <div class="min-h-screen w-7/12 mx-auto mb-10 pt-[10vh]">
-        <h1 class="text-2xl sm:text-5xl sm:mt-4 text-center">Pregled Košarice</h1>
         <ul class="my-6" v-if="!products.isLoading">
             <cart-overview-item
                 @removed-item="handleRemovedItem"
-                v-for="(product, index) in products.productCollection"
-                :hasUnderline="index !== products.productCollection.length - 1"
+                v-for="(product, index) in props.cartItems"
+                :hasUnderline="index !== props.cartItems.length - 1"
                 :key="product.id"
                 :product="product"
             />
@@ -22,26 +21,22 @@
 
 <script setup>
 import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
+const props = defineProps({
+    cartItems: Array,
+    pending: Boolean,
+});
 
 const config = useRuntimeConfig();
 const cartData = useCartStore();
-const products = reactive({ productCollection: [], isLoading: true });
-const responseProduct = await useFetch(
-    `${config.API_BASE_URL}/cartItems/${localStorage.getItem('cart_id')}`,
-    {
-        method: 'GET',
-        initialCache: false,
-        async onResponseError({ response }) {
-            errorStatus.value = response.status;
-        },
-        async onResponse({ request, response, options }) {
-            products.productCollection = response._data;
-            products.isLoading = false;
-        },
-    }
-);
+const userData = useUserStore();
+const products = reactive({
+    productCollection: userData.session_id ? props.cartItems : cartData.cartItems,
+    isLoading: props.pending,
+});
+const emits = defineEmits(['remove-item']);
 
 const handleRemovedItem = async () => {
-    await responseProduct.refresh();
+    emits('remove-item');
 };
 </script>

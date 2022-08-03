@@ -4,10 +4,10 @@
         <posts-overview
             :key="posts"
             :pending="pending"
-            :currentPage="posts.current_page"
-            :totalPages="posts.last_page"
-            :posts="posts.data"
-            :searchQuery="page.query"
+            :currentPage="posts?.current_page"
+            :totalPages="posts?.last_page"
+            :posts="posts?.data"
+            :searchQuery="page?.query"
             @change_page="handlePageChange"
             @search="handleSearch"
         />

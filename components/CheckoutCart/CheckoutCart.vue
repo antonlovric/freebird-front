@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!screen.isMobile" class="container inline-flex flex-col fixed">
+    <div v-if="!screen.isMobile" class="container inline-flex flex-col scroll-m-7">
         <ul class="inline-flex flex-col min-h-[200px]">
             <cart-preview-item
                 v-for="(item, index) in props.cartItems"

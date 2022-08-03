@@ -45,6 +45,7 @@ const handleSubmit = async (event) => {
     const userStore = useUserStore();
     const cartStore = useCartStore();
     const router = useRouter();
+    const cartId = useCookie('cart_id').value;
 
     const formData = {
         email: inputElements['email']?.value,
@@ -66,19 +67,16 @@ const handleSubmit = async (event) => {
             errorStatus.value = response.status;
         },
         async onResponse({ response }) {
-            const responseProduct = await useFetch(
-                `${config.API_BASE_URL}/cartItems/${localStorage.getItem('cart_id')}`,
-                {
-                    method: 'GET',
-                    initialCache: false,
-                    async onResponseError({ response }) {
-                        errorStatus.value = response.status;
-                    },
-                    async onResponse({ request, response, options }) {
-                        cartStore.cartItems = response._data;
-                    },
-                }
-            );
+            const responseProduct = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`, {
+                method: 'GET',
+                initialCache: false,
+                async onResponseError({ response }) {
+                    errorStatus.value = response.status;
+                },
+                async onResponse({ request, response, options }) {
+                    cartStore.cartItems = response._data;
+                },
+            });
         },
     });
 

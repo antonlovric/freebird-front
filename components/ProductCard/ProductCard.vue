@@ -25,6 +25,8 @@ const config = useRuntimeConfig();
 const { init } = useToast();
 const userData = useUserStore();
 const cartData = useCartStore();
+const cartId = useCookie('cart_id').value;
+
 const props = defineProps({
     imgSrc: {
         type: String,
@@ -52,7 +54,7 @@ const addCartItem = async () => {
     const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
         method: 'POST',
         body: {
-            cart_id: localStorage.getItem('cart_id'),
+            cart_id: cartId,
             quantity: 1,
             product_id: props.productId,
             price: props.initialPrice,
@@ -103,7 +105,7 @@ const handleAddToCart = async () => {
             });
         },
         async onResponse({ request, options, response }) {
-            localStorage.setItem('cart_id', response._data.id);
+            useCookie('cart_id').value = response._data.id;
             addCartItem();
         },
     });

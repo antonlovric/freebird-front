@@ -7,15 +7,20 @@
                 class="flex flex-col items-center sm:items-start justify-center sm:grid grid-rows-2 grid-cols-1 sm:grid-cols-3 sm:grid-rows-1"
             >
                 <div class="order-2 sm:order-1 sm:col-span-2">
-                    <checkout-details @checkout="handleCheckout" />
+                    <checkout-details
+                        :details="userDetails.data.value?.data.data[0]"
+                        @checkout="handleCheckout"
+                    />
                 </div>
                 <div class="order-1 sm:order-2 max-w-[250px] mb-10">
-                    <checkout-cart
-                        :key="cart.items.length"
-                        v-if="cart.items.length !== 0"
-                        :cartItems="cart.items"
-                        :totalPrice="cartData.cartPrice"
-                    />
+                    <va-inner-loading :loading="cart.isLoading">
+                        <checkout-cart
+                            :key="cart.items.length"
+                            v-if="cart.items.length !== 0"
+                            :cartItems="cart.items"
+                            :totalPrice="cart.totalPrice"
+                        />
+                    </va-inner-loading>
                 </div>
             </div>
         </div>
@@ -32,22 +37,31 @@ const userData = useUserStore();
 const cartData = useCartStore();
 const { init } = useToast();
 const router = useRouter();
-const cart = reactive({ items: [] });
+const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
+const cartId = useCookie('cart_id').value;
 if (userData.session_id) {
-    const responseCartItems = await useFetch(
-        `${config.API_BASE_URL}/cartItems/${localStorage.getItem('cart_id')}`,
-        {
-            method: 'GET',
-            async onResponseError({ response }) {
-                errorStatus.value = response.status;
-            },
-            async onResponse({ response }) {
-                cart.items = response._data;
-            },
-            initialCache: false,
-        }
+    const responseCartItems = await useLazyAsyncData('cart_items_preview', () =>
+        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
     );
-} else cart.items = cartData.cartItems;
+    cart.items = responseCartItems.data.value.data;
+    cart.isLoading = responseCartItems.pending.value;
+    cart.totalPrice = cart.items.reduce((prev, next) => prev + next.quantity * next.price, 0);
+} else {
+    cart.items = cartData.cartItems;
+    cart.isLoading = false;
+    cart.totalPrice = cartData.cartPrice;
+}
+
+const userDetails = await useAsyncData('user_checkout_details', () =>
+    useFetch(`${config.API_BASE_URL}/users`, {
+        params: {
+            session_id: userData.session_id,
+        },
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+    })
+);
 
 const isDisabled = (order) => {
     return (
@@ -87,7 +101,7 @@ const handleCheckout = async (order) => {
             shipping_zipcode: order.shippingAddress.zipCode,
             billing_zipcode: order.billingAddress.zipCode,
             session_id: userData.session_id,
-            cart_id: localStorage.getItem('cart_id'),
+            cart_id: cart_id,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
@@ -107,16 +121,13 @@ const handleCheckout = async (order) => {
                     color: 'success',
                 });
                 cartData.clearCart();
-                const responseDisableCart = useFetch(
-                    `${config.API_BASE_URL}/carts/${localStorage.getItem('cart_id')}`,
-                    {
-                        method: 'PUT',
-                        initialCache: false,
-                        body: {
-                            active: 0,
-                        },
-                    }
-                );
+                const responseDisableCart = useFetch(`${config.API_BASE_URL}/carts/${cart_id}`, {
+                    method: 'PUT',
+                    initialCache: false,
+                    body: {
+                        active: 0,
+                    },
+                });
                 setTimeout(() => {
                     router.push({ path: '/' });
                 }, 500);
