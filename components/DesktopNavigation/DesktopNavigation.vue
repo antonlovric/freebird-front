@@ -10,13 +10,13 @@
         <img src="../../assets/logo_transparent 2.png" alt="Freebird logo" />
         <div class="flex items-center justify-end w-1/3">
             <navigation-item
-                v-if="!userData.token"
+                v-if="!rememberToken"
                 class="inline-flex justify-end"
                 path="/registration"
                 text="Registracija"
             />
             <navigation-item
-                v-if="!userData.token"
+                v-if="!rememberToken"
                 class="inline-flex justify-end"
                 path="/login"
                 text="Prijava"
@@ -24,12 +24,12 @@
             <navigation-item
                 class="inline-flex justify-end"
                 path="/profile"
-                v-if="userData.token"
+                v-if="rememberToken"
                 text="Profil"
             />
             <navigation-item
                 class="inline-flex justify-end"
-                v-if="userData.token"
+                v-if="rememberToken"
                 type="span"
                 text="Odjava"
                 @click="handleLogout"
@@ -52,6 +52,8 @@ const userData = useUserStore();
 const errorStatus = ref(null);
 const { init, close } = useToast();
 const config = useRuntimeConfig();
+
+const rememberToken = localStorage.getItem('remember_token');
 
 const handleLogout = async (event) => {
     init({
@@ -78,6 +80,7 @@ const handleLogout = async (event) => {
         },
         async onResponse() {
             userData.$reset();
+            localStorage.clear();
             init({
                 title: 'Odjava',
                 position: 'top-right',
