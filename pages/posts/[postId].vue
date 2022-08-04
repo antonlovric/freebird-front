@@ -1,7 +1,11 @@
 <template>
     <div>
         <the-header />
-        <post-details :post="productResponse.data.value" />
+        <div class="min-h-[80vh] pt-[10vh] relative">
+            <va-inner-loading :loading="postResponse.pending.value">
+                <post-details v-if="!postResponse.pending.value" :post="postResponse.data.value" />
+            </va-inner-loading>
+        </div>
         <the-footer />
     </div>
 </template>
@@ -10,7 +14,7 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 const id = route.params.postId;
-const productResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
+const postResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
     method: 'GET',
     async onResponseError({ response }) {
         errorStatus.value = response.status;

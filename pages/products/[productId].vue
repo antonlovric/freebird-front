@@ -1,9 +1,12 @@
 <template>
     <div>
         <the-header />
-        <va-inner-loading :loading="productResponse.pending.value">
-            <product-details :product="productResponse.data.value?.data" />
-        </va-inner-loading>
+        <div class="min-h-[80vh] pt-[10vh] relative">
+            <product-details
+                v-if="productResponse.data.value"
+                :product="productResponse.data.value"
+            />
+        </div>
         <the-footer />
     </div>
 </template>
@@ -13,9 +16,17 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const id = route.params.productId;
 
-const productResponse = useLazyAsyncData(
-    'product-details',
-    () => useFetch(`${config.API_BASE_URL}/products/${id}`),
-    { initialCache: false }
-);
+const productResponse = useFetch(`${config.API_BASE_URL}/products/${id}`, {
+    method: 'GET',
+    async onResponseError({ response }) {
+        init({
+            title: 'Dohvaćanje podataka o objavi',
+            position: 'top-right',
+            message: 'Greška prilikom dohvaćanja podataka o objavi!',
+            color: 'danger',
+            duration: 5000,
+        });
+    },
+    initialCache: false,
+});
 </script>

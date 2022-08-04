@@ -76,12 +76,11 @@ const addCartItem = async () => {
                 message: 'Proizvod uspješno dodan u košaricu!',
                 color: 'success',
             });
-
             cartData.addItem({
                 id: props.productId,
-                title: props.title,
+                title: props.productTitle,
                 quantity: 1,
-                url: props.url,
+                url: props.imgSrc,
                 price: props.initialPrice,
             });
         },
@@ -96,7 +95,6 @@ const handleAddToCart = async () => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dodavanje Proizvoda',
                 position: 'top-right',

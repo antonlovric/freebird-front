@@ -7,7 +7,7 @@
                 v-if="cartQuantity !== 0"
                 :cartItems="responseCartItems?.data?.value?.data"
                 :pending="responseCartItems?.data?.value?.pending"
-                @remove-item="() => responseCartItems.refresh()"
+                @remove-item="handleRemove"
             />
             <h2 v-else class="text-xl sm:text-3xl sm:mt-4 text-center">
                 Nema proizvoda u košarici!
@@ -18,9 +18,12 @@
 </template>
 
 <script setup>
+import { useCartStore } from '~~/stores/cart';
+
 const config = useRuntimeConfig();
 
 const cartId = useCookie('cart_id').value;
+const cartData = useCartStore();
 
 const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
     useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`, {
@@ -28,10 +31,9 @@ const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
     })
 );
 
-onMounted(async () => {
-    console.log(1);
-});
+const handleRemove = (productId) => {
+    cartData.removeItem(productId);
+};
 
-onUnmounted(() => console.log(2));
 const cartQuantity = responseCartItems?.data?.value?.data?.length;
 </script>

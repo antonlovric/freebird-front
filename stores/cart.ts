@@ -14,8 +14,11 @@ export const useCartStore = defineStore('cart-store', {
     actions: {
         addItem(product: IProduct) {
             const duplicateProduct = this.cartItems.find(
-                (item: IProduct) => item.title === product.title
+                (item: IProduct) => item.id === product.id
             );
+            console.log(duplicateProduct);
+            console.log(this.cartItems);
+
             duplicateProduct ? duplicateProduct.quantity++ : this.cartItems.push(product);
         },
         removeItem(productId: number) {
