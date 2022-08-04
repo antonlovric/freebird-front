@@ -8,7 +8,7 @@
                     ><va-chip>Upravljačka Ploča</va-chip></nuxt-link
                 >
             </div>
-            <div class="inline-flex justify-center gap-10">
+            <div class="inline-flex justify-center flex-col mt-9 sm:mt-0 sm:flex-row gap-10">
                 <div class="inline-flex flex-col gap-5">
                     <h3 class="mb-4 text-xl">Osobni Podaci</h3>
                     <va-input label="Ime" v-model="personalData.firstName" />
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <h3 class="mb-4 text-xl">Narudžbe</h3>
-                    <va-data-table :columns="columns" striped :items="orders"></va-data-table>
+                    <va-data-table :columns="columns" striped :items="data.orders"></va-data-table>
                 </div>
             </div>
         </div>
@@ -38,7 +38,6 @@ const props = defineProps({
     pending: Boolean,
 });
 const { data } = props.personalDetails;
-const { orders } = data;
 const userData = useUserStore();
 const { init } = useToast();
 const config = useRuntimeConfig();

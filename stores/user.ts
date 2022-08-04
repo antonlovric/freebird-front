@@ -7,6 +7,7 @@ export const useUserStore = defineStore('user-store', {
             token: '',
             session_id: '',
             cart_id: '',
+            remember_token: '',
         };
     },
     actions: {},

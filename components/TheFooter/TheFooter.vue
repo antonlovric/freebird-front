@@ -28,9 +28,10 @@
                     inputmode="email"
                     id="newsletter"
                     class="max-w-[30ch] sm:max-w-[30ch]"
-                    v-model="email"
+                    v-model="input.email"
+                    @click-append-inner="handleNewsletter"
                 >
-                    <template #appendInner> <va-icon name="send" /> </template
+                    <template #appendInner> <va-icon name="send" /></template
                 ></va-input>
             </div>
         </div>
@@ -38,7 +39,37 @@
 </template>
 
 <script setup>
-const email = '';
+const input = reactive({ email: '' });
+const config = useRuntimeConfig();
+const { init } = useToast();
+
+const handleNewsletter = () => {
+    const responseNewsletter = useFetch(`${config.API_BASE_URL}/newsletter/subscribe`, {
+        method: 'POST',
+        body: {
+            email: input.email,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            init({
+                title: 'Prijavlijvanje na newsletter',
+                position: 'top-right',
+                color: 'danger',
+                message: 'Greška prilikom prijavljivanja na newsletter!',
+            });
+        },
+        async onResponse({ request, response, options }) {
+            if (response.status === 200) {
+                init({
+                    title: 'Prijavlijvanje na newsletter',
+                    position: 'top-right',
+                    color: 'success',
+                    message: 'Uspješno ste prijavljeni na FreeBirdMusic newsletter!',
+                });
+            }
+        },
+    });
+};
 </script>
 
 <style scoped>

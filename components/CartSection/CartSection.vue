@@ -1,7 +1,6 @@
 <template>
     <div class="min-h-screen w-7/12 mx-auto mb-10 pt-[10vh]">
         <ul class="my-6" v-if="!products.isLoading">
-            <pre>{{ props.cartItems }}</pre>
             <cart-overview-item
                 v-for="(product, index) in props.cartItems"
                 @removed-item="() => handleRemovedItem(product.product_id)"

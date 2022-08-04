@@ -1,7 +1,10 @@
 <template>
     <div>
         <the-header />
-        <user-profile :personalDetails="responseDetails.data.value" />
+        <user-profile
+            v-if="!responseDetails.error.value"
+            :personalDetails="responseDetails.data.value"
+        />
         <the-footer />
     </div>
 </template>

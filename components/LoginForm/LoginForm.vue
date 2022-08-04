@@ -62,9 +62,7 @@ const handleSubmit = async (event) => {
         },
         initialCache: false,
         async onResponse({ response }) {
-            console.log(response._data.status);
             if (response._data.status === 201 || response._data.status === 200) {
-                console.log('alooo');
                 init({
                     title: 'Prijava',
                     position: 'top-right',
@@ -77,18 +75,11 @@ const handleSubmit = async (event) => {
                 userStore.token = response._data.responseData['token'];
                 userStore.session_id = response._data.responseData['session'];
                 userStore.type = response._data.responseData.user['user_type_id'];
+                userStore.remember_token = response._data.responseData.user['remember_token'];
+                console.log(response._data.responseData.user['remember_token']);
                 if (response._data.responseData.user['remember_token']) {
-                    const currentDate = new Date();
-                    const nextMonth = new Date(
-                        currentDate.getFullYear(),
-                        currentDate.getMonth + 1,
-                        1
-                    );
-                    if (process.client)
-                        localStorage.setItem(
-                            'remember_token',
-                            response._data.responseData.user['remember_token']
-                        );
+                    localStorage.setItem('userDataObj', JSON.stringify(userStore.userData));
+                    console.log(localStorage.getItem('userDataObj'));
                 }
 
                 setTimeout(() => {

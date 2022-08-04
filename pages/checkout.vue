@@ -40,8 +40,9 @@ const router = useRouter();
 const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
 const cartId = useCookie('cart_id').value;
 if (userData.session_id) {
-    const responseCartItems = await useLazyAsyncData('cart_items_preview', () =>
-        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
+    const responseCartItems = await useLazyAsyncData(
+        'cart_items_preview',
+        async () => await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
     );
     cart.items = responseCartItems.data.value.data;
     cart.isLoading = responseCartItems.pending.value;
@@ -101,7 +102,7 @@ const handleCheckout = async (order) => {
             shipping_zipcode: order.shippingAddress.zipCode,
             billing_zipcode: order.billingAddress.zipCode,
             session_id: userData.session_id,
-            cart_id: cart_id,
+            cart_id: cartId,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
@@ -121,7 +122,7 @@ const handleCheckout = async (order) => {
                     color: 'success',
                 });
                 cartData.clearCart();
-                const responseDisableCart = useFetch(`${config.API_BASE_URL}/carts/${cart_id}`, {
+                const responseDisableCart = useFetch(`${config.API_BASE_URL}/carts/${cartId}`, {
                     method: 'PUT',
                     initialCache: false,
                     body: {
