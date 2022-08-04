@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-grey flex flex-col lg:flex-row px-8 sm:gap-32 justify-start py-8 w-full text-black"
+        class="bg-grey flex flex-col sm:flex-row px-8 sm:gap-32 justify-start py-8 w-full text-black"
     >
         <div class="">
             <h2>O nama</h2>
@@ -27,7 +27,7 @@
                 <va-input
                     inputmode="email"
                     id="newsletter"
-                    class="w-[30ch] sm:w-[50ch]"
+                    class="max-w-[30ch] sm:max-w-[30ch]"
                     v-model="email"
                 >
                     <template #appendInner> <va-icon name="send" /> </template

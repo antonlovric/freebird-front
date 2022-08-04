@@ -31,29 +31,23 @@
 import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
-const loginData = ref({
+const loginData = reactive({
     email: '',
     password: '',
     remember_me: false,
 });
-const { init, close } = useToast();
+const { init } = useToast();
 
 const handleSubmit = async (event) => {
-    const inputElements = event.target.elements;
     const config = useRuntimeConfig();
-    const errorStatus = ref(null);
     const userStore = useUserStore();
     const cartStore = useCartStore();
     const router = useRouter();
     const cartId = useCookie('cart_id').value;
 
-    const formData = {
-        email: inputElements['email']?.value,
-        password: inputElements['password']?.value,
-        remember_me: inputElements['remember_me']?.value,
-    };
+    console.log(loginData);
 
-    const start = init({
+    init({
         title: 'Prijava',
         position: 'top-right',
         message: 'Pričekajte...',
@@ -61,60 +55,73 @@ const handleSubmit = async (event) => {
 
     const response = await useFetch(`${config.API_BASE_URL}/auth/login`, {
         method: 'POST',
-        body: formData,
-        initialCache: false,
-        async onResponseError({ response }) {
-            errorStatus.value = response.status;
+        body: {
+            email: loginData.email,
+            password: loginData.password,
+            remember_me: loginData.remember_me,
         },
+        initialCache: false,
         async onResponse({ response }) {
+            console.log(response._data.status);
+            if (response._data.status === 201 || response._data.status === 200) {
+                console.log('alooo');
+                init({
+                    title: 'Prijava',
+                    position: 'top-right',
+                    message:
+                        'Uspješna prijava! Uskoro ćete biti preusmjereni na naslovnu stranicu!',
+                    color: 'success',
+                    duration: 5000,
+                });
+
+                userStore.token = response._data.responseData['token'];
+                userStore.session_id = response._data.responseData['session'];
+                userStore.type = response._data.responseData.user['user_type_id'];
+                if (response._data.responseData.user['remember_token']) {
+                    const currentDate = new Date();
+                    const nextMonth = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth + 1,
+                        1
+                    );
+                    if (process.client)
+                        localStorage.setItem(
+                            'remember_token',
+                            response._data.responseData.user['remember_token']
+                        );
+                }
+
+                setTimeout(() => {
+                    router.push({ path: '/' });
+                }, 500);
+            }
             const responseProduct = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`, {
                 method: 'GET',
                 initialCache: false,
-                async onResponseError({ response }) {
-                    errorStatus.value = response.status;
-                },
                 async onResponse({ request, response, options }) {
                     cartStore.cartItems = response._data;
                 },
             });
         },
+        onResponseError({ response }) {
+            if (response.status === 403) {
+                init({
+                    title: 'Prijava',
+                    position: 'top-right',
+                    message: 'Račun nije aktiviran!',
+                    color: 'danger',
+                    duration: 5000,
+                });
+            } else if (response.status === 401) {
+                init({
+                    title: 'Prijava',
+                    position: 'top-right',
+                    message: 'Neispravni podaci!',
+                    color: 'danger',
+                    duration: 5000,
+                });
+            }
+        },
     });
-
-    close(start);
-    if (errorStatus.value === 403) {
-        init({
-            title: 'Prijava',
-            position: 'top-right',
-            message: 'Račun nije aktiviran!',
-            color: 'danger',
-            duration: 5000,
-        });
-    } else if (errorStatus.value === 401) {
-        init({
-            title: 'Prijava',
-            position: 'top-right',
-            message: 'Neispravni podaci!',
-            color: 'danger',
-            duration: 5000,
-        });
-    }
-
-    if (response.data.value?.status === 201) {
-        init({
-            title: 'Prijava',
-            position: 'top-right',
-            message: 'Uspješna prijava! Uskoro ćete biti preusmjereni na naslovnu stranicu!',
-            color: 'success',
-            duration: 5000,
-        });
-
-        userStore.token = response.data.value.responseData['token'];
-        userStore.session_id = response.data.value.responseData['session'];
-        userStore.type = response.data.value.responseData.user['user_type_id'];
-
-        setTimeout(() => {
-            router.push({ path: '/' });
-        }, 500);
-    }
 };
 </script>

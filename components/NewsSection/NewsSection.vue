@@ -3,12 +3,14 @@
         <div class="my-24 mb-14 h-0.5 w-full mx-auto bg-orange sm:w-11/12" />
         <div class="relative">
             <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl">Novosti</h2>
-            <va-button
-                class="sm:mt-0 sm:!absolute sm:top-0 sm:translate-y-1/2 sm:right-40"
-                text-color="#fff"
-                color="#f97316"
-                >Sve Novosti &rarr;</va-button
-            >
+            <nuxt-link to="/blogPosts">
+                <va-button
+                    class="sm:mt-0 sm:!absolute sm:top-0 sm:translate-y-1/2 sm:right-40"
+                    text-color="#fff"
+                    color="#f97316"
+                    >Sve Novosti &rarr;</va-button
+                >
+            </nuxt-link>
             <h3 class="mt-4 text-l sm:text-3xl">
                 Budite u toku sa svim obavijestima u FreeBird Music Shopu
             </h3>

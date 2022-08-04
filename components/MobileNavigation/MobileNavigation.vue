@@ -101,6 +101,7 @@ const handleLogout = async (event) => {
         },
         async onResponse() {
             userData.$reset();
+            localStorage.clear();
             init({
                 title: 'Odjava',
                 position: 'top-right',
