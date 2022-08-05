@@ -4,6 +4,7 @@
         <user-profile
             v-if="!responseDetails.error.value"
             :personalDetails="responseDetails.data.value"
+            :orderedProducts="productData.orderedProducts"
         />
         <the-footer />
     </div>
@@ -14,6 +15,7 @@ import { useUserStore } from '~~/stores/user';
 
 const userData = useUserStore();
 const config = useRuntimeConfig();
+const productData = reactive({ orderedProducts: [] });
 
 const responseDetails = await useAsyncData('personal_details', () =>
     useFetch(`${config.API_BASE_URL}/users/session`, {
@@ -36,4 +38,17 @@ const responseDetails = await useAsyncData('personal_details', () =>
         ],
     })
 );
+
+const responseProducts = await useAsyncData('ordered_products', () =>
+    useFetch(`${config.API_BASE_URL}/orders/products`, {
+        params: {
+            session_id: userData.session_id,
+        },
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+    })
+);
+
+productData.orderedProducts = responseProducts.data.value.data[0];
 </script>

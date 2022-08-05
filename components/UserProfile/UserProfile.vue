@@ -26,7 +26,37 @@
                     <va-data-table :columns="columns" striped :items="data.orders"></va-data-table>
                 </div>
             </div>
+            <va-data-table
+                striped
+                :items="props.orderedProducts"
+                :columns="productColumns"
+                clickable
+                selectable
+                select-mode="single"
+                @row:click="handleRowClick"
+            >
+                <template #cell(image)="{ value }"
+                    ><img style="height: 100px" :src="value"
+                /></template>
+            </va-data-table>
         </div>
+        <va-modal hide-default-actions blur v-model="modal.isVisible">
+            <template #header>
+                <h2>Recenzija proizvoda {{ modal.productTitle }}</h2>
+            </template>
+            <div class="inline-flex justify-center items-center">
+                <span>Ocjena: </span>
+                <va-rating v-model="modal.rating" />
+            </div>
+            <h3>Recenzija:</h3>
+            <va-input type="textarea" :min-rows="5" v-model="modal.review" />
+            <template #footer>
+                <div class="inline-flex justify-center items-center gap-5">
+                    <va-button @click="handleReview"> Pošalji </va-button>
+                    <va-button @click="() => (modal.isVisible = false)"> Odustani </va-button>
+                </div>
+            </template>
+        </va-modal>
     </div>
 </template>
 
@@ -36,8 +66,16 @@ import { useUserStore } from '~~/stores/user';
 const props = defineProps({
     personalDetails: Object,
     pending: Boolean,
+    orderedProducts: Array,
 });
 const { data } = props.personalDetails;
+const modal = reactive({
+    isVisible: false,
+    productTitle: '',
+    productId: null,
+    rating: 0,
+    review: '',
+});
 const userData = useUserStore();
 const { init } = useToast();
 const config = useRuntimeConfig();
@@ -73,6 +111,12 @@ const columns = [
     { key: 'order_status.name', name: 'order_status.name', label: 'Status' },
 ];
 
+const productColumns = [
+    { key: 'id', name: 'id', label: 'Šifra' },
+    { key: 'title', name: 'title', label: 'Naziv' },
+    { key: 'url', name: 'image', label: 'Slika' },
+];
+
 const handleDetailsChange = () => {
     useFetch(`${config.API_BASE_URL}/users/${userData.session_id}`, {
         method: 'PUT',
@@ -97,6 +141,41 @@ const handleDetailsChange = () => {
                 });
             }
         },
+    });
+};
+
+const handleRowClick = (args) => {
+    const product = args.item;
+    modal.isVisible = true;
+    modal.productId = args.item.id;
+    modal.productTitle = args.item.title;
+};
+
+const handleReview = () => {
+    console.log(modal);
+    useFetch(`${config.API_BASE_URL}/productReviews`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        body: {
+            product_id: modal.productId,
+            session_id: userData.session_id,
+            review: modal.review,
+            rating: modal.rating,
+        },
+        async onResponse({ response }) {
+            if (response.status === 201) {
+                init({
+                    title: 'Ocjenjivanje proizvoda',
+                    position: 'top-right',
+                    color: 'success',
+                    message: 'Proizvod uspješno ocijenjen!',
+                });
+            }
+            modal.isVisible = false;
+        },
+        initialCache: false,
     });
 };
 </script>
