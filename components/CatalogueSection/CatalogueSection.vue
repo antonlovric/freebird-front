@@ -46,10 +46,11 @@
 </template>
 
 <script setup>
-const props = defineProps({
-    products: Object,
-});
-const { products } = props;
+const config = useRuntimeConfig();
+
+const responseProducts = await useFetch(`${config.API_BASE_URL}/products/featured`);
+
+const products = responseProducts.data.value.data;
 </script>
 
 <style scoped>
