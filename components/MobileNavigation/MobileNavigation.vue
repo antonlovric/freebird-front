@@ -89,6 +89,7 @@ const handleLogout = async (event) => {
         headers: {
             Authorization: `Bearer ${userData.token}`,
         },
+        initialCache: false,
         async onResponseError({ response }) {
             errorStatus.value = response.status;
             init({
@@ -100,8 +101,10 @@ const handleLogout = async (event) => {
             });
         },
         async onResponse() {
-            userData.$reset();
-            localStorage.clear();
+            userData.resetStore();
+            cartData.clearCart();
+            const rememberCookie = useCookie('remember_token');
+            rememberCookie.value = null;
             init({
                 title: 'Odjava',
                 position: 'top-right',

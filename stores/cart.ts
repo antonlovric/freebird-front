@@ -16,8 +16,6 @@ export const useCartStore = defineStore('cart-store', {
             const duplicateProduct = this.cartItems.find(
                 (item: IProduct) => item.id === product.id
             );
-            console.log(duplicateProduct);
-            console.log(this.cartItems);
 
             duplicateProduct ? duplicateProduct.quantity++ : this.cartItems.push(product);
         },
@@ -30,9 +28,10 @@ export const useCartStore = defineStore('cart-store', {
     },
     getters: {
         cartData: (state) => state,
-        cartQuantity: (state) => state.cartItems?.reduce((prev, next) => prev + next.quantity, 0),
-        cartPrice: (state) => state.cartItems?.reduce((prev, next) => prev + Number(next.price), 0),
-        productIds: (state) => state.cartItems?.map((item) => item.id),
+        cartQuantity: (state) => state?.cartItems.reduce((prev, next) => prev + next?.quantity, 0),
+        cartPrice: (state) =>
+            state?.cartItems.reduce((prev, next) => prev + Number(next?.price), 0),
+        productIds: (state) => state.cartItems.map((item) => item.id),
     },
     persist: true,
 });

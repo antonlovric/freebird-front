@@ -10,13 +10,13 @@
         <img src="../../assets/logo_transparent 2.png" alt="Freebird logo" />
         <div class="flex items-center justify-end w-1/3">
             <navigation-item
-                v-if="!rememberToken"
+                v-if="!userData.token"
                 class="inline-flex justify-end"
                 path="/registration"
                 text="Registracija"
             />
             <navigation-item
-                v-if="!rememberToken"
+                v-if="!userData.token"
                 class="inline-flex justify-end"
                 path="/login"
                 text="Prijava"
@@ -24,12 +24,12 @@
             <navigation-item
                 class="inline-flex justify-end"
                 path="/profile"
-                v-if="rememberToken"
+                v-if="userData.token"
                 text="Profil"
             />
             <navigation-item
                 class="inline-flex justify-end"
-                v-if="rememberToken"
+                v-if="userData.token"
                 type="span"
                 text="Odjava"
                 @click="handleLogout"
@@ -46,14 +46,13 @@
 </template>
 
 <script setup>
+import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
 const userData = useUserStore();
-const errorStatus = ref(null);
+const cartData = useCartStore();
 const { init, close } = useToast();
 const config = useRuntimeConfig();
-
-const rememberToken = localStorage.getItem('remember_token');
 
 const handleLogout = async (event) => {
     init({
@@ -69,7 +68,6 @@ const handleLogout = async (event) => {
             Authorization: `Bearer ${userData.token}`,
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Odjava',
                 position: 'top-right',
@@ -79,8 +77,10 @@ const handleLogout = async (event) => {
             });
         },
         async onResponse() {
-            userData.$reset();
-            localStorage.clear();
+            userData.resetStore();
+            cartData.clearCart();
+            const rememberCookie = useCookie('remember_token');
+            rememberCookie.value = null;
             init({
                 title: 'Odjava',
                 position: 'top-right',

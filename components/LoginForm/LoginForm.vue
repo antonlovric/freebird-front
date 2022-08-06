@@ -76,10 +76,15 @@ const handleSubmit = async (event) => {
                 userStore.session_id = response._data.responseData['session'];
                 userStore.type = response._data.responseData.user['user_type_id'];
                 userStore.remember_token = response._data.responseData.user['remember_token'];
-                console.log(response._data.responseData.user['remember_token']);
-                if (response._data.responseData.user['remember_token']) {
-                    localStorage.setItem('userDataObj', JSON.stringify(userStore.userData));
-                    console.log(localStorage.getItem('userDataObj'));
+
+                if (loginData.remember_me) {
+                    const expiryDate = new Date();
+                    expiryDate.setFullYear(expiryDate.getFullYear() + 2);
+                    const rememberCookie = useCookie('remember_token', { expires: expiryDate });
+                    rememberCookie.value = response._data.responseData.user['remember_token'];
+                } else {
+                    const rememberCookie = useCookie('remember_token');
+                    rememberCookie.value = null;
                 }
 
                 setTimeout(() => {
@@ -90,7 +95,17 @@ const handleSubmit = async (event) => {
                 method: 'GET',
                 initialCache: false,
                 async onResponse({ request, response, options }) {
-                    cartStore.cartItems = response._data;
+                    if (response._data) {
+                        response._data.forEach((item) => {
+                            cartStore.addItem({
+                                id: item.product_id,
+                                price: item.price,
+                                quantity: item.quantity,
+                                title: item.products.title,
+                                url: item.products.url,
+                            });
+                        });
+                    }
                 },
             });
         },

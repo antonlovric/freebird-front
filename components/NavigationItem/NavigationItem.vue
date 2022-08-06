@@ -28,7 +28,7 @@
             >
                 <ul>
                     <cart-preview-item
-                        v-for="(item, index) in cartItems"
+                        v-for="(item, index) in products.cartItems"
                         :img="item.products.url"
                         :title="item.products.title"
                         :price="item.price"
@@ -46,7 +46,7 @@
                     >
                 </div>
             </div>
-            <va-badge :text="cartQuantity.valueOf()" bottom v-if="props.icon">
+            <va-badge :text="products.cartQuantity" bottom v-if="props.icon">
                 <va-icon :name="props.iconName" />
             </va-badge>
             <span v-else>{{ props.text }}</span>
@@ -57,6 +57,7 @@
 <script setup>
 import { storeToRefs } from '~~/node_modules/@pinia/nuxt/dist/runtime/composables';
 import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
 
 const props = defineProps({
     text: {
@@ -82,11 +83,30 @@ const props = defineProps({
 });
 const cartStore = useCartStore();
 const cartHover = reactive({ isVisible: false });
-const { cartItems, cartQuantity } = storeToRefs(cartStore);
+const userData = useUserStore();
+const config = useRuntimeConfig();
+const products = reactive({
+    cartItems: cartStore.cartItems,
+    cartQuantity: cartStore.cartQuantity,
+    isVisible: false,
+});
+
+const getQuantity = () => products.cartItems.reduce((prev, next) => prev + next?.quantity, 0);
+
+if (userData.token) {
+    const cartId = useCookie('cart_id').value;
+    const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
+        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
+    );
+    if (responseCartItems.data) {
+        products.cartItems = responseCartItems.data.value.data;
+        products.cartQuantity = getQuantity();
+    }
+}
 
 const handleCartHover = () => {
     if (process.client) {
-        cartHover.isVisible = window.innerWidth > 768 && cartQuantity > 0;
+        cartHover.isVisible = window.innerWidth > 768 && products.cartQuantity > 0;
     }
 };
 

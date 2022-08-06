@@ -7,10 +7,18 @@ export const useUserStore = defineStore('user-store', {
             token: '',
             session_id: '',
             cart_id: '',
-            remember_token: '',
+            remember_token: null,
         };
     },
-    actions: {},
+    actions: {
+        resetStore() {
+            this.type = 1;
+            this.token = '';
+            this.session_id = '';
+            this.cart_id = '';
+            this.remember_token = null;
+        },
+    },
     getters: {
         userData: (state) => state,
     },
