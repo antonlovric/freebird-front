@@ -2,8 +2,11 @@
     <div>
         <div class="grid sm:grid-cols-[30%_1fr] grid-rows-1 min-h-screen px-2 sm:px-3">
             <div class="mt-4">
-                <va-sidebar v-model="props.isSidebarVisible">
-                    <va-sidebar-item>
+                <component
+                    :is="props.isMobile ? VaSidebar : 'span'"
+                    v-model="props.isSidebarVisible"
+                >
+                    <component :is="props.isMobile ? VaSidebarItem : 'span'">
                         <va-accordion class="w-2/3 mx-auto">
                             <va-collapse
                                 v-for="(option, index) in dropdownOptions"
@@ -51,22 +54,23 @@
                                 >Resetiraj</va-button
                             >
                         </va-accordion>
-                    </va-sidebar-item>
-                </va-sidebar>
+                    </component>
+                </component>
             </div>
             <div class="inline-flex flex-col">
-                <div class="inline-flex gap-4">
+                <div class="inline-flex flex-col sm:flex-row gap-4">
                     <va-input label="Pretraživanje" class="w-[40ch]" v-model="input.searchQuery" />
                     <va-button
                         @click="searchHandler"
                         type="submit"
                         color="#f97316"
                         text-color="#fff"
+                        class="w-1/3 sm:w-auto"
                         >Pretraga</va-button
                     >
                 </div>
                 <va-inner-loading :loading="products.isLoading">
-                    <ul class="inline-flex gap-8 flex-wrap my-5 text-sm">
+                    <ul class="inline-flex gap-8 flex-wrap justify-center my-5 text-sm">
                         <li v-for="product in products.productCollection" :key="product.id">
                             <product-card
                                 :imgSrc="product.url"
@@ -89,7 +93,15 @@
     </div>
 </template>
 
+<style scoped>
+.va-sidebar {
+    position: fixed;
+}
+</style>
+
 <script setup>
+import { VaSidebar, VaSidebarItem } from '~~/.nuxt/components';
+
 const { init } = useToast();
 const config = useRuntimeConfig();
 const input = reactive({

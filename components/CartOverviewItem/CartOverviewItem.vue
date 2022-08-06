@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="inline-flex gap-5 w-full text-l">
+    <div class="w-full">
+        <div class="inline-flex w-full flex-col sm:flex-row gap-5 text-l">
             <img
                 class="w-[150px] rounded-md h-[150px]"
                 :src="productData.url"
