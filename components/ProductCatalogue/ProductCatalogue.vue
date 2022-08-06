@@ -1,47 +1,58 @@
 <template>
     <div>
-        <div class="grid grid-cols-[30%_1fr] grid-rows-1 min-h-screen px-2 sm:px-3">
+        <div class="grid sm:grid-cols-[30%_1fr] grid-rows-1 min-h-screen px-2 sm:px-3">
             <div class="mt-4">
-                <va-accordion class="w-2/3 mx-auto">
-                    <va-collapse
-                        v-for="(option, index) in dropdownOptions"
-                        :key="option.title"
-                        :header="option.title"
-                        color="#17191E"
-                    >
-                        <div class="inline-flex flex-wrap pl-2 py-3">
-                            <va-checkbox
-                                v-for="item in option.content"
-                                :key="item.id"
-                                :label="item.name"
-                                v-model="filters.selectedFilters[index].activeFilters"
-                                :option="option"
+                <va-sidebar v-model="props.isSidebarVisible">
+                    <va-sidebar-item>
+                        <va-accordion class="w-2/3 mx-auto">
+                            <va-collapse
+                                v-for="(option, index) in dropdownOptions"
+                                :key="option.title"
+                                :header="option.title"
+                                :color="!props.isMobile && '#17191E'"
+                            >
+                                <div class="inline-flex flex-wrap pl-2 py-3">
+                                    <va-checkbox
+                                        v-for="item in option.content"
+                                        :key="item.id"
+                                        :label="item.name"
+                                        v-model="filters.selectedFilters[index].activeFilters"
+                                        :option="option"
+                                        color="#f97316"
+                                        class="my-3"
+                                        :array-value="item.id"
+                                    />
+                                    <div v-if="option.cijena">
+                                        <va-input
+                                            label="Najmanja cijena"
+                                            class="my-3"
+                                            v-model="input.priceFilter.min"
+                                        />
+                                        <va-input
+                                            label="Najveća cijena"
+                                            v-model="input.priceFilter.max"
+                                        />
+                                    </div>
+                                </div>
+                            </va-collapse>
+                            <va-button
+                                @click="filterHandler"
+                                class="my-3 mr-3"
+                                type="submit"
                                 color="#f97316"
-                                class="my-3"
-                                :array-value="item.id"
-                            />
-                            <div v-if="option.cijena">
-                                <va-input
-                                    label="Najmanja cijena"
-                                    class="my-3"
-                                    v-model="input.priceFilter.min"
-                                />
-                                <va-input label="Najveća cijena" v-model="input.priceFilter.max" />
-                            </div>
-                        </div>
-                    </va-collapse>
-                    <va-button
-                        @click="filterHandler"
-                        class="my-3 mr-3"
-                        type="submit"
-                        color="#f97316"
-                        text-color="#fff"
-                        >Primijeni</va-button
-                    >
-                    <va-button @click="resetHandler" type="submit" color="#f97316" text-color="#fff"
-                        >Resetiraj</va-button
-                    >
-                </va-accordion>
+                                text-color="#fff"
+                                >Primijeni</va-button
+                            >
+                            <va-button
+                                @click="resetHandler"
+                                type="submit"
+                                color="#f97316"
+                                text-color="#fff"
+                                >Resetiraj</va-button
+                            >
+                        </va-accordion>
+                    </va-sidebar-item>
+                </va-sidebar>
             </div>
             <div class="inline-flex flex-col">
                 <div class="inline-flex gap-4">
@@ -89,6 +100,17 @@ const input = reactive({
     },
     page: 1,
     totalPages: 1,
+});
+
+const props = defineProps({
+    isMobile: {
+        type: Boolean,
+        default: false,
+    },
+    isSidebarVisible: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const products = reactive({ productCollection: [], isLoading: true });
