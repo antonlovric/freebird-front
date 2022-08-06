@@ -70,7 +70,9 @@
                     >
                 </div>
                 <va-inner-loading :loading="products.isLoading">
-                    <ul class="inline-flex gap-8 flex-wrap justify-center my-5 text-sm">
+                    <ul
+                        class="inline-flex gap-8 flex-wrap justify-center sm:justify-start my-5 text-sm"
+                    >
                         <li v-for="product in products.productCollection" :key="product.id">
                             <product-card
                                 :imgSrc="product.url"
