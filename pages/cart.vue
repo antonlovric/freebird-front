@@ -5,8 +5,8 @@
             <h1 class="text-2xl sm:text-5xl sm:mt-4 text-center">Pregled Košarice</h1>
             <cart-section
                 v-if="cartQuantity !== 0"
-                :cartItems="responseCartItems?.data?.value?.data"
-                :pending="responseCartItems?.data?.value?.pending"
+                :cartItems="items.cartItems"
+                :pending="items.pending"
                 @remove-item="handleRemove"
             />
             <h2 v-else class="text-xl sm:text-3xl sm:mt-4 text-center">
@@ -24,16 +24,23 @@ const config = useRuntimeConfig();
 
 const cartId = useCookie('cart_id').value;
 const cartData = useCartStore();
+const items = reactive({ cartItems: [], pending: true });
 
 const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
-    useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`, {
-        keepalive: false,
-    })
+    useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
 );
 
-const handleRemove = (productId) => {
+if (responseCartItems?.data?.value?.data) {
+    items.cartItems = responseCartItems?.data?.value?.data;
+    items.pending = false;
+}
+
+const handleRemove = async (productId) => {
     cartData.removeItem(productId);
+
+    const data = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`);
+    items.cartItems = data.data.value;
 };
 
-const cartQuantity = responseCartItems?.data?.value?.data?.length;
+const cartQuantity = items.cartItems.length;
 </script>

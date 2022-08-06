@@ -98,8 +98,8 @@ if (userData.token) {
     const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
         useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
     );
-    if (responseCartItems.data) {
-        products.cartItems = responseCartItems.data.value.data;
+    if (responseCartItems.data.value) {
+        products.cartItems = responseCartItems?.data?.value?.data;
         products.cartQuantity = getQuantity();
     }
 }
