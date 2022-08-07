@@ -34,7 +34,6 @@
             class="sm:ml-16 flex-col sm:flex-row inline-flex flex-column items-center gap-4 justify-start mt-5"
         >
             <span>Šifre označenih računa: {{ items.ids.toString() }}</span>
-            <!-- <nuxt-link to="addProducts"> -->
             <va-button
                 :disabled="items.ids.length !== 0"
                 @click="input.isModalVisible = true"
@@ -42,7 +41,6 @@
                 icon="add_circle"
                 >Dodaj</va-button
             >
-            <!-- </nuxt-link> -->
             <va-button
                 @click="input.isModalVisible = true"
                 :disabled="items.ids.length !== 1"
