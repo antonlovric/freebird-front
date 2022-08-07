@@ -8,12 +8,13 @@
         >
             <template #header>
                 <h3 class="text-2xl mb-4 sm:mb-0 sm:text-4xl sm:mt-4 text-center">
-                    Dodavanje Proizvoda
+                    {{ props.product ? 'Ažuriranje Proizvoda' : 'Dodavanje Proizvoda' }}
                 </h3>
             </template>
             <form
+                enctype="multipart/form-data"
                 id="form"
-                class="flex flex-col w-full justify-center items-center gap-6 mb-5"
+                class="flex flex-col w-3/4 sm:w-1/5 mx-auto gap-6 mb-5"
                 @submit.prevent
             >
                 <va-input
@@ -36,7 +37,7 @@
                     label="Stanje Omota"
                     id="sleeve-condition"
                     searchable
-                    :options="predefinedData.conditions"
+                    :options="props.predefinedData.conditions"
                     text-by="name"
                     track-by="id"
                     value-by="id"
@@ -47,7 +48,7 @@
                     label="Stanje Medija"
                     id="media-condition"
                     searchable
-                    :options="predefinedData.conditions"
+                    :options="props.predefinedData.conditions"
                     text-by="name"
                     track-by="id"
                     value-by="id"
@@ -66,7 +67,7 @@
                     label="Žanr"
                     id="genre_id"
                     searchable
-                    :options="predefinedData.genres"
+                    :options="props.predefinedData.genres"
                     text-by="name"
                     track-by="id"
                     value-by="id"
@@ -77,7 +78,7 @@
                     label="Tip proizvoda"
                     id="product_type_id"
                     searchable
-                    :options="predefinedData.productTypes"
+                    :options="props.predefinedData.productTypes"
                     text-by="name"
                     track-by="id"
                     value-by="id"
@@ -96,10 +97,20 @@
                     type="number"
                     id="stock"
                 />
+                <va-file-upload
+                    v-if="!props.product"
+                    class="mx-auto"
+                    v-model="productData.image"
+                    id="image"
+                    type="gallery"
+                    file-types="jpg,png,webp"
+                    ref="file"
+                />
             </form>
             <template #footer>
                 <div class="inline-flex justify-center items-center gap-5">
-                    <va-button @click="submitHandler"> Pošalji </va-button>
+                    <va-button v-if="props.product" @click="updateHandler">Ažuriraj</va-button>
+                    <va-button v-else @click="submitHandler">Kreiraj</va-button>
 
                     <va-button @click="() => emits('close-modal')"> Odustani </va-button>
                 </div>
@@ -123,6 +134,8 @@ const props = defineProps({
     },
 });
 
+const file = ref(null);
+
 const config = useRuntimeConfig();
 const predefinedData = reactive({
     productTypes: [],
@@ -137,14 +150,13 @@ const productData = ref({
     media_condition: props.product?.media_condition,
     sku: props.product?.sku,
     initial_price: props.product?.initial_price,
-    rating: props.product?.rating,
+    rating: 0,
     product_type_id: props.product?.product_type_id,
     genre_id: props.product?.genre_id,
     edition: props.product?.edition,
     stock: props.product?.stock,
+    image: '',
 });
-
-console.log(props.product);
 
 const emits = defineEmits(['close-modal']);
 
@@ -152,7 +164,7 @@ const modal = reactive({ isVisible: props.isVisible });
 
 const { init } = useToast();
 
-const submitHandler = async () => {
+const updateHandler = async () => {
     init({
         title: 'Ažuriranje Proizvoda',
         position: 'top-right',
@@ -196,6 +208,46 @@ const submitHandler = async () => {
                 });
             }
             emits('close-modal');
+        },
+    });
+};
+
+const submitHandler = async () => {
+    const form = document.querySelector('#form');
+    const formData = new FormData(form);
+    productData.value.image = file.value.files[0];
+
+    for (const prop in productData.value) formData.append(prop, productData.value[prop]);
+    init({
+        title: 'Kreiranje Proizvoda',
+        position: 'top-right',
+        message: 'Pričekajte...',
+    });
+    const submitResponse = await useFetch(`${config.API_BASE_URL}/products`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            init({
+                title: 'Kreiranje Proizvoda',
+                position: 'top-right',
+                color: 'danger',
+                message: 'Greška prilikom kreiranja proizvoda!',
+            });
+        },
+        async onResponse({ request, response, options }) {
+            if (response.status === 201) {
+                init({
+                    title: 'Kreiranje Proizvoda',
+                    position: 'top-right',
+                    color: 'success',
+                    message: 'Proizvod uspješno kreiran!',
+                });
+                emits('close-modal');
+            }
         },
     });
 };

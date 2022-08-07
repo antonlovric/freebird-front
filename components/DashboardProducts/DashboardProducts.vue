@@ -34,9 +34,15 @@
             class="sm:ml-16 flex-col sm:flex-row inline-flex flex-column items-center gap-4 justify-start mt-5"
         >
             <span>Šifre označenih računa: {{ items.ids.toString() }}</span>
-            <nuxt-link to="addProducts">
-                <va-button color="success" icon="add_circle">Dodaj</va-button>
-            </nuxt-link>
+            <!-- <nuxt-link to="addProducts"> -->
+            <va-button
+                :disabled="items.ids.length !== 0"
+                @click="input.isModalVisible = true"
+                color="success"
+                icon="add_circle"
+                >Dodaj</va-button
+            >
+            <!-- </nuxt-link> -->
             <va-button
                 @click="input.isModalVisible = true"
                 :disabled="items.ids.length !== 1"
@@ -129,7 +135,6 @@ const columns = [
     { key: 'id', name: 'id', label: 'ID' },
     { key: 'title', name: 'title', label: 'Naslov' },
     { key: 'initial_price', name: 'initial_price', label: 'Cijena' },
-    { key: 'discount_id', name: 'discount_id', label: 'Šifra popusta' },
     { key: 'url', name: 'image', label: 'image' },
 ];
 
