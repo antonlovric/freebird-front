@@ -75,7 +75,6 @@ const selectHandler = (prop) => {
 };
 
 const removeHandler = async () => {
-    console.log(1);
     const response = await useLazyFetch(`${config.API_BASE_URL}/posts/deletePosts`, {
         method: 'POST',
         headers: {

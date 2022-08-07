@@ -45,8 +45,6 @@ const handleSubmit = async (event) => {
     const router = useRouter();
     const cartId = useCookie('cart_id').value;
 
-    console.log(loginData);
-
     init({
         title: 'Prijava',
         position: 'top-right',

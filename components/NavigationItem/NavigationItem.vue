@@ -55,7 +55,10 @@
                 bottom
                 v-if="props.icon"
             >
-                <va-icon :name="props.iconName" />
+                <nuxt-link v-if="products.cartQuantity > 0" to="/cart">
+                    <va-icon :name="props.iconName" />
+                </nuxt-link>
+                <va-icon v-else :name="props.iconName" />
             </va-badge>
             <span v-else>{{ props.text }}</span>
         </nuxt-link>
@@ -114,8 +117,6 @@ if (userData.token) {
 const handleCartHover = () => {
     if (process.client) {
         cartHover.isVisible = window.innerWidth > 768 && products.cartQuantity > 0;
-        console.log(cartHover.isVisible);
-        console.log(products);
     }
 };
 

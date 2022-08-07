@@ -152,7 +152,6 @@ const handleRowClick = (args) => {
 };
 
 const handleReview = () => {
-    console.log(modal);
     useFetch(`${config.API_BASE_URL}/productReviews`, {
         method: 'POST',
         headers: {
