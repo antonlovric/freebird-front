@@ -27,7 +27,9 @@
                 </va-data-table>
             </va-inner-loading>
         </div>
-        <div class="ml-16 inline-flex flex-column items-center gap-4 justify-start mt-5">
+        <div
+            class="sm:ml-16 flex-col sm:flex-row inline-flex flex-column items-center gap-4 justify-start mt-5"
+        >
             <span>Šifre označenih objava: {{ items.ids.toString() }}</span>
             <nuxt-link to="addPost">
                 <va-button color="success" icon="add_circle">Dodaj</va-button>

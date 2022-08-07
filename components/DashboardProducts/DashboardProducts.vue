@@ -15,7 +15,7 @@
                     :loading="props.pending"
                 >
                     <template #cell(image)="{ value }"
-                        ><img style="height: 100px" :src="value"
+                        ><img class="sm:h-[100px] h-auto" :src="value"
                     /></template>
                     <template #bodyAppend>
                         <tr>
@@ -30,14 +30,27 @@
                     </template> </va-data-table
             ></va-inner-loading>
         </div>
-        <div class="ml-16 inline-flex flex-column items-center gap-4 justify-start mt-5">
+        <div
+            class="sm:ml-16 flex-col sm:flex-row inline-flex flex-column items-center gap-4 justify-start mt-5"
+        >
             <span>Šifre označenih računa: {{ items.ids.toString() }}</span>
             <nuxt-link to="addProducts">
                 <va-button color="success" icon="add_circle">Dodaj</va-button>
             </nuxt-link>
-            <va-button :disabled="items.ids.length !== 1" color="warning" icon="update"
+            <va-button
+                @click="input.isModalVisible = true"
+                :disabled="items.ids.length !== 1"
+                color="warning"
+                icon="update"
                 >Ažuriraj</va-button
             >
+            <edit-product-form
+                v-if="input.isModalVisible"
+                :isVisible="input.isModalVisible"
+                :product="selectedItems[0]"
+                :predefinedData="predefinedData"
+                @close-modal="input.isModalVisible = false"
+            ></edit-product-form>
             <va-button
                 :disabled="items.ids.length === 0"
                 @click="removeHandler"
@@ -73,6 +86,7 @@ const input = reactive({
     searchQuery: '',
     page: props.currentPage,
     totalPages: props.totalPages,
+    isModalVisible: false,
 });
 
 const emits = defineEmits(['change_page']);
@@ -118,6 +132,39 @@ const columns = [
     { key: 'discount_id', name: 'discount_id', label: 'Šifra popusta' },
     { key: 'url', name: 'image', label: 'image' },
 ];
+
+const responseProductTypes = await useFetch(`${config.API_BASE_URL}/productTypes`, {
+    method: 'GET',
+    initialCache: false,
+    async onResponseError({ response }) {
+        errorStatus.value = response.status;
+    },
+});
+
+const predefinedData = reactive({
+    productTypes: [],
+    conditions: [],
+    genres: [],
+});
+predefinedData.productTypes = responseProductTypes.data.value;
+
+const responseConditions = await useFetch(`${config.API_BASE_URL}/conditions`, {
+    method: 'GET',
+    initialCache: false,
+    async onResponseError({ response }) {
+        errorStatus.value = response.status;
+    },
+});
+predefinedData.conditions = responseConditions.data.value;
+
+const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
+    method: 'GET',
+    initialCache: false,
+    async onResponseError({ response }) {
+        errorStatus.value = response.status;
+    },
+});
+predefinedData.genres = responseGenres.data.value;
 </script>
 
 <style>
