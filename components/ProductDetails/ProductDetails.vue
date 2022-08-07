@@ -64,6 +64,7 @@ const userData = useUserStore();
 const cartData = useCartStore();
 const product = reactive({ quantity: 1 });
 const isInStock = props.product?.stock > 0;
+const discountedPrice = () => props.initialPrice - (props.discount / 100) * props.initialPrice;
 
 const addCartItem = async () => {
     if (product.quantity > props.product.stock) {
@@ -82,11 +83,10 @@ const addCartItem = async () => {
             cart_id: localStorage.getItem('cart_id'),
             quantity: product.quantity,
             product_id: props.product?.id,
-            price: props.product?.initial_price,
+            price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Kreiranje Proizvoda',
                 position: 'top-right',
@@ -106,7 +106,7 @@ const addCartItem = async () => {
                 title: props.product?.title,
                 quantity: product?.quantity,
                 url: props.product?.url,
-                price: props.product?.initial_price,
+                price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
             });
         },
     });
@@ -120,7 +120,6 @@ const handleAddToCart = async () => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dodavanje Proizvoda',
                 position: 'top-right',

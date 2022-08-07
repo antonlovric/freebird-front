@@ -133,6 +133,7 @@ const columns = [
     { key: 'id', name: 'id', label: 'ID' },
     { key: 'title', name: 'title', label: 'Naslov' },
     { key: 'initial_price', name: 'initial_price', label: 'Cijena' },
+    { key: 'discount', name: 'discount', label: 'Popust (%)' },
     { key: 'url', name: 'image', label: 'image' },
 ];
 

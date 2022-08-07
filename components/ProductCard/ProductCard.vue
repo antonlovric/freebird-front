@@ -11,7 +11,11 @@
         </va-card-content>
         <va-card-content class="px-2 py-1 pb-3">
             <div class="inline-flex items-center justify-between mt-2">
-                <span>{{ props.initialPrice }}kn</span>
+                <span v-if="props.discount === 0">{{ props.initialPrice }}kn</span>
+                <span v-else>
+                    <span class="line-through mr-2">{{ props.initialPrice }}kn</span>
+                    <span class="text-red">{{ discountedPrice() }}kn</span>
+                </span>
             </div>
         </va-card-content>
     </va-card>
@@ -48,7 +52,13 @@ const props = defineProps({
         type: Number,
         default: 0,
     },
+    discount: {
+        type: Number,
+        default: 0,
+    },
 });
+
+const discountedPrice = () => props.initialPrice - (props.discount / 100) * props.initialPrice;
 
 const addCartItem = async () => {
     const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
@@ -57,11 +67,10 @@ const addCartItem = async () => {
             cart_id: cartId,
             quantity: 1,
             product_id: props.productId,
-            price: props.initialPrice,
+            price: props.discount ? discountedPrice() : props.initialPrice,
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Kreiranje Proizvoda',
                 position: 'top-right',
@@ -81,7 +90,7 @@ const addCartItem = async () => {
                 title: props.productTitle,
                 quantity: 1,
                 url: props.imgSrc,
-                price: props.initialPrice,
+                price: props.discount ? discountedPrice() : props.initialPrice,
             });
         },
     });

@@ -23,14 +23,16 @@
             class="nav-span inline-flex relative items-center justify-center px-2 py-2"
         >
             <div
+                v-on:mouseenter="handleCartHover"
+                v-on:mouseleave="handleCartHoverOut"
                 v-if="cartHover.isVisible"
                 class="absolute shadow-lg bg-[#121317] top-[110%] right-[40%] w-[350px]"
             >
                 <ul>
                     <cart-preview-item
                         v-for="(item, index) in products.cartItems"
-                        :img="item.products.url"
-                        :title="item.products.title"
+                        :img="item.url"
+                        :title="item.title"
                         :price="item.price"
                         :quantity="item.quantity"
                         :key="index"
@@ -46,7 +48,13 @@
                     >
                 </div>
             </div>
-            <va-badge :text="products.cartQuantity" bottom v-if="props.icon">
+            <va-badge
+                @mouseenter="handleCartHover"
+                @mouseleave="handleCartHoverOut"
+                :text="products.cartQuantity"
+                bottom
+                v-if="props.icon"
+            >
                 <va-icon :name="props.iconName" />
             </va-badge>
             <span v-else>{{ props.text }}</span>
@@ -55,7 +63,6 @@
 </template>
 
 <script setup>
-import { storeToRefs } from '~~/node_modules/@pinia/nuxt/dist/runtime/composables';
 import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
@@ -107,6 +114,8 @@ if (userData.token) {
 const handleCartHover = () => {
     if (process.client) {
         cartHover.isVisible = window.innerWidth > 768 && products.cartQuantity > 0;
+        console.log(cartHover.isVisible);
+        console.log(products);
     }
 };
 

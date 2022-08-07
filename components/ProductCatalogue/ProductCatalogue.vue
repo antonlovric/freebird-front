@@ -75,11 +75,13 @@
                     >
                         <li v-for="product in products.productCollection" :key="product.id">
                             <product-card
+                                v-if="product.stock > 0"
                                 :imgSrc="product.url"
                                 :imgAlt="product.title"
                                 :productTitle="product.title"
                                 :productId="product.id"
                                 :initialPrice="product.initial_price"
+                                :discount="product.discount"
                             />
                         </li>
                     </ul>
@@ -175,7 +177,6 @@ const dropdownOptions = [
 const responseGenres = await useLazyFetch(`${config.API_BASE_URL}/genres`, {
     method: 'GET',
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Žanrova',
             position: 'top-right',

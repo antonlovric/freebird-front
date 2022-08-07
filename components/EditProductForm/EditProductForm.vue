@@ -61,6 +61,13 @@
                     type="number"
                     id="price"
                 />
+                <va-input
+                    v-model="productData.discount"
+                    color="#000"
+                    label="Popust (%)"
+                    type="number"
+                    id="discount"
+                />
                 <va-select
                     v-model="productData.genre_id"
                     color="#000"
@@ -150,6 +157,7 @@ const productData = ref({
     media_condition: props.product?.media_condition,
     sku: props.product?.sku,
     initial_price: props.product?.initial_price,
+    discount: props.product?.discount,
     rating: 0,
     product_type_id: props.product?.product_type_id,
     genre_id: props.product?.genre_id,
@@ -184,6 +192,7 @@ const updateHandler = async () => {
             genre_id: productData.value.genre_id,
             edition: productData.value.edition,
             stock: productData.value.stock,
+            discount: productData.value.discount,
         },
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -199,7 +208,7 @@ const updateHandler = async () => {
             emits('close-modal');
         },
         async onResponse({ request, response, options }) {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 init({
                     title: 'Kreiranje Proizvoda',
                     position: 'top-right',
