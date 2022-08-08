@@ -77,7 +77,7 @@ const handleSubmit = async (event) => {
 
     const start = init({
         title: 'Registracija',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
     });
 
@@ -90,7 +90,7 @@ const handleSubmit = async (event) => {
     if (response.error) {
         init({
             title: 'Registracija',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Neuspješna registracija! Pokušajte kasnije.',
             color: 'danger',
             duration: 5000,
@@ -100,7 +100,7 @@ const handleSubmit = async (event) => {
     if (response.data.value?.status === 201) {
         init({
             title: 'Registracija',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Uspješna registracija! Pratite upute na mailu i aktivirajte svoj račun!',
             color: 'success',
             duration: 5000,

@@ -1,13 +1,13 @@
 <template>
     <div class="ml-4 font-sans inline-flex justify-center relative w-11/12 text-center">
-        <div class="sm:pt-[20vh] inline-flex justify-center flex-col text-left gap-8 mb-20">
-            <div class="inline-flex flex-col sm:flex-row w-full justify-center gap-8">
-                <div class="w-[400px] h-[400px] hidden sm:block">
+        <div class="md:pt-[20vh] inline-flex justify-center flex-col text-left gap-8 mb-20">
+            <div class="inline-flex flex-col md:flex-row w-full justify-center gap-8">
+                <div class="w-[400px] h-[400px] hidden md:block">
                     <img class="w-[400px] h-[400px] object-cover" :src="props.product.url" />
                 </div>
-                <div class="inline-flex sm:text-lg flex-col justify-between">
+                <div class="inline-flex md:text-lg flex-col justify-between">
                     <div>
-                        <h1 class="text-[2rem] sm:w-[20ch] sm:text-5xl">
+                        <h1 class="text-[2rem] md:w-[20ch] md:text-5xl">
                             {{ props.product.title }}
                         </h1>
                         <span class=""
@@ -17,7 +17,7 @@
                         </span>
                         <va-rating color="#f97316" v-model="props.product.rating" />
                     </div>
-                    <div class="w-[200px] h-[200px] my-4 sm:hidden">
+                    <div class="w-[200px] h-[200px] my-4 md:hidden">
                         <img class="w-[200px] h-[200px] object-cover" :src="props.product.url" />
                     </div>
                     <ul class="inline-flex flex-col gap-0.5 text-xl">
@@ -44,8 +44,8 @@
                 </div>
             </div>
             <div class="inline-flex flex-col">
-                <h2 class="sm:text-4xl">Opis</h2>
-                <div class="h-0.5 mb-2 mt-1 w-full bg-orange sm:w-24" />
+                <h2 class="md:text-4xl">Opis</h2>
+                <div class="h-0.5 mb-2 mt-1 w-full bg-orange md:w-24" />
                 <p class="text-xl">{{ props.product.description }}</p>
             </div>
         </div>
@@ -64,13 +64,15 @@ const userData = useUserStore();
 const cartData = useCartStore();
 const product = reactive({ quantity: 1 });
 const isInStock = props.product?.stock > 0;
-const discountedPrice = () => props.initialPrice - (props.discount / 100) * props.initialPrice;
+const discountedPrice = () =>
+    props.product.initial_price - (props.product.discount / 100) * props.product.initial_price;
+const cartId = useCookie('cart_id').value;
 
 const addCartItem = async () => {
     if (product.quantity > props.product.stock) {
         init({
             title: 'Kreiranje Proizvoda',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Količina proizvoda koju pokušavate naručiti nije dostupna!',
             color: 'warning',
         });
@@ -80,7 +82,7 @@ const addCartItem = async () => {
     const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
         method: 'POST',
         body: {
-            cart_id: localStorage.getItem('cart_id'),
+            cart_id: cartId,
             quantity: product.quantity,
             product_id: props.product?.id,
             price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
@@ -89,7 +91,7 @@ const addCartItem = async () => {
         async onResponseError({ response }) {
             init({
                 title: 'Kreiranje Proizvoda',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom dodavanja proizvoda u košaricu!',
                 color: 'warning',
             });
@@ -97,7 +99,7 @@ const addCartItem = async () => {
         async onResponse({ request, options, response }) {
             init({
                 title: 'Kreiranje Proizvoda',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Proizvod uspješno dodan u košaricu!',
                 color: 'success',
             });
@@ -107,12 +109,25 @@ const addCartItem = async () => {
                 quantity: product?.quantity,
                 url: props.product?.url,
                 price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
+                media_condition: {
+                    id: props.product.media_condition.id,
+                    name: props.product.media_condition.name,
+                },
+                sleeve_condition: {
+                    id: props.product.sleeve_condition.id,
+                    name: props.product.sleeve_condition.name,
+                },
+                product_type: {
+                    id: props.product.product_type.id,
+                    name: props.product.product_type.name,
+                },
             });
         },
     });
 };
 
 const handleAddToCart = async () => {
+    if (!userData.token) addCartItem();
     const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
         method: 'POST',
         body: {
@@ -122,7 +137,7 @@ const handleAddToCart = async () => {
         async onResponseError({ response }) {
             init({
                 title: 'Dodavanje Proizvoda',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom dodavanja proizvoda u košaricu!',
                 color: 'warning',
             });

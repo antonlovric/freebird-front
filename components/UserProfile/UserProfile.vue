@@ -68,6 +68,7 @@ const props = defineProps({
     pending: Boolean,
     orderedProducts: Array,
 });
+
 const { data } = props.personalDetails;
 const modal = reactive({
     isVisible: false,
@@ -135,7 +136,7 @@ const handleDetailsChange = () => {
             if (response.status === 200) {
                 init({
                     title: 'Izmjenjivanje osobnih podataka',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Podaci uspješno izmijenjeni!',
                 });
@@ -167,7 +168,7 @@ const handleReview = () => {
             if (response.status === 201) {
                 init({
                     title: 'Ocjenjivanje proizvoda',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Proizvod uspješno ocijenjen!',
                 });

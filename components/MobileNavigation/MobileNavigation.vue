@@ -80,7 +80,7 @@ const loggedInUser = ref([
 const handleLogout = async (event) => {
     init({
         title: 'Odjava',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
         duration: 5000,
     });
@@ -94,7 +94,7 @@ const handleLogout = async (event) => {
             errorStatus.value = response.status;
             init({
                 title: 'Odjava',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom odjave!',
                 color: 'danger',
                 duration: 5000,
@@ -107,7 +107,7 @@ const handleLogout = async (event) => {
             rememberCookie.value = null;
             init({
                 title: 'Odjava',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Uspješna odjava!',
                 color: 'success',
                 duration: 5000,

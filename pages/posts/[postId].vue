@@ -20,7 +20,7 @@ const postResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
         errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje podataka o objavi',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Greška prilikom dohvaćanja podataka o objavi!',
             color: 'danger',
             duration: 5000,

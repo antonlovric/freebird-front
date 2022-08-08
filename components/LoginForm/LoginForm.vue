@@ -47,7 +47,7 @@ const handleSubmit = async (event) => {
 
     init({
         title: 'Prijava',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
     });
 
@@ -63,7 +63,7 @@ const handleSubmit = async (event) => {
             if (response._data.status === 201 || response._data.status === 200) {
                 init({
                     title: 'Prijava',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     message:
                         'Uspješna prijava! Uskoro ćete biti preusmjereni na naslovnu stranicu!',
                     color: 'success',
@@ -101,6 +101,18 @@ const handleSubmit = async (event) => {
                                 quantity: item.quantity,
                                 title: item.products.title,
                                 url: item.products.url,
+                                media_condition: {
+                                    id: item.products.media_condition.id,
+                                    name: item.products.media_condition.name,
+                                },
+                                sleeve_condition: {
+                                    id: item.products.sleeve_condition.id,
+                                    name: item.products.sleeve_condition.name,
+                                },
+                                product_type: {
+                                    id: item.products.product_type.id,
+                                    name: item.products.product_type.name,
+                                },
                             });
                         });
                     }
@@ -111,7 +123,7 @@ const handleSubmit = async (event) => {
             if (response.status === 403) {
                 init({
                     title: 'Prijava',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     message: 'Račun nije aktiviran!',
                     color: 'danger',
                     duration: 5000,
@@ -119,7 +131,7 @@ const handleSubmit = async (event) => {
             } else if (response.status === 401) {
                 init({
                     title: 'Prijava',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     message: 'Neispravni podaci!',
                     color: 'danger',
                     duration: 5000,

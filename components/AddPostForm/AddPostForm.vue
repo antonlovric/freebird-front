@@ -73,7 +73,7 @@ const assignImagesToPost = (postId) => {
         async onResponseError({ response }) {
             init({
                 title: 'Dodjeljivanje fotografija objavi',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom dodjeljivanje fotagrafija objavi!',
             });
@@ -82,7 +82,7 @@ const assignImagesToPost = (postId) => {
             if (response.status === 201) {
                 init({
                     title: 'Kreiranje objave',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Objava uspješno kreirana!',
                 });
@@ -94,7 +94,7 @@ const assignImagesToPost = (postId) => {
 const submitHandler = () => {
     init({
         title: 'Kreiranje Objave',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
     });
 
@@ -113,7 +113,7 @@ const submitHandler = () => {
         async onResponseError({ response }) {
             init({
                 title: 'Kreiranje objave',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom kreiranja objave!',
             });
@@ -136,7 +136,7 @@ const fileAddHandler = (files, isDisplay) => {
 
     init({
         title: 'Prijenos Fotografije',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
     });
 
@@ -151,7 +151,7 @@ const fileAddHandler = (files, isDisplay) => {
             errorStatus.value = response.status;
             init({
                 title: 'Prijenos fotografije',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom prijenosa fotografije!',
             });
@@ -160,7 +160,7 @@ const fileAddHandler = (files, isDisplay) => {
             if (response.status === 201) {
                 init({
                     title: 'Prijenos fotografije',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Fotografija uspješno prenesena!',
                 });
@@ -174,7 +174,7 @@ const fileAddHandler = (files, isDisplay) => {
 const fileRemoveHandler = (file, isDisplay) => {
     init({
         title: 'Brisanje Fotografije',
-        position: 'top-right',
+        position: 'bottom-right',
         message: 'Pričekajte...',
     });
 
@@ -189,7 +189,7 @@ const fileRemoveHandler = (file, isDisplay) => {
             errorStatus.value = response.status;
             init({
                 title: 'Brisanje fotografije',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom brisanja fotografije!',
             });
@@ -198,7 +198,7 @@ const fileRemoveHandler = (file, isDisplay) => {
             if (response.status === 200) {
                 init({
                     title: 'Brisanje fotografije',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Fotografija uspješno izbrisana!',
                 });

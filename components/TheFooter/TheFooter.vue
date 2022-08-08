@@ -5,17 +5,26 @@
         <div class="">
             <h2>O nama</h2>
             <ul class="flex flex-col mb-4 mt-2 gap-2">
-                <li><a href="#">Povijest</a></li>
-                <li><a href="#">Dostava</a></li>
-                <li><a href="#">Uvjeti Korištenja</a></li>
-                <li><a href="#">Sustav Ocjenjivanja</a></li>
+                <li><nuxt-link to="/history">Povijest</nuxt-link></li>
+                <li><nuxt-link to="/terms">Uvjeti Korištenja</nuxt-link></li>
+                <li><nuxt-link to="/privacy">Politika Privatnosti</nuxt-link></li>
+                <li><nuxt-link to="/grading">Sustav Ocjenjivanja</nuxt-link></li>
             </ul>
         </div>
         <div class="">
             <h2>Služba za korisnike</h2>
             <ul class="flex flex-col mb-4 mt-2 gap-2">
-                <li><a href="#">Kontakt</a></li>
-                <li><a href="#">Otvoreni Upit</a></li>
+                <li><nuxt-link to="/contact">Kontakt</nuxt-link></li>
+                <li>
+                    <div class="inline-flex items-center justify-center gap-5 mt-2">
+                        <a href="https://www.facebook.com/Free-Bird-Music-Shop-149579005105474/"
+                            ><img src="../../assets/facebook-brands.svg"
+                        /></a>
+                        <a href="https://www.instagram.com/freebirdmusicshop1/"
+                            ><img src="../../assets/instagram-brands.svg"
+                        /></a>
+                    </div>
+                </li>
             </ul>
         </div>
         <div>
@@ -53,7 +62,7 @@ const handleNewsletter = () => {
         async onResponseError({ response }) {
             init({
                 title: 'Prijavlijvanje na newsletter',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom prijavljivanja na newsletter!',
             });
@@ -62,7 +71,7 @@ const handleNewsletter = () => {
             if (response.status === 200) {
                 init({
                     title: 'Prijavlijvanje na newsletter',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Uspješno ste prijavljeni na FreeBirdMusic newsletter!',
                 });
@@ -115,5 +124,10 @@ a:hover::after {
 h2 {
     font-size: 24px;
     margin-bottom: 0.5rem;
+}
+
+img {
+    height: 40px;
+    width: 40px;
 }
 </style>

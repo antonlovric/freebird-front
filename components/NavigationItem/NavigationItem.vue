@@ -16,7 +16,7 @@
             <span v-else>{{ props.text }}</span>
         </span>
         <nuxt-link
-            :to="cartQuantity > 0 ? props.path : ''"
+            :to="products.cartQuantity > 0 ? props.path : ''"
             v-on:mouseenter="handleCartHover"
             v-on:mouseleave="handleCartHoverOut"
             v-if="props.type === 'cart'"
@@ -31,8 +31,8 @@
                 <ul>
                     <cart-preview-item
                         v-for="(item, index) in products.cartItems"
-                        :img="item.url"
-                        :title="item.title"
+                        :img="loggedIn ? item.products.url : item.url"
+                        :title="loggedIn ? item.products.title : item.title"
                         :price="item.price"
                         :quantity="item.quantity"
                         :key="index"
@@ -48,24 +48,19 @@
                     >
                 </div>
             </div>
-            <va-badge
-                @mouseenter="handleCartHover"
-                @mouseleave="handleCartHoverOut"
-                :text="products.cartQuantity"
-                bottom
-                v-if="props.icon"
-            >
-                <nuxt-link v-if="products.cartQuantity > 0" to="/cart">
+            <nuxt-link @mouseenter="handleCartHover" @mouseleave="handleCartHoverOut" to="/cart">
+                <va-badge :text="products.cartQuantity" bottom v-if="props.icon">
                     <va-icon :name="props.iconName" />
-                </nuxt-link>
-                <va-icon v-else :name="props.iconName" />
-            </va-badge>
-            <span v-else>{{ props.text }}</span>
+                </va-badge>
+            </nuxt-link>
+
+            <span>{{ props.text }}</span>
         </nuxt-link>
     </li>
 </template>
 
 <script setup>
+import { storeToRefs } from '~~/node_modules/@pinia/nuxt/dist/runtime/composables';
 import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
@@ -92,20 +87,23 @@ const props = defineProps({
     },
 });
 const cartStore = useCartStore();
+const { cartItems, cartQuantity } = storeToRefs(cartStore);
 const cartHover = reactive({ isVisible: false });
 const userData = useUserStore();
+const { token } = storeToRefs(userData);
+const loggedIn = token.value;
 const config = useRuntimeConfig();
 const products = reactive({
-    cartItems: cartStore.cartItems,
-    cartQuantity: cartStore.cartQuantity,
+    cartItems: cartItems.value,
+    cartQuantity: cartQuantity.value,
     isVisible: false,
 });
 
 const getQuantity = () => products.cartItems.reduce((prev, next) => prev + next?.quantity, 0);
 
-if (userData.token) {
+if (token.value) {
     const cartId = useCookie('cart_id').value;
-    const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
+    const responseCartItems = await useAsyncData('cart_items_overview', () =>
         useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
     );
     if (responseCartItems.data.value) {
@@ -113,6 +111,9 @@ if (userData.token) {
         products.cartQuantity = getQuantity();
     }
 }
+
+watch(cartItems, (newItems) => (products.cartItems = newItems));
+watch(cartQuantity, (newQuantity) => (products.cartQuantity = newQuantity));
 
 const handleCartHover = () => {
     if (process.client) {

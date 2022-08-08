@@ -69,7 +69,7 @@ const removeHandler = async () => {
             errorStatus.value = response.status;
             init({
                 title: 'Odjava',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom brisanja!',
                 color: 'danger',
                 duration: 5000,
@@ -80,7 +80,7 @@ const removeHandler = async () => {
         refresh();
         init({
             title: 'Odjava',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Korisnici uspješno obrisani!',
             color: 'success',
             duration: 5000,

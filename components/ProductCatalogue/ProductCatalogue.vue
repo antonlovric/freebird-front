@@ -82,6 +82,10 @@
                                 :productId="product.id"
                                 :initialPrice="product.initial_price"
                                 :discount="product.discount"
+                                :mediaCondition="product.media_condition"
+                                :sleeveCondition="product.sleeve_condition"
+                                :productType="product.product_type"
+                                :productData="product"
                             />
                         </li>
                     </ul>
@@ -179,7 +183,7 @@ const responseGenres = await useLazyFetch(`${config.API_BASE_URL}/genres`, {
     async onResponseError({ response }) {
         init({
             title: 'Dohvaćanje Žanrova',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Greška prilikom dohvaćanja žanrova!',
             color: 'danger',
             duration: 5000,
@@ -197,7 +201,7 @@ const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions
         errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Stanja',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Greška prilikom dohvaćanja stanja!',
             color: 'danger',
             duration: 5000,
@@ -221,7 +225,7 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
         errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Proizvoda',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Greška prilikom dohvaćanja proizvoda!',
             color: 'danger',
             duration: 5000,
@@ -249,7 +253,7 @@ const searchHandler = async () => {
             errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom dohvaćanja proizvoda!',
                 color: 'danger',
                 duration: 5000,
@@ -285,7 +289,7 @@ const filterHandler = async () => {
             errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom dohvaćanja proizvoda!',
                 color: 'danger',
                 duration: 5000,

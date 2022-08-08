@@ -8,7 +8,7 @@
             >
                 <div class="order-2 sm:order-1 sm:col-span-2">
                     <checkout-details
-                        :details="userDetails.data.value?.data.data[0]"
+                        :details="userDetails?.data.value?.data?.data?.[0]"
                         @checkout="handleCheckout"
                     />
                 </div>
@@ -40,17 +40,16 @@ const router = useRouter();
 const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
 const cartId = useCookie('cart_id').value;
 if (userData.session_id) {
-    const responseCartItems = await useLazyAsyncData(
-        'cart_items_preview',
-        async () => await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
-    );
-    cart.items = responseCartItems.data.value.data;
-    cart.isLoading = responseCartItems.pending.value;
-    cart.totalPrice = cart.items.reduce((prev, next) => prev + next.quantity * next.price, 0);
+    const responseCartItems = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`);
+    if (!responseCartItems.error.value) {
+        cart.items = responseCartItems.data.value;
+        cart.isLoading = responseCartItems.pending.value;
+        cart.totalPrice = cart?.items?.reduce((prev, next) => prev + next.quantity * next.price, 0);
+    }
 } else {
-    cart.items = cartData.cartItems;
+    cart.items = cartData?.cartItems;
     cart.isLoading = false;
-    cart.totalPrice = cartData.cartPrice;
+    cart.totalPrice = cartData?.cartPrice;
 }
 
 const userDetails = await useAsyncData('user_checkout_details', () =>
@@ -78,18 +77,20 @@ const handleCheckout = async (order) => {
     if (isDisabled(order)) {
         init({
             title: 'Dovršavanje narudžbe',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Molim Vas ispunite sva obavezna polja!',
             color: 'warning',
         });
         return;
     }
+    const price = reactive({ updatedPrice: cartData.cartPrice });
     if (order.sameAddress) order.shippingAddress = order.billingAddress;
+    if (order.paymentDetails.selectedPayment.id === 1) price.updatedPrice += 30;
     const responseOrder = await useFetch(`${config.API_BASE_URL}/orders`, {
         method: 'POST',
         initialCache: false,
         body: {
-            total: cartData.cartPrice,
+            total: price.updatedPrice,
             order_status_id: 1,
             billing_address: order.billingAddress.address,
             shipping_address: order.shippingAddress.address,
@@ -103,12 +104,15 @@ const handleCheckout = async (order) => {
             billing_zipcode: order.billingAddress.zipCode,
             session_id: userData.session_id,
             cart_id: cartId,
+            comment: order.paymentDetails.comment,
+            payment_type: order.paymentDetails.selectedPayment.label,
+            shipping_type: order.paymentDetails.selectedShipping.label,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
             init({
                 title: 'Dovršavanje narudžbe',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom dovršavanja narudžbe!',
                 color: 'warning',
             });
@@ -117,7 +121,7 @@ const handleCheckout = async (order) => {
             if (response.status === 201) {
                 init({
                     title: 'Dovršavanje narudžbe',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     message: 'Narudžba dovršena!',
                     color: 'success',
                 });

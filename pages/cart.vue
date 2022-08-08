@@ -19,20 +19,27 @@
 
 <script setup>
 import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
 
 const config = useRuntimeConfig();
 
 const cartId = useCookie('cart_id').value;
 const cartData = useCartStore();
+const userData = useUserStore();
 const items = reactive({ cartItems: [], pending: true });
 
-const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
-    useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
-);
+if (userData.token) {
+    const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
+        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
+    );
 
-if (responseCartItems?.data?.value?.data) {
-    items.cartItems = responseCartItems?.data?.value?.data;
-    items.pending = false;
+    if (responseCartItems?.data?.value?.data) {
+        items.cartItems = responseCartItems?.data?.value?.data;
+        items.pending = false;
+    }
+} else {
+    items.cartItems = cartData.cartItems;
+    if (items.cartItems.length > 0) items.pending = false;
 }
 
 const handleRemove = async (productId) => {

@@ -48,6 +48,27 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    mediaCondition: {
+        type: Object,
+        default: {
+            id: Number,
+            name: String,
+        },
+    },
+    sleeveCondition: {
+        type: Object,
+        default: {
+            id: Number,
+            name: String,
+        },
+    },
+    productType: {
+        type: Object,
+        default: {
+            id: Number,
+            name: String,
+        },
+    },
     productId: {
         type: Number,
         default: 0,
@@ -61,61 +82,98 @@ const props = defineProps({
 const discountedPrice = () => props.initialPrice - (props.discount / 100) * props.initialPrice;
 
 const addCartItem = async () => {
-    const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
-        method: 'POST',
-        body: {
-            cart_id: cartId,
+    if (!userData.token) {
+        cartData.addItem({
+            id: props.productId,
+            title: props.productTitle,
             quantity: 1,
-            product_id: props.productId,
-            price: props.discount ? discountedPrice() : props.initialPrice,
-        },
-        initialCache: false,
-        async onResponseError({ response }) {
-            init({
-                title: 'Kreiranje Proizvoda',
-                position: 'top-right',
-                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
-                color: 'warning',
-            });
-        },
-        async onResponse({ request, options, response }) {
-            init({
-                title: 'Kreiranje Proizvoda',
-                position: 'top-right',
-                message: 'Proizvod uspješno dodan u košaricu!',
-                color: 'success',
-            });
-            cartData.addItem({
-                id: props.productId,
-                title: props.productTitle,
+            url: props.imgSrc,
+            price: discountedPrice(),
+            media_condition: {
+                id: props.mediaCondition.id,
+                name: props.mediaCondition.name,
+            },
+            sleeve_condition: {
+                id: props.sleeveCondition.id,
+                name: props.sleeveCondition.name,
+            },
+            product_type: {
+                id: props.productType.id,
+                name: props.productType.name,
+            },
+        });
+    } else {
+        const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
+            method: 'POST',
+            body: {
+                cart_id: cartId,
                 quantity: 1,
-                url: props.imgSrc,
+                product_id: props.productId,
                 price: props.discount ? discountedPrice() : props.initialPrice,
-            });
-        },
-    });
+            },
+            initialCache: false,
+            async onResponseError({ response }) {
+                init({
+                    title: 'Kreiranje Proizvoda',
+                    position: 'bottom-right',
+                    message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                    color: 'warning',
+                });
+            },
+            async onResponse({ request, options, response }) {
+                init({
+                    title: 'Kreiranje Proizvoda',
+                    position: 'bottom-right',
+                    message: 'Proizvod uspješno dodan u košaricu!',
+                    color: 'success',
+                });
+                cartData.addItem({
+                    id: props.productId,
+                    title: props.productTitle,
+                    quantity: 1,
+                    url: props.imgSrc,
+                    price: discountedPrice(),
+                    media_condition: {
+                        id: props.mediaCondition.id,
+                        name: props.mediaCondition.name,
+                    },
+                    sleeve_condition: {
+                        id: props.sleeveCondition.id,
+                        name: props.sleeveCondition.name,
+                    },
+                    product_type: {
+                        id: props.productType.id,
+                        name: props.productType.name,
+                    },
+                });
+            },
+        });
+    }
 };
 
 const handleAddToCart = async () => {
-    const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
-        method: 'POST',
-        body: {
-            session_id: userData.session_id,
-        },
-        initialCache: false,
-        async onResponseError({ response }) {
-            init({
-                title: 'Dodavanje Proizvoda',
-                position: 'top-right',
-                message: 'Greška prilikom dodavanja proizvoda u košaricu!',
-                color: 'warning',
-            });
-        },
-        async onResponse({ request, options, response }) {
-            useCookie('cart_id').value = response._data.id;
-            addCartItem();
-        },
-    });
+    if (!userData.token) addCartItem();
+    else {
+        const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
+            method: 'POST',
+            body: {
+                session_id: userData.session_id,
+            },
+            initialCache: false,
+            async onResponseError({ response }) {
+                init({
+                    title: 'Dodavanje Proizvoda',
+                    position: 'bottom-right',
+                    message: 'Greška prilikom dodavanja proizvoda u košaricu!',
+                    color: 'warning',
+                });
+            },
+            async onResponse({ request, options, response }) {
+                useCookie('cart_id').value = response._data.id;
+                addCartItem();
+            },
+        });
+    }
 };
 </script>
 

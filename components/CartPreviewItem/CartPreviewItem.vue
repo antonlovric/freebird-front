@@ -24,7 +24,7 @@ const props = defineProps({
         default: '',
     },
     price: {
-        type: String,
+        type: Number,
         default: '',
     },
 });

@@ -21,7 +21,7 @@ const productResponse = useFetch(`${config.API_BASE_URL}/products/${id}`, {
     async onResponseError({ response }) {
         init({
             title: 'Dohvaćanje podataka o objavi',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Greška prilikom dohvaćanja podataka o objavi!',
             color: 'danger',
             duration: 5000,

@@ -111,7 +111,7 @@ const removeHandler = async () => {
         async onResponseError({ response }) {
             init({
                 title: 'Odjava',
-                position: 'top-right',
+                position: 'bottom-right',
                 message: 'Greška prilikom brisanja!',
                 color: 'danger',
                 duration: 5000,
@@ -121,7 +121,7 @@ const removeHandler = async () => {
     if (response.data.value) {
         init({
             title: 'Brisanje Proizvoda',
-            position: 'top-right',
+            position: 'bottom-right',
             message: 'Proizvodi uspješno obrisani!',
             color: 'success',
             duration: 5000,

@@ -5,6 +5,18 @@ interface IProduct {
     quantity: number;
     url: string;
     price: String;
+    media_condition: {
+        id: Number;
+        name: String;
+    };
+    sleeve_condition: {
+        id: Number;
+        name: String;
+    };
+    product_type: {
+        id: Number;
+        name: String;
+    };
 }
 
 export const useCartStore = defineStore('cart-store', {

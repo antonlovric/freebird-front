@@ -9,7 +9,7 @@
             <div class="inline-flex flex-col justify-between w-full">
                 <div class="inline-flex flex-col gap-3">
                     <h2 class="text-xl">{{ productData.title }}</h2>
-                    <span>Količina: {{ props.product.quantity }}</span>
+                    <span>Količina: {{ props.quantity }}</span>
                 </div>
                 <div class="inline-flex justify-between items-center gap-3">
                     <div class="inline-flex gap-4 flex-col">
@@ -18,7 +18,7 @@
                             <span> | Medij: {{ productData.media_condition.name }}</span>
                             <span> | Omot: {{ productData.sleeve_condition.name }}</span>
                         </div>
-                        <span>Cijena: {{ productData.initial_price }}kn</span>
+                        <span>Cijena: {{ discountedPrice() }}kn</span>
                     </div>
                     <va-icon
                         @click="() => handleRemoveItem(productData.id)"
@@ -37,7 +37,7 @@
 import { useCartStore } from '~~/stores/cart';
 
 const props = defineProps({
-    product: {
+    productData: {
         type: Object,
         default: {},
     },
@@ -45,22 +45,30 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    quantity: {
+        type: Number,
+        default: 0,
+    },
 });
 
+const discountedPrice = () =>
+    props.productData.initial_price -
+    (props.productData.discount / 100) * props.productData.initial_price;
+
 const emits = defineEmits(['removed-item']);
-const productData = props.product.products;
+const { productData } = props;
 const cartData = useCartStore();
 const config = useRuntimeConfig();
 const { init } = useToast();
 
-async function handleRemoveItem(productId) {
+const handleRemoveItem = async (productId) => {
     const responseRemove = await useFetch(`${config.API_BASE_URL}/cartItems/${productId}`, {
         method: 'DELETE',
         initialCache: false,
         async onResponseError({ response }) {
             init({
                 title: 'Brisanje stavke košarice',
-                position: 'top-right',
+                position: 'bottom-right',
                 color: 'danger',
                 message: 'Greška prilikom brisanja stavke košarice!',
             });
@@ -69,7 +77,7 @@ async function handleRemoveItem(productId) {
             if (response.status === 200) {
                 init({
                     title: 'Brisanje stavke košarice',
-                    position: 'top-right',
+                    position: 'bottom-right',
                     color: 'success',
                     message: 'Stavka košarice uspješno uklonjena!',
                 });
@@ -78,5 +86,5 @@ async function handleRemoveItem(productId) {
             }
         },
     });
-}
+};
 </script>

@@ -2,9 +2,8 @@
     <div>
         <the-header />
         <user-profile
-            v-if="!responseDetails.error.value"
-            :personalDetails="responseDetails.data.value"
-            :orderedProducts="productData.orderedProducts"
+            :personalDetails="responseDetails?.data.value"
+            :orderedProducts="productData?.orderedProducts"
         />
         <the-footer />
     </div>
@@ -46,9 +45,12 @@ const responseProducts = await useAsyncData('ordered_products', () =>
         },
         headers: {
             Authorization: `Bearer ${userData.token}`,
+            Accept: 'application/json',
         },
     })
 );
 
-productData.orderedProducts = responseProducts.data.value.data[0];
+if (responseProducts?.data?.value?.data) {
+    productData.orderedProducts = responseProducts?.data?.value?.data;
+}
 </script>

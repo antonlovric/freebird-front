@@ -3,8 +3,8 @@
         <ul class="inline-flex flex-col min-h-[200px]">
             <cart-preview-item
                 v-for="(item, index) in props.cartItems"
-                :img="item.products.url"
-                :title="item.products.title"
+                :img="loggedIn ? item.products.url : item.url"
+                :title="loggedIn ? item.products.title : item.title"
                 :price="item.price"
                 :quantity="item.quantity"
                 :key="index"
@@ -18,8 +18,8 @@
                 <ul class="inline-flex flex-col min-h-[200px]">
                     <cart-preview-item
                         v-for="(item, index) in props.cartItems"
-                        :img="item.products.url"
-                        :title="item.products.title"
+                        :img="loggedIn ? item.products.url : item.url"
+                        :title="loggedIn ? item.products.title : item.title"
                         :price="item.price"
                         :quantity="item.quantity"
                         :key="index"
@@ -32,8 +32,11 @@
 </template>
 
 <script setup>
-const screen = reactive({ isMobile: false });
+import { useUserStore } from '~~/stores/user';
 
+const screen = reactive({ isMobile: false });
+const userData = useUserStore();
+const loggedIn = userData.token;
 const checkIfMobile = () => {
     screen.isMobile = window.screen.width < 768;
 };

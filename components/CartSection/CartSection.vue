@@ -6,7 +6,8 @@
                 @removed-item="() => handleRemovedItem(product.product_id)"
                 :hasUnderline="index !== props.cartItems.length - 1"
                 :key="product.id"
-                :product="product"
+                :quantity="product?.quantity"
+                :productData="userData.token ? product.products : product"
             />
         </ul>
         <div class="inline-flex w-full justify-end" color="">
@@ -31,7 +32,6 @@ const config = useRuntimeConfig();
 const cartData = useCartStore();
 const userData = useUserStore();
 const products = reactive({
-    productCollection: userData.session_id ? props.cartItems : cartData.cartItems,
     isLoading: props.pending,
 });
 const emits = defineEmits(['remove-item']);
