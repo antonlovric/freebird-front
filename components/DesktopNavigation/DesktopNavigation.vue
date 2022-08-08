@@ -7,7 +7,7 @@
             <navigation-item class="inline-flex justify-start" path="/catalogue" text="Katalog" />
             <navigation-item class="inline-flex justify-start" path="/blogPosts" text="Novosti" />
         </div>
-        <img src="../../assets/logo_transparent 2.png" alt="Freebird logo" />
+        <img src="../../assets/logo_transparent2.png" alt="Freebird logo" />
         <div class="flex items-center justify-end w-1/3">
             <navigation-item
                 v-if="!userData.token"
