@@ -18,10 +18,10 @@
                 <li>
                     <div class="inline-flex items-center justify-center gap-5 mt-2">
                         <a href="https://www.facebook.com/Free-Bird-Music-Shop-149579005105474/"
-                            ><img src="../../assets/facebook-brands.svg"
+                            ><img src="~/assets/facebook-brands.svg"
                         /></a>
                         <a href="https://www.instagram.com/freebirdmusicshop1/"
-                            ><img src="../../assets/instagram-brands.svg"
+                            ><img src="~/assets/instagram-brands.svg"
                         /></a>
                     </div>
                 </li>

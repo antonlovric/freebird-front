@@ -50,7 +50,7 @@ const config = useRuntimeConfig();
 
 const responseProducts = await useFetch(`${config.API_BASE_URL}/products/featured`);
 
-const products = responseProducts.data.value.data;
+const products = responseProducts.data.value?.data;
 </script>
 
 <style scoped>

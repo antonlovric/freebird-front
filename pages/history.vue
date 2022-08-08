@@ -3,7 +3,7 @@
         <the-header />
         <div class="w-10/12 mx-auto pt-[10vh]">
             <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">O Nama</h1>
-            <img src="../assets/freebird-about.jpg" class="w-10/12 mx-auto" alt="O Nama" />
+            <img src="~/assets/freebird-about.jpg" class="w-10/12 mx-auto" alt="O Nama" />
             <p>
                 Free Bird postoji od 1994. godine i uvjerljivo je najveća trgovina pločama i drugim
                 nosačima zvuka u Hrvatskoj, a i šire. U svom asortimanu uvijek ima oko 80 000,
