@@ -1,13 +1,15 @@
 <template>
     <li class="inline">
-        <NuxtLink
-            :to="props.path"
-            class="inline-flex items-center justify-center px-1 py-1"
-            v-if="props.type === 'link'"
-        >
-            <va-icon v-if="props.icon" :name="props.iconName" />
-            <span v-else>{{ props.text }}</span>
-        </NuxtLink>
+        <span class="nav-link">
+            <NuxtLink
+                :to="props.path"
+                class="inline-flex items-center justify-center px-1 py-1"
+                v-if="props.type === 'link'"
+            >
+                <va-icon v-if="props.icon" :name="props.iconName" />
+                <span v-else>{{ props.text }}</span>
+            </NuxtLink>
+        </span>
         <span
             v-if="props.type === 'span'"
             class="nav-span inline-flex items-center justify-center px-1 py-1"
@@ -26,17 +28,17 @@
                 v-on:mouseenter="handleCartHover"
                 v-on:mouseleave="handleCartHoverOut"
                 v-if="cartHover.isVisible"
-                class="absolute shadow-lg bg-[#121317] top-[110%] right-[40%] w-[350px]"
+                class="absolute shadow-lg rounded-b-lg bg-[#121317] top-[110%] right-[40%] w-[350px]"
             >
                 <ul>
                     <cart-preview-item
-                        v-for="(item, index) in products.cartItems"
-                        :img="loggedIn ? item.products.url : item.url"
-                        :title="loggedIn ? item.products.title : item.title"
+                        v-for="item in products.cartItems"
+                        :img="item.url"
+                        :title="item.title"
                         :price="item.price"
                         :quantity="item.quantity"
-                        :key="index"
-                    />
+                        :key="item.id"
+                    ></cart-preview-item>
                 </ul>
                 <div class="flex">
                     <va-button
@@ -48,13 +50,9 @@
                     >
                 </div>
             </div>
-            <nuxt-link @mouseenter="handleCartHover" @mouseleave="handleCartHoverOut" to="/cart">
-                <va-badge :text="products.cartQuantity" bottom v-if="props.icon">
-                    <va-icon :name="props.iconName" />
-                </va-badge>
-            </nuxt-link>
-
-            <span>{{ props.text }}</span>
+            <va-badge :text="products.cartQuantity" bottom v-if="props.icon">
+                <va-icon :name="props.iconName" />
+            </va-badge>
         </nuxt-link>
     </li>
 </template>
@@ -98,19 +96,29 @@ const products = reactive({
     cartQuantity: cartQuantity.value,
     isVisible: false,
 });
+const cartCookie = useCookie('cart_id');
 
 const getQuantity = () => products.cartItems.reduce((prev, next) => prev + next?.quantity, 0);
 
-if (token.value) {
-    const cartId = useCookie('cart_id').value;
-    const responseCartItems = await useAsyncData('cart_items_overview', () =>
-        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
-    );
-    if (responseCartItems.data.value) {
-        products.cartItems = responseCartItems?.data?.value?.data;
-        products.cartQuantity = getQuantity();
+const refreshItems = async () => {
+    if (token.value && props.type === 'cart') {
+        const responseCartItems = await useAsyncData('cart-details', () =>
+            useFetch(`${config.API_BASE_URL}/cartItems/${cartCookie.value}`, {
+                onResponse({ response }) {
+                    const data = response._data.data;
+                    products.cartItems = data.map((item) => {
+                        return {
+                            quantity: item.quantity,
+                            ...item.products,
+                        };
+                    });
+                },
+            })
+        );
     }
-}
+};
+
+if (props.type === 'cart') refreshItems();
 
 watch(cartItems, (newItems) => (products.cartItems = newItems));
 watch(cartQuantity, (newQuantity) => (products.cartQuantity = newQuantity));

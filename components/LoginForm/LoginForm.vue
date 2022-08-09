@@ -43,7 +43,7 @@ const handleSubmit = async (event) => {
     const userStore = useUserStore();
     const cartStore = useCartStore();
     const router = useRouter();
-    const cartId = useCookie('cart_id').value;
+    const cartCookie = useCookie('cart_id');
 
     init({
         title: 'Prijava',
@@ -89,35 +89,39 @@ const handleSubmit = async (event) => {
                     router.push({ path: '/' });
                 }, 500);
             }
-            const responseProduct = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`, {
-                method: 'GET',
-                initialCache: false,
-                async onResponse({ request, response, options }) {
-                    if (response._data) {
-                        response._data.forEach((item) => {
-                            cartStore.addItem({
-                                id: item.product_id,
-                                price: item.price,
-                                quantity: item.quantity,
-                                title: item.products.title,
-                                url: item.products.url,
-                                media_condition: {
-                                    id: item.products.media_condition.id,
-                                    name: item.products.media_condition.name,
-                                },
-                                sleeve_condition: {
-                                    id: item.products.sleeve_condition.id,
-                                    name: item.products.sleeve_condition.name,
-                                },
-                                product_type: {
-                                    id: item.products.product_type.id,
-                                    name: item.products.product_type.name,
-                                },
+            const responseProduct = await useFetch(
+                `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+                {
+                    method: 'GET',
+                    initialCache: false,
+                    async onResponse({ request, response, options }) {
+                        if (response._data) {
+                            response._data.forEach((item) => {
+                                cartStore.addItem({
+                                    id: item.product_id,
+                                    price: item.price,
+                                    quantity: item.quantity,
+                                    title: item.products.title,
+                                    url: item.products.url,
+                                    discount: item.products.discount,
+                                    media_condition: {
+                                        id: item.products.media_condition.id,
+                                        name: item.products.media_condition.name,
+                                    },
+                                    sleeve_condition: {
+                                        id: item.products.sleeve_condition.id,
+                                        name: item.products.sleeve_condition.name,
+                                    },
+                                    product_type: {
+                                        id: item.products.product_type.id,
+                                        name: item.products.product_type.name,
+                                    },
+                                });
                             });
-                        });
-                    }
-                },
-            });
+                        }
+                    },
+                }
+            );
         },
         onResponseError({ response }) {
             if (response.status === 403) {

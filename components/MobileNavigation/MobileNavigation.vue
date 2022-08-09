@@ -1,11 +1,6 @@
 <template>
     <div>
-        <va-sidebar
-            v-if="userData.token == ''"
-            :minimized="isShown.minimized"
-            minimizedWidth="0"
-            class="!absolute"
-        >
+        <va-sidebar v-if="userData.token == ''" :minimized="isShown.minimized" minimizedWidth="0">
             <va-sidebar-item v-for="(item, index) in notLoggedUser" :key="index">
                 <nuxt-link :to="item.route">
                     <va-sidebar-item-content>
@@ -49,6 +44,7 @@
 </template>
 
 <script setup>
+import { VaSidebar } from 'vuestic-ui';
 import { useUserStore } from '~~/stores/user';
 
 const isShown = reactive({ minimized: true });
@@ -67,6 +63,7 @@ const notLoggedUser = ref([
     { name: 'Novosti', icon: 'feed', route: '/blogPosts' },
     { name: 'Registracija', icon: 'how_to_reg', route: '/registration' },
     { name: 'Prijava', icon: 'login', route: '/login' },
+    { name: 'Košarica', icon: 'cart', route: '/cart' },
 ]);
 
 const loggedInUser = ref([
@@ -74,6 +71,7 @@ const loggedInUser = ref([
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
     { name: 'Novosti', icon: 'feed', route: '/blogPosts' },
     { name: 'Profil', icon: 'account_circle', route: '/profile' },
+    { name: 'Košarica', icon: 'shopping_cart', route: '/cart' },
     { name: 'Odjava', icon: 'logout', span: 'true', id: 'logout' },
 ]);
 
@@ -118,3 +116,9 @@ const handleLogout = async (event) => {
     });
 };
 </script>
+
+<style scoped>
+.va-sidebar {
+    position: fixed !important;
+}
+</style>

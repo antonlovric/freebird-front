@@ -29,7 +29,7 @@ const config = useRuntimeConfig();
 const { init } = useToast();
 const userData = useUserStore();
 const cartData = useCartStore();
-const cartId = useCookie('cart_id').value;
+const cartCookie = useCookie('cart_id');
 
 const props = defineProps({
     imgSrc: {
@@ -101,15 +101,16 @@ const addCartItem = async () => {
                 id: props.productType.id,
                 name: props.productType.name,
             },
+            discount: props.discount,
         });
     } else {
         const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
             method: 'POST',
             body: {
-                cart_id: cartId,
+                cart_id: cartCookie.value,
                 quantity: 1,
                 product_id: props.productId,
-                price: props.discount ? discountedPrice() : props.initialPrice,
+                price: discountedPrice(),
             },
             initialCache: false,
             async onResponseError({ response }) {
@@ -145,6 +146,7 @@ const addCartItem = async () => {
                         id: props.productType.id,
                         name: props.productType.name,
                     },
+                    discount: props.discount,
                 });
             },
         });
@@ -169,7 +171,7 @@ const handleAddToCart = async () => {
                 });
             },
             async onResponse({ request, options, response }) {
-                useCookie('cart_id').value = response._data.id;
+                cartCookie.value = response._data?.id;
                 addCartItem();
             },
         });

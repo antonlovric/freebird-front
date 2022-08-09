@@ -38,9 +38,11 @@ const cartData = useCartStore();
 const { init } = useToast();
 const router = useRouter();
 const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
-const cartId = useCookie('cart_id').value;
+const cartCookie = useCookie('cart_id');
 if (userData.session_id) {
-    const responseCartItems = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`);
+    const responseCartItems = await useFetch(
+        `${config.API_BASE_URL}/cartItems/${cartCookie.value}`
+    );
     if (!responseCartItems.error.value) {
         cart.items = responseCartItems.data.value;
         cart.isLoading = responseCartItems.pending.value;
@@ -92,6 +94,11 @@ const handleCheckout = async (order) => {
     if (order.sameAddress) order.shippingAddress = order.billingAddress;
     if (order.paymentDetails.selectedPayment.id === 1) price.updatedPrice += 30;
 
+    init({
+        title: 'Dovršavanje narudžbe',
+        position: 'bottom-right',
+        message: 'Pričekajte...',
+    });
     const responseOrder = await useFetch(`${config.API_BASE_URL}/orders`, {
         method: 'POST',
         initialCache: false,
@@ -109,7 +116,7 @@ const handleCheckout = async (order) => {
             shipping_zipcode: order.shippingAddress.zipCode,
             billing_zipcode: order.billingAddress.zipCode,
             session_id: userData.session_id,
-            cart_id: cartId,
+            cart_id: cartCookie.value,
             comment: order.paymentDetails.comment,
             payment_type: order.paymentDetails.selectedPayment.label,
             shipping_type: order.paymentDetails.selectedShipping.label,
@@ -132,13 +139,17 @@ const handleCheckout = async (order) => {
                     color: 'success',
                 });
                 cartData.clearCart();
-                const responseDisableCart = useFetch(`${config.API_BASE_URL}/carts/${cartId}`, {
-                    method: 'PUT',
-                    initialCache: false,
-                    body: {
-                        active: 0,
-                    },
-                });
+                const responseDisableCart = useFetch(
+                    `${config.API_BASE_URL}/carts/${cartCookie.value}`,
+                    {
+                        method: 'PUT',
+                        initialCache: false,
+                        body: {
+                            active: 0,
+                        },
+                    }
+                );
+                cartCookie.value = null;
                 setTimeout(() => {
                     router.push({ path: '/' });
                 }, 500);

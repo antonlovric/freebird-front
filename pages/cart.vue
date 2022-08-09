@@ -3,15 +3,17 @@
         <the-header />
         <div class="min-h-screen mb-14 pt-[10vh]">
             <h1 class="text-2xl sm:text-5xl sm:mt-4 text-center">Pregled Košarice</h1>
-            <cart-section
-                v-if="cartQuantity !== 0"
-                :cartItems="items.cartItems"
-                :pending="items.pending"
-                @remove-item="handleRemove"
-            />
-            <h2 v-else class="text-xl sm:text-3xl sm:mt-4 text-center">
-                Nema proizvoda u košarici!
-            </h2>
+            <va-inner-loading :loading="items.pending">
+                <cart-section
+                    v-if="items.cartItems.length !== 0"
+                    :cartItems="items.cartItems"
+                    :pending="items.pending"
+                    @remove-item="handleRemove"
+                />
+                <h2 v-else class="text-xl sm:text-3xl sm:mt-4 text-center">
+                    Nema proizvoda u košarici!
+                </h2>
+            </va-inner-loading>
         </div>
         <the-footer />
     </div>
@@ -23,33 +25,43 @@ import { useUserStore } from '~~/stores/user';
 
 const config = useRuntimeConfig();
 
-const cartId = useCookie('cart_id').value;
+const cartCookie = useCookie('cart_id');
 const cartData = useCartStore();
 const userData = useUserStore();
 const items = reactive({ cartItems: [], pending: true });
 
-if (userData.token) {
-    const responseCartItems = useLazyAsyncData('cart_items_overview', () =>
-        useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`)
-    );
-
-    if (responseCartItems?.data?.value?.data) {
-        items.cartItems = responseCartItems?.data?.value?.data;
-        items.pending = false;
+const refreshItems = () => {
+    if (userData.token) {
+        const responseCartItems = useLazyFetch(
+            `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+            {
+                initialCache: false,
+                onResponse({ response }) {
+                    if (response.status === 200) {
+                        items.pending = false;
+                        items.cartItems = response._data;
+                    }
+                },
+                server: false,
+            }
+        );
+    } else {
+        items.cartItems = cartData.cartItems.map((item) => {
+            return {
+                ...item,
+                initial_price: item.price,
+            };
+        });
+        if (items.cartItems.length > 0) items.pending = false;
     }
-} else {
-    items.cartItems = cartData.cartItems;
-    if (items.cartItems.length > 0) items.pending = false;
-}
+};
+
+refreshItems();
 
 const handleRemove = async (productId) => {
     cartData.removeItem(productId);
-
-    const data = await useFetch(`${config.API_BASE_URL}/cartItems/${cartId}`);
-    items.cartItems = data.data.value;
+    refreshItems();
 };
-
-const cartQuantity = items.cartItems?.length;
 
 useHead({
     title: 'Košarica',
