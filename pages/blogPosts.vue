@@ -42,4 +42,8 @@ const handleSearch = async ({ query } = args) => {
     page.query = query;
     await refresh();
 };
+
+useHead({
+    title: 'Novosti',
+});
 </script>

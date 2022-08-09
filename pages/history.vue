@@ -63,6 +63,12 @@
     </div>
 </template>
 
+<script setup>
+useHead({
+    title: 'O Nama',
+});
+</script>
+
 <style scoped>
 p {
     font-size: 20px;

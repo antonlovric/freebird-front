@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-[80vh] pt-[5vh] sm:pt-[10vh] relative">
-        <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Dashboard</h2>
+        <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Upravljačka Ploča</h2>
         <dashboard-users />
         <dashboard-products
             :totalPages="responseProducts.data?.value?.last_page"

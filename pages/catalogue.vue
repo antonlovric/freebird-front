@@ -34,4 +34,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
     window.removeEventListener('resize', checkIfMobile);
 });
+
+useHead({
+    title: 'Katalog',
+});
 </script>

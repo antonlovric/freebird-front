@@ -29,4 +29,8 @@ const productResponse = useFetch(`${config.API_BASE_URL}/products/${id}`, {
     },
     initialCache: false,
 });
+
+useHead({
+    title: 'Detalji Proizvoda',
+});
 </script>

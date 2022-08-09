@@ -49,5 +49,9 @@ const handleRemove = async (productId) => {
     items.cartItems = data.data.value;
 };
 
-const cartQuantity = items.cartItems.length;
+const cartQuantity = items.cartItems?.length;
+
+useHead({
+    title: 'Košarica',
+});
 </script>

@@ -89,6 +89,12 @@
     </div>
 </template>
 
+<script setup>
+useHead({
+    title: 'Sustav Ocjenjivanja',
+});
+</script>
+
 <style scoped>
 p {
     font-size: 20px;

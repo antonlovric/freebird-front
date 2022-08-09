@@ -28,4 +28,8 @@ const postResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
     },
     initialCache: false,
 });
+
+useHead({
+    title: 'Detalji Novosti',
+});
 </script>

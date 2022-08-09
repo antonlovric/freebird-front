@@ -140,4 +140,8 @@ const handleCheckout = async (order) => {
         },
     });
 };
+
+useHead({
+    title: 'Naplata',
+});
 </script>

@@ -53,4 +53,8 @@ const responseProducts = await useAsyncData('ordered_products', () =>
 if (responseProducts?.data?.value?.data) {
     productData.orderedProducts = responseProducts?.data?.value?.data;
 }
+
+useHead({
+    title: 'Profil',
+});
 </script>
