@@ -48,13 +48,13 @@
                 icon="update"
                 >Ažuriraj</va-button
             >
-            <edit-product-form
+            <product-form
                 v-if="input.isModalVisible"
                 :isVisible="input.isModalVisible"
                 :product="selectedItems[0]"
                 :predefinedData="predefinedData"
                 @close-modal="input.isModalVisible = false"
-            ></edit-product-form>
+            ></product-form>
             <va-button
                 :disabled="items.ids.length === 0"
                 @click="removeHandler"

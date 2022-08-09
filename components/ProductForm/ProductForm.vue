@@ -14,7 +14,7 @@
             <form
                 enctype="multipart/form-data"
                 id="form"
-                class="flex flex-col w-3/4 sm:w-1/5 mx-auto gap-6 mb-5"
+                class="flex flex-col w-3/4 sm:w-full mx-auto gap-6 mb-5"
                 @submit.prevent
             >
                 <va-input
@@ -28,7 +28,8 @@
                     v-model="productData.description"
                     color="#000"
                     label="Opis"
-                    type="text"
+                    type="textarea"
+                    :min-rows="5"
                     id="description"
                 />
                 <va-select
@@ -65,6 +66,8 @@
                     v-model="productData.discount"
                     color="#000"
                     label="Popust (%)"
+                    :min="0"
+                    :max="100"
                     type="number"
                     id="discount"
                 />
@@ -172,7 +175,25 @@ const modal = reactive({ isVisible: props.isVisible });
 
 const { init } = useToast();
 
+const isValid = () => {
+    const { initial_price, discount, stock, image } = productData.value;
+    if (Object.values(productData.value).some((prop) => prop === null || prop === undefined))
+        return false;
+    if (discount < 0 || discount > 100 || stock < 0 || image === '' || initial_price < 0)
+        return false;
+    return true;
+};
+
 const updateHandler = async () => {
+    if (!isValid()) {
+        init({
+            title: 'Ažuriranje Proizvoda',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
     init({
         title: 'Ažuriranje Proizvoda',
         position: 'bottom-right',
@@ -222,6 +243,16 @@ const updateHandler = async () => {
 };
 
 const submitHandler = async () => {
+    if (!isValid()) {
+        init({
+            title: 'Kreiranje Proizvoda',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
+
     const form = document.querySelector('#form');
     const formData = new FormData(form);
     productData.value.image = file.value.files[0];
