@@ -34,6 +34,15 @@
 const posts = reactive({ postCollection: [] });
 
 const config = useRuntimeConfig();
-const responsePosts = await useFetch(`${config.API_BASE_URL}/posts/latest`);
-posts.postCollection = responsePosts.data.value;
+
+const fetchItems = async () => {
+    await useFetch(`${config.API_BASE_URL}/posts/latest`, {
+        server: false,
+        async onResponse({ response }) {
+            posts.postCollection = response._data;
+        },
+    });
+};
+
+fetchItems();
 </script>
