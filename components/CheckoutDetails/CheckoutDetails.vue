@@ -116,10 +116,6 @@ const order = reactive({
                 id: 2,
                 label: 'Plaćanje uplatnicom (virman)',
             },
-            {
-                id: 3,
-                label: 'Paypal',
-            },
         ],
         selectedShipping: {
             id: 1,

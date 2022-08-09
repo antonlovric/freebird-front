@@ -21,6 +21,7 @@
                 <va-input label="Podnaslov" v-model="postData.subheading" />
                 <va-input label="Sadržaj" type="textarea" :min-rows="6" v-model="postData.body" />
                 <va-file-upload
+                    v-if="!props.post"
                     v-model="postData.displayImage"
                     id="image"
                     type="single"
@@ -32,6 +33,7 @@
                     deleted-file-message="Naslovna fotografija uspješno obrisana"
                 />
                 <va-file-upload
+                    v-if="!props.post"
                     v-model="postData.image"
                     id="image"
                     type="gallery"
@@ -94,6 +96,12 @@ const getImageIds = () => {
 const emits = defineEmits(['close-modal']);
 const modal = reactive({ isVisible: props.isVisible });
 
+const isValid = () => {
+    if (Object.values(productData.value).some((prop) => prop === null || prop === undefined))
+        return false;
+    return true;
+};
+
 const assignImagesToPost = (postId) => {
     const responseAssign = useFetch(`${config.API_BASE_URL}/postImages/assign`, {
         method: 'POST',
@@ -127,6 +135,15 @@ const assignImagesToPost = (postId) => {
 };
 
 const submitHandler = () => {
+    if (!isValid()) {
+        init({
+            title: 'Kreiranje Objave',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
     init({
         title: 'Kreiranje Objave',
         position: 'bottom-right',
@@ -156,6 +173,56 @@ const submitHandler = () => {
         async onResponse({ request, response, options }) {
             if (response.status === 201) {
                 assignImagesToPost(response._data.id);
+                emits('close-modal');
+            }
+        },
+    });
+};
+
+const updateHandler = () => {
+    if (!isValid()) {
+        init({
+            title: 'Ažuriranje Objave',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
+    init({
+        title: 'Ažuriranje Objave',
+        position: 'bottom-right',
+        message: 'Pričekajte...',
+    });
+
+    const responsePost = useFetch(`${config.API_BASE_URL}/posts`, {
+        method: 'PUT',
+        body: {
+            heading: postData.value.heading,
+            subheading: postData.value.subheading,
+            body: postData.value.body,
+            session_id: userData.session_id,
+        },
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            init({
+                title: 'Ažuriranje objave',
+                position: 'bottom-right',
+                color: 'danger',
+                message: 'Greška prilikom ažuriranja objave!',
+            });
+        },
+        async onResponse({ request, response, options }) {
+            if (response.status === 201) {
+                init({
+                    title: 'Ažuriranje objave',
+                    position: 'bottom-right',
+                    color: 'success',
+                    message: 'Objava uspješno ažurirana!',
+                });
                 emits('close-modal');
             }
         },
