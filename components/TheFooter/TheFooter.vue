@@ -1,5 +1,5 @@
 <template>
-    <section
+    <footer
         class="bg-grey flex flex-col sm:flex-row px-8 sm:gap-32 justify-start py-8 w-full text-black"
     >
         <div class="">
@@ -44,7 +44,7 @@
                 ></va-input>
             </div>
         </div>
-    </section>
+    </footer>
 </template>
 
 <script setup>

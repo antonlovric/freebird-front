@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <header>
         <desktop-navigation v-if="!screen.isMobile" />
         <mobile-navigation v-else />
-    </div>
+    </header>
 </template>
 
 <script setup>

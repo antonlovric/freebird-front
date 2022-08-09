@@ -1,5 +1,5 @@
 <template>
-    <div class="minh-[80vh] pt-[10vh] relative">
+    <div class="min-h-[80vh] pt-[10vh] relative">
         <h1 class="px-3 my-10 text-4xl text-center sm:text-5xl">Registracija</h1>
         <form
             @submit="handleSubmit"
