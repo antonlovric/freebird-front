@@ -41,7 +41,10 @@ const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
 const cartCookie = useCookie('cart_id');
 if (userData.session_id) {
     const responseCartItems = await useFetch(
-        `${config.API_BASE_URL}/cartItems/${cartCookie.value}`
+        `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+        {
+            initialCache: false,
+        }
     );
     if (!responseCartItems.error.value) {
         cart.items = responseCartItems.data.value;
