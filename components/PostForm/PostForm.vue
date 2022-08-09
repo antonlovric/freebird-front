@@ -97,7 +97,7 @@ const emits = defineEmits(['close-modal']);
 const modal = reactive({ isVisible: props.isVisible });
 
 const isValid = () => {
-    if (Object.values(productData.value).some((prop) => prop === null || prop === undefined))
+    if (Object.values(postData.value).some((prop) => prop === null || prop === undefined))
         return false;
     return true;
 };
