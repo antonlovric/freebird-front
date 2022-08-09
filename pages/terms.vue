@@ -30,6 +30,12 @@
     </div>
 </template>
 
+<script setup>
+useHead({
+    title: 'Uvjeti Korištenja',
+});
+</script>
+
 <style scoped>
 p {
     font-size: 20px;

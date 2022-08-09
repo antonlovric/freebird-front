@@ -7,3 +7,9 @@
         <the-footer />
     </div>
 </template>
+
+<script setup>
+useHead({
+    title: 'Free Bird Music',
+});
+</script>

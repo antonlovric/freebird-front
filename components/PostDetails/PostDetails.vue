@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-[80vh] pt-[10vh] relative">
+    <div class="min-h-[80vh] pt-[5vh] relative">
         <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">
             {{ props.post.heading }}
         </h1>
@@ -13,7 +13,7 @@
             {{ props.post.subheading }}
         </h2>
         <h2></h2>
-        <div class="w-[60ch] mt-6 mx-auto text-justify">
+        <div class="w-10/12 sm:text-xl text-lg mt-6 mx-auto text-justify">
             <p>{{ props.post.body }}</p>
         </div>
         <h3 class="text-center my-10">Galerija</h3>

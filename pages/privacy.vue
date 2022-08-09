@@ -240,6 +240,12 @@
     </div>
 </template>
 
+<script setup>
+useHead({
+    title: 'Politika Privatnosti',
+});
+</script>
+
 <style scoped>
 p {
     font-size: 20px;

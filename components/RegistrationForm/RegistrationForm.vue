@@ -1,5 +1,5 @@
 <template>
-    <div class="minh-[80vh] pt-[10vh] relative">
+    <div class="min-h-[80vh] pt-[10vh] relative">
         <h1 class="px-3 my-10 text-4xl text-center sm:text-5xl">Registracija</h1>
         <form
             @submit="handleSubmit"
@@ -38,6 +38,7 @@
                 label="Lozinka"
                 type="password"
                 id="password"
+                messages="Lozinka mora imati minimalno 6 znakova!"
             ></va-input>
             <va-input
                 v-model="registrationData.passwordConfirmation"
@@ -61,21 +62,38 @@ const registrationData = ref({
     lastName: '',
 });
 const { init, close } = useToast();
+const config = useRuntimeConfig();
+const input = reactive({ isDisabled: true });
 
-const handleSubmit = async (event) => {
-    const inputElements = event.target.elements;
-    const config = useRuntimeConfig();
+const isValid = () => {
+    if (
+        registrationData.value.password.length < 6 ||
+        registrationData.value.password !== registrationData.value.passwordConfirmation
+    )
+        return false;
+    return true;
+};
 
+const handleSubmit = async () => {
+    if (!isValid()) {
+        init({
+            title: 'Registracija',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Neispravan unos!',
+        });
+        return;
+    }
     const formData = {
-        username: inputElements['username']?.value,
-        email: inputElements['email']?.value,
-        password: inputElements['password']?.value,
-        password_confirmation: inputElements['password_confirmation']?.value,
-        first_name: inputElements['first_name']?.value,
-        last_name: inputElements['last_name']?.value,
+        username: registrationData.value.username,
+        email: registrationData.value.email,
+        password: registrationData.value.password,
+        password_confirmation: registrationData.value.passwordConfirmation,
+        first_name: registrationData.value.firstName,
+        last_name: registrationData.value.lastName,
     };
 
-    const start = init({
+    init({
         title: 'Registracija',
         position: 'bottom-right',
         message: 'Pričekajte...',
@@ -84,27 +102,26 @@ const handleSubmit = async (event) => {
     const response = await useFetch(`${config.API_BASE_URL}/auth/register`, {
         method: 'POST',
         body: formData,
+        onResponseError({ response }) {
+            init({
+                title: 'Registracija',
+                position: 'bottom-right',
+                message: 'Neuspješna registracija! Pokušajte kasnije.',
+                color: 'danger',
+                duration: 5000,
+            });
+        },
+        onResponse({ response }) {
+            if (response.status === 200) {
+                init({
+                    title: 'Registracija',
+                    position: 'bottom-right',
+                    message: 'Uspješna registracija! Dobili ste email s daljnjim uputama!',
+                    color: 'success',
+                    duration: 5000,
+                });
+            }
+        },
     });
-
-    close(start);
-    if (response.error) {
-        init({
-            title: 'Registracija',
-            position: 'bottom-right',
-            message: 'Neuspješna registracija! Pokušajte kasnije.',
-            color: 'danger',
-            duration: 5000,
-        });
-    }
-
-    if (response.data.value?.status === 201) {
-        init({
-            title: 'Registracija',
-            position: 'bottom-right',
-            message: 'Uspješna registracija! Pratite upute na mailu i aktivirajte svoj račun!',
-            color: 'success',
-            duration: 5000,
-        });
-    }
 };
 </script>

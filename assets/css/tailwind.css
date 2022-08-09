@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-.router-link-exact-active {
+.nav-link .router-link-exact-active {
     border-bottom: 1px solid #f97316;
 }
 

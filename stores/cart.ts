@@ -17,6 +17,7 @@ interface IProduct {
         id: Number;
         name: String;
     };
+    discount: Number;
 }
 
 export const useCartStore = defineStore('cart-store', {

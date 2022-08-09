@@ -18,7 +18,12 @@
                             <span> | Medij: {{ productData.media_condition.name }}</span>
                             <span> | Omot: {{ productData.sleeve_condition.name }}</span>
                         </div>
-                        <span>Cijena: {{ discountedPrice() }}kn</span>
+                        <span
+                            >Cijena:
+                            {{
+                                userData.token ? discountedPrice() : props.productData.price
+                            }}kn</span
+                        >
                     </div>
                     <va-icon
                         @click="() => handleRemoveItem(productData.id)"
@@ -35,6 +40,7 @@
 
 <script setup>
 import { useCartStore } from '~~/stores/cart';
+import { useUserStore } from '~~/stores/user';
 
 const props = defineProps({
     productData: {
@@ -60,6 +66,7 @@ const { productData } = props;
 const cartData = useCartStore();
 const config = useRuntimeConfig();
 const { init } = useToast();
+const userData = useUserStore();
 
 const handleRemoveItem = async (productId) => {
     const responseRemove = await useFetch(`${config.API_BASE_URL}/cartItems/${productId}`, {

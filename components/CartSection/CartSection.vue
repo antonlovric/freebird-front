@@ -5,7 +5,7 @@
                 v-for="(product, index) in props.cartItems"
                 @removed-item="() => handleRemovedItem(product.product_id)"
                 :hasUnderline="index !== props.cartItems.length - 1"
-                :key="product.id"
+                :key="product.product_id || product.id"
                 :quantity="product?.quantity"
                 :productData="userData.token ? product.products : product"
             />

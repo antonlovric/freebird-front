@@ -18,7 +18,7 @@
             <h2 class="px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan u Hrvatskoj</h2>
         </div>
         <img
-            src="../../assets/HeroSplashImage.png"
+            src="~/assets/HeroSplashImage.png"
             class="object-cover absolute w-full h-full brightness-50 top-0 -z-10"
             alt=""
         />

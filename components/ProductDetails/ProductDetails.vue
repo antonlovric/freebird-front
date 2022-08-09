@@ -66,7 +66,7 @@ const product = reactive({ quantity: 1 });
 const isInStock = props.product?.stock > 0;
 const discountedPrice = () =>
     props.product.initial_price - (props.product.discount / 100) * props.product.initial_price;
-const cartId = useCookie('cart_id').value;
+const cartCookie = useCookie('cart_id');
 
 const addCartItem = async () => {
     if (product.quantity > props.product.stock) {
@@ -82,7 +82,7 @@ const addCartItem = async () => {
     const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
         method: 'POST',
         body: {
-            cart_id: cartId,
+            cart_id: cartCookie.value,
             quantity: product.quantity,
             product_id: props.product?.id,
             price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
@@ -108,7 +108,7 @@ const addCartItem = async () => {
                 title: props.product?.title,
                 quantity: product?.quantity,
                 url: props.product?.url,
-                price: props.product?.discount ? discountedPrice() : props.product?.initial_price,
+                price: discountedPrice(),
                 media_condition: {
                     id: props.product.media_condition.id,
                     name: props.product.media_condition.name,
@@ -121,6 +121,7 @@ const addCartItem = async () => {
                     id: props.product.product_type.id,
                     name: props.product.product_type.name,
                 },
+                discount: props.product.discount,
             });
         },
     });
@@ -143,7 +144,7 @@ const handleAddToCart = async () => {
             });
         },
         async onResponse({ request, options, response }) {
-            useCookie('cart_id').value = response._data.id;
+            cartCookie.value = response._data.id;
             addCartItem();
         },
     });

@@ -7,7 +7,7 @@
                     <va-input required v-model="order.personalDetails.firstName" label="Ime*" />
                     <va-input v-model="order.personalDetails.lastName" label="prezime*" />
                     <va-input v-model="order.personalDetails.email" label="email*" />
-                    <va-input v-model="order.personalDetails.phone" label="Telefon" />
+                    <va-input v-model="order.personalDetails.phone" label="Telefon*" />
                 </div>
             </div>
             <div class="sm:w-[300px] inline-flex flex-col">
@@ -40,10 +40,10 @@
             <div class="inline-flex flex-col gap-5">
                 <h2 class="text-center">Adresa za naplatu</h2>
                 <div class="inline-flex justify-center items-center mr-4 flex-col gap-5">
-                    <va-input v-model="order.billingAddress.address" label="Adresa" />
-                    <va-input v-model="order.billingAddress.city" label="Grad" />
-                    <va-input v-model="order.billingAddress.zipCode" label="poštanski broj" />
-                    <va-input v-model="order.billingAddress.country" label="država" />
+                    <va-input v-model="order.billingAddress.address" label="Adresa*" />
+                    <va-input v-model="order.billingAddress.city" label="Grad*" />
+                    <va-input v-model="order.billingAddress.zipCode" label="poštanski broj*" />
+                    <va-input v-model="order.billingAddress.country" label="država*" />
                     <va-checkbox
                         v-model="order.sameAddress"
                         label="Adresa za dostavu je jednaka adresi za naplatu"
@@ -115,10 +115,6 @@ const order = reactive({
             {
                 id: 2,
                 label: 'Plaćanje uplatnicom (virman)',
-            },
-            {
-                id: 3,
-                label: 'Paypal',
             },
         ],
         selectedShipping: {

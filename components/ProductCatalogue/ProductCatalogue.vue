@@ -7,7 +7,7 @@
                     v-model="props.isSidebarVisible"
                 >
                     <component :is="props.isMobile ? VaSidebarItem : 'span'">
-                        <va-accordion class="w-2/3 mx-auto">
+                        <va-accordion class="w-11/12 md:w-2/3 md:mx-auto">
                             <va-collapse
                                 v-for="(option, index) in dropdownOptions"
                                 :key="option.title"
@@ -40,7 +40,7 @@
                             </va-collapse>
                             <va-button
                                 @click="filterHandler"
-                                class="my-3 mr-3"
+                                class="my-3 mr-2 md:mr-3"
                                 type="submit"
                                 color="#f97316"
                                 text-color="#fff"
@@ -104,6 +104,11 @@
 <style scoped>
 .va-sidebar {
     position: fixed;
+}
+
+.va-sidebar-item {
+    margin-top: 5rem;
+    position: relative;
 }
 </style>
 

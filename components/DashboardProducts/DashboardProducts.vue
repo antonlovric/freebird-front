@@ -48,13 +48,13 @@
                 icon="update"
                 >Ažuriraj</va-button
             >
-            <edit-product-form
+            <product-form
                 v-if="input.isModalVisible"
                 :isVisible="input.isModalVisible"
                 :product="selectedItems[0]"
                 :predefinedData="predefinedData"
                 @close-modal="input.isModalVisible = false"
-            ></edit-product-form>
+            ></product-form>
             <va-button
                 :disabled="items.ids.length === 0"
                 @click="removeHandler"
@@ -93,6 +93,12 @@ const input = reactive({
     isModalVisible: false,
 });
 
+const predefinedData = reactive({
+    productTypes: [],
+    conditions: [],
+    genres: [],
+});
+
 const emits = defineEmits(['change_page']);
 
 const handlePageChange = () => {
@@ -108,7 +114,7 @@ const removeHandler = async () => {
         body: {
             ids: items.ids,
         },
-        async onResponseError({ response }) {
+        async onResponseError({ response, error }) {
             init({
                 title: 'Odjava',
                 position: 'bottom-right',
@@ -137,35 +143,55 @@ const columns = [
     { key: 'url', name: 'image', label: 'image' },
 ];
 
-const responseProductTypes = await useFetch(`${config.API_BASE_URL}/productTypes`, {
-    method: 'GET',
-    initialCache: false,
-    async onResponseError({ response }) {
-        errorStatus.value = response.status;
-    },
-});
+const responseProductTypes = await useFetch(`${config.API_BASE_URL}/productTypes`);
 
-const predefinedData = reactive({
-    productTypes: [],
-    conditions: [],
-    genres: [],
-});
-predefinedData.productTypes = responseProductTypes.data.value;
+if (!responseProductTypes.error.value) {
+    predefinedData.productTypes = responseProductTypes.data.value;
+} else {
+    init({
+        title: 'Dohvaćanje stanja proizvoda',
+        position: 'bottom-right',
+        message: 'Greška prilikom dohvaćanja stanja proizvoda!',
+        color: 'danger',
+        duration: 5000,
+    });
+}
 
 const responseConditions = await useFetch(`${config.API_BASE_URL}/conditions`, {
     method: 'GET',
     initialCache: false,
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
+        init({
+            title: 'Dohvaćanje stanja proizvoda',
+            position: 'bottom-right',
+            message: 'Greška prilikom dohvaćanja stanja proizvoda!',
+            color: 'danger',
+            duration: 5000,
+        });
+    },
+    async onResponse({ response }) {
+        if (response.status === 200) {
+            predefinedData.conditions = response._data;
+        }
     },
 });
-predefinedData.conditions = responseConditions.data.value;
 
 const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
     method: 'GET',
     initialCache: false,
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
+        init({
+            title: 'Dohvaćanje žanrova',
+            position: 'bottom-right',
+            message: 'Greška prilikom dohvaćanja žanrova!',
+            color: 'danger',
+            duration: 5000,
+        });
+    },
+    async onResponse({ response }) {
+        if (response.status === 200) {
+            predefinedData.genres = response._data;
+        }
     },
 });
 predefinedData.genres = responseGenres.data.value;

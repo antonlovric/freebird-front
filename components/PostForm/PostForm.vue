@@ -1,55 +1,89 @@
 <template>
-    <div class="min-h-[80vh] pt-[10vh] relative">
-        <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">Dodavanje Proizvoda</h1>
-        <form
-            enctype="multipart/form-data"
-            id="form"
-            class="flex flex-col justify-center items-center sm:w-1/5 w-3/4 mx-auto gap-6 mb-5"
-            @submit.prevent
+    <div class="absolute">
+        <va-modal
+            hide-default-actions
+            v-model="modal.isVisible"
+            fullscreen
+            @before-close="() => emits('close-modal')"
         >
-            <va-input class="w-8/12" v-model="postData.heading" label="Naslov" />
-            <va-input label="Podnaslov" v-model="postData.subheading" />
-            <va-input label="Sadržaj" type="textarea" :min-rows="6" v-model="postData.body" />
-            <va-file-upload
-                v-model="postData.displayImage"
-                id="image"
-                type="single"
-                file-types="jpg,png,webp"
-                ref="displayImage"
-                @file-added="(files) => fileAddHandler(files, 1)"
-                @file-removed="(file) => fileRemoveHandler(file, 1)"
-                upload-button-text="Prenesi naslovnu fotografiju"
-                deleted-file-message="Naslovna fotografija uspješno obrisana"
-            />
-            <va-file-upload
-                v-model="postData.image"
-                id="image"
-                type="gallery"
-                file-types="jpg,png,webp"
-                ref="file"
-                @file-added="(files) => fileAddHandler(files, 0)"
-                @file-removed="(file) => fileRemoveHandler(file, 0)"
-                upload-button-text="Prenesi fotografije"
-                deleted-file-message="Fotografija uspješno obrisana"
-            />
-            <va-button
-                :disabled="images.imageCollection.length === 0 || images.displayImageId === null"
-                :click="submitHandler"
-                >Kreiraj Objavu</va-button
+            <template #header>
+                <h3 class="text-2xl mb-4 sm:mb-0 sm:text-4xl sm:mt-4 text-center">
+                    {{ props.post ? 'Ažuriranje Objave' : 'Dodavanje Objave' }}
+                </h3>
+            </template>
+            <form
+                enctype="multipart/form-data"
+                id="form"
+                class="flex flex-col w-3/4 sm:w-full mx-auto gap-6 mb-5"
+                @submit.prevent
             >
-        </form>
+                <va-input class="w-8/12" v-model="postData.heading" label="Naslov" />
+                <va-input label="Podnaslov" v-model="postData.subheading" />
+                <va-input label="Sadržaj" type="textarea" :min-rows="6" v-model="postData.body" />
+                <va-file-upload
+                    v-if="!props.post"
+                    v-model="postData.displayImage"
+                    id="image"
+                    type="single"
+                    file-types="jpg,png,webp"
+                    ref="displayImage"
+                    @file-added="(files) => fileAddHandler(files, 1)"
+                    @file-removed="(file) => fileRemoveHandler(file, 1)"
+                    upload-button-text="Prenesi naslovnu fotografiju"
+                    deleted-file-message="Naslovna fotografija uspješno obrisana"
+                />
+                <va-file-upload
+                    v-if="!props.post"
+                    v-model="postData.image"
+                    id="image"
+                    type="gallery"
+                    file-types="jpg,png,webp"
+                    ref="file"
+                    @file-added="(files) => fileAddHandler(files, 0)"
+                    @file-removed="(file) => fileRemoveHandler(file, 0)"
+                    upload-button-text="Prenesi fotografije"
+                    deleted-file-message="Fotografija uspješno obrisana"
+                />
+            </form>
+            <template #footer>
+                <div class="inline-flex justify-center items-center gap-5">
+                    <va-button v-if="props.product" @click="updateHandler">Ažuriraj</va-button>
+                    <va-button
+                        :disabled="
+                            images.imageCollection.length === 0 || images.displayImageId === null
+                        "
+                        v-else
+                        @click="submitHandler"
+                        >Kreiraj</va-button
+                    >
+
+                    <va-button @click="() => emits('close-modal')"> Odustani </va-button>
+                </div>
+            </template>
+        </va-modal>
     </div>
 </template>
 
 <script setup>
 import { useUserStore } from '~~/stores/user';
 
+const props = defineProps({
+    post: Object,
+    isVisible: Boolean,
+});
+
 const userData = useUserStore();
 const router = useRouter();
 const file = ref(null);
 const displayImage = ref(null);
 const config = useRuntimeConfig();
-const postData = ref({ image: '', displayImage: '', heading: '', subheading: '', body: '' });
+const postData = ref({
+    image: '',
+    displayImage: '',
+    heading: props.post?.heading || '',
+    subheading: props.post?.subheading || '',
+    body: props.post?.body || '',
+});
 const images = reactive({ imageCollection: [], displayImageId: null });
 const { init, close } = useToast();
 
@@ -57,6 +91,15 @@ const getImageIds = () => {
     const imageIds = images.imageCollection.map((image) => image.id);
     imageIds.push(images.displayImageId);
     return imageIds;
+};
+
+const emits = defineEmits(['close-modal']);
+const modal = reactive({ isVisible: props.isVisible });
+
+const isValid = () => {
+    if (Object.values(postData.value).some((prop) => prop === null || prop === undefined))
+        return false;
+    return true;
 };
 
 const assignImagesToPost = (postId) => {
@@ -92,6 +135,15 @@ const assignImagesToPost = (postId) => {
 };
 
 const submitHandler = () => {
+    if (!isValid()) {
+        init({
+            title: 'Kreiranje Objave',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
     init({
         title: 'Kreiranje Objave',
         position: 'bottom-right',
@@ -121,9 +173,57 @@ const submitHandler = () => {
         async onResponse({ request, response, options }) {
             if (response.status === 201) {
                 assignImagesToPost(response._data.id);
-                setTimeout(() => {
-                    router.push({ path: '/dashboard' });
-                }, 500);
+                emits('close-modal');
+            }
+        },
+    });
+};
+
+const updateHandler = () => {
+    if (!isValid()) {
+        init({
+            title: 'Ažuriranje Objave',
+            position: 'bottom-right',
+            color: 'danger',
+            message: 'Ispunite sva polja!',
+        });
+        return;
+    }
+    init({
+        title: 'Ažuriranje Objave',
+        position: 'bottom-right',
+        message: 'Pričekajte...',
+    });
+
+    const responsePost = useFetch(`${config.API_BASE_URL}/posts`, {
+        method: 'PUT',
+        body: {
+            heading: postData.value.heading,
+            subheading: postData.value.subheading,
+            body: postData.value.body,
+            session_id: userData.session_id,
+        },
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        initialCache: false,
+        async onResponseError({ response }) {
+            init({
+                title: 'Ažuriranje objave',
+                position: 'bottom-right',
+                color: 'danger',
+                message: 'Greška prilikom ažuriranja objave!',
+            });
+        },
+        async onResponse({ request, response, options }) {
+            if (response.status === 201) {
+                init({
+                    title: 'Ažuriranje objave',
+                    position: 'bottom-right',
+                    color: 'success',
+                    message: 'Objava uspješno ažurirana!',
+                });
+                emits('close-modal');
             }
         },
     });
@@ -216,7 +316,7 @@ const fileRemoveHandler = (file, isDisplay) => {
 </script>
 
 <style>
-.va-input {
-    min-width: 200px;
+div {
+    --va-data-table-thead-color: #fff;
 }
 </style>

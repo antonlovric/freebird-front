@@ -31,9 +31,22 @@
             class="sm:ml-16 flex-col sm:flex-row inline-flex flex-column items-center gap-4 justify-start mt-5"
         >
             <span>Šifre označenih objava: {{ items.ids.toString() }}</span>
-            <nuxt-link to="addPost">
-                <va-button color="success" icon="add_circle">Dodaj</va-button>
-            </nuxt-link>
+            <va-button @click="input.isModalVisible = true" color="success" icon="add_circle"
+                >Dodaj</va-button
+            >
+            <va-button
+                @click="input.isModalVisible = true"
+                :disabled="items.ids.length !== 1"
+                color="warning"
+                icon="update"
+                >Ažuriraj</va-button
+            >
+            <post-form
+                v-if="input.isModalVisible"
+                :isVisible="input.isModalVisible"
+                :post="selectedItems[0]"
+                @close-modal="input.isModalVisible = false"
+            ></post-form>
             <va-button
                 :disabled="items.ids.length === 0"
                 @click="removeHandler"
@@ -58,6 +71,7 @@ const input = reactive({
     searchQuery: '',
     page: props.currentPage,
     totalPages: props.totalPages,
+    isModalVisible: false,
 });
 const emits = defineEmits(['change_page']);
 const handlePageChange = () => {
@@ -75,7 +89,13 @@ const selectHandler = (prop) => {
 };
 
 const removeHandler = async () => {
-    const response = await useLazyFetch(`${config.API_BASE_URL}/posts/deletePosts`, {
+    init({
+        title: 'Brisanje Objava',
+        position: 'bottom-right',
+        message: 'Pričekajte...',
+        duration: 5000,
+    });
+    const response = await useFetch(`${config.API_BASE_URL}/posts/deletePosts`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -85,23 +105,25 @@ const removeHandler = async () => {
         },
         async onResponseError({ response }) {
             init({
-                title: 'Odjava',
+                title: 'Brisanje Objava',
                 position: 'bottom-right',
                 message: 'Greška prilikom brisanja!',
                 color: 'danger',
                 duration: 5000,
             });
         },
+        onResponse({ response }) {
+            if (response.status === 200) {
+                init({
+                    title: 'Brisanje Objava',
+                    position: 'bottom-right',
+                    message: 'Proizvodi uspješno obrisani!',
+                    color: 'success',
+                    duration: 5000,
+                });
+            }
+        },
     });
-    if (response.status === 200) {
-        init({
-            title: 'Brisanje Proizvoda',
-            position: 'bottom-right',
-            message: 'Proizvodi uspješno obrisani!',
-            color: 'success',
-            duration: 5000,
-        });
-    }
 };
 
 const columns = [

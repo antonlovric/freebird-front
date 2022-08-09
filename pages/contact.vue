@@ -78,6 +78,10 @@ const submitHandler = () => {
         initialCache: false,
     });
 };
+
+useHead({
+    title: 'Kontakt',
+});
 </script>
 
 <style scoped>

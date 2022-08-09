@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-[80vh] pt-[5vh] sm:pt-[10vh] relative">
-        <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Dashboard</h2>
+        <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Upravljačka Ploča</h2>
         <dashboard-users />
         <dashboard-products
             :totalPages="responseProducts.data?.value?.last_page"
@@ -10,7 +10,7 @@
             @change_page="handlePageChangeProducts"
         />
         <dashboard-posts
-            :page="responsePosts.data?.value.data"
+            :page="responsePosts.data?.value?.data"
             :totalPages="responsePosts.data?.value?.last_page"
             :pendingPosts="responsePosts?.pendingPosts"
             :posts="responsePosts.data?.value?.data"
@@ -31,21 +31,21 @@ const inputPosts = reactive({
     totalPages: 1,
 });
 
-const responseProducts = useLazyAsyncData('products', () =>
+const responseProducts = await useAsyncData('products', () =>
     $fetch(`${config.API_BASE_URL}/products`, {
         params: {
             title: '',
             page: inputProducts.page,
-            page_size: 3,
+            page_size: 5,
         },
     })
 );
 
-const responsePosts = useLazyAsyncData('posts', () =>
+const responsePosts = await useAsyncData('posts', () =>
     $fetch(`${config.API_BASE_URL}/posts`, {
         params: {
             page: inputPosts.page,
-            page_size: 3,
+            page_size: 5,
         },
     })
 );
