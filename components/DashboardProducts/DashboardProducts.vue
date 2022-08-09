@@ -108,7 +108,7 @@ const removeHandler = async () => {
         body: {
             ids: items.ids,
         },
-        async onResponseError({ response }) {
+        async onResponseError({ response, error }) {
             init({
                 title: 'Odjava',
                 position: 'bottom-right',
