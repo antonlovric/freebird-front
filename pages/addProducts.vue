@@ -1,7 +1,0 @@
-<template>
-    <div>
-        <the-header />
-        <add-product-form />
-        <the-footer />
-    </div>
-</template>

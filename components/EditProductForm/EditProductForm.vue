@@ -157,7 +157,7 @@ const productData = ref({
     media_condition: props.product?.media_condition,
     sku: props.product?.sku,
     initial_price: props.product?.initial_price,
-    discount: props.product?.discount,
+    discount: props.product?.discount || 0,
     rating: 0,
     product_type_id: props.product?.product_type_id,
     genre_id: props.product?.genre_id,

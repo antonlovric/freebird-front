@@ -27,6 +27,17 @@ export default defineNuxtConfig({
     css: ['~/assets/css/tailwind.css'],
     modules: ['@vuestic/nuxt'],
 
+    head: {
+        title: 'Test',
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+    },
+
+    app: {
+        head: {
+            link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        },
+    },
+
     buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@pinia/nuxt'],
 
     tailwindcss: {
