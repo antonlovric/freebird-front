@@ -4,7 +4,7 @@
             hide-default-actions
             v-model="modal.isVisible"
             fullscreen
-            @click-outside="() => emits('close-modal')"
+            @before-close="() => emits('close-modal')"
         >
             <template #header>
                 <h3 class="text-2xl mb-4 sm:mb-0 sm:text-4xl sm:mt-4 text-center">

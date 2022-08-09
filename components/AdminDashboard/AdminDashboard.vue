@@ -10,7 +10,7 @@
             @change_page="handlePageChangeProducts"
         />
         <dashboard-posts
-            :page="responsePosts.data?.value.data"
+            :page="responsePosts.data?.value?.data"
             :totalPages="responsePosts.data?.value?.last_page"
             :pendingPosts="responsePosts?.pendingPosts"
             :posts="responsePosts.data?.value?.data"
@@ -31,21 +31,21 @@ const inputPosts = reactive({
     totalPages: 1,
 });
 
-const responseProducts = useLazyAsyncData('products', () =>
+const responseProducts = await useAsyncData('products', () =>
     $fetch(`${config.API_BASE_URL}/products`, {
         params: {
             title: '',
             page: inputProducts.page,
-            page_size: 3,
+            page_size: 5,
         },
     })
 );
 
-const responsePosts = useLazyAsyncData('posts', () =>
+const responsePosts = await useAsyncData('posts', () =>
     $fetch(`${config.API_BASE_URL}/posts`, {
         params: {
             page: inputPosts.page,
-            page_size: 3,
+            page_size: 5,
         },
     })
 );
