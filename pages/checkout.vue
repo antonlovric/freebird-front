@@ -63,18 +63,23 @@ const userDetails = await useAsyncData('user_checkout_details', () =>
     })
 );
 
-const isDisabled = (order) => {
+const isInvalid = (order) => {
     return (
         order.personalDetails.firstName === '' ||
         order.personalDetails.lastName === '' ||
         order.personalDetails.email === '' ||
+        order.personalDetails.phone === '' ||
+        order.billingAddress.address === '' ||
+        order.billingAddress.city === '' ||
+        order.billingAddress.country === '' ||
+        order.billingAddress.zipCode === '' ||
         !order.terms ||
         !order.privacy
     );
 };
 
 const handleCheckout = async (order) => {
-    if (isDisabled(order)) {
+    if (isInvalid(order)) {
         init({
             title: 'Dovršavanje narudžbe',
             position: 'bottom-right',
@@ -86,6 +91,7 @@ const handleCheckout = async (order) => {
     const price = reactive({ updatedPrice: cartData.cartPrice });
     if (order.sameAddress) order.shippingAddress = order.billingAddress;
     if (order.paymentDetails.selectedPayment.id === 1) price.updatedPrice += 30;
+
     const responseOrder = await useFetch(`${config.API_BASE_URL}/orders`, {
         method: 'POST',
         initialCache: false,
@@ -114,7 +120,7 @@ const handleCheckout = async (order) => {
                 title: 'Dovršavanje narudžbe',
                 position: 'bottom-right',
                 message: 'Greška prilikom dovršavanja narudžbe!',
-                color: 'warning',
+                color: 'danger',
             });
         },
         async onResponse({ response }) {

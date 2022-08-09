@@ -136,6 +136,14 @@ const handleSubmit = async (event) => {
                     color: 'danger',
                     duration: 5000,
                 });
+            } else {
+                init({
+                    title: 'Prijava',
+                    position: 'bottom-right',
+                    message: 'Pogreška prilikom prijave! ' + response.statusText,
+                    color: 'danger',
+                    duration: 5000,
+                });
             }
         },
     });

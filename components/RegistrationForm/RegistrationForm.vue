@@ -112,7 +112,7 @@ const handleSubmit = async () => {
             });
         },
         onResponse({ response }) {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 init({
                     title: 'Registracija',
                     position: 'bottom-right',
