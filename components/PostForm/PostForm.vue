@@ -44,18 +44,18 @@
                     upload-button-text="Prenesi fotografije"
                     deleted-file-message="Fotografija uspješno obrisana"
                 />
-                <va-button
-                    :disabled="
-                        images.imageCollection.length === 0 || images.displayImageId === null
-                    "
-                    :click="submitHandler"
-                    >Kreiraj Objavu</va-button
-                >
             </form>
             <template #footer>
                 <div class="inline-flex justify-center items-center gap-5">
                     <va-button v-if="props.product" @click="updateHandler">Ažuriraj</va-button>
-                    <va-button v-else @click="submitHandler">Kreiraj</va-button>
+                    <va-button
+                        :disabled="
+                            images.imageCollection.length === 0 || images.displayImageId === null
+                        "
+                        v-else
+                        @click="submitHandler"
+                        >Kreiraj</va-button
+                    >
 
                     <va-button @click="() => emits('close-modal')"> Odustani </va-button>
                 </div>
