@@ -38,6 +38,7 @@ const config = useRuntimeConfig();
 const fetchItems = async () => {
     await useFetch(`${config.API_BASE_URL}/posts/latest`, {
         server: false,
+        initialCache: false,
         async onResponse({ response }) {
             posts.postCollection = response._data;
         },

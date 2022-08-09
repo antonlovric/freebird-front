@@ -52,6 +52,7 @@ const products = reactive({ collection: [] });
 const fetchItems = async () => {
     await useFetch(`${config.API_BASE_URL}/products/featured`, {
         server: false,
+        initialCache: false,
         async onResponse({ response }) {
             products.collection = response._data.data;
         },

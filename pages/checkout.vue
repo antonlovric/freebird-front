@@ -7,10 +7,7 @@
                 class="flex flex-col items-center sm:items-start justify-center sm:grid grid-rows-2 grid-cols-1 sm:grid-cols-3 sm:grid-rows-1"
             >
                 <div class="order-2 sm:order-1 sm:col-span-2">
-                    <checkout-details
-                        :details="userDetails?.data.value?.data?.data?.[0]"
-                        @checkout="handleCheckout"
-                    />
+                    <checkout-details :details="user.details" @checkout="handleCheckout" />
                 </div>
                 <div class="order-1 sm:order-2 max-w-[250px] mb-10">
                     <va-inner-loading :loading="cart.isLoading">
@@ -38,6 +35,7 @@ const cartData = useCartStore();
 const { init } = useToast();
 const router = useRouter();
 const cart = reactive({ items: [], isLoading: true, totalPrice: 0 });
+const user = reactive({ details: [] });
 const cartCookie = useCookie('cart_id');
 if (userData.session_id) {
     const responseCartItems = await useFetch(
@@ -46,9 +44,17 @@ if (userData.session_id) {
             initialCache: false,
         }
     );
-    if (!responseCartItems.error.value) {
+    const personalData = await useFetch(`${config.API_BASE_URL}/users/${userData.session_id}`, {
+        headers: {
+            Authorization: `Bearer ${userData.token}`,
+        },
+        initialCache: false,
+    });
+    if (!responseCartItems.error.value && !personalData.error.value) {
         cart.items = responseCartItems.data.value;
         cart.isLoading = responseCartItems.pending.value;
+        user.details = personalData.data.value;
+
         cart.totalPrice = cart?.items?.reduce((prev, next) => prev + next.quantity * next.price, 0);
     }
 } else {
@@ -56,17 +62,6 @@ if (userData.session_id) {
     cart.isLoading = false;
     cart.totalPrice = cartData?.cartPrice;
 }
-
-const userDetails = await useAsyncData('user_checkout_details', () =>
-    useFetch(`${config.API_BASE_URL}/users`, {
-        params: {
-            session_id: userData.session_id,
-        },
-        headers: {
-            Authorization: `Bearer ${userData.token}`,
-        },
-    })
-);
 
 const isInvalid = (order) => {
     return (
