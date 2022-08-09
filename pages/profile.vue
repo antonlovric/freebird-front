@@ -11,7 +11,9 @@
 
 <script setup>
 import { useUserStore } from '~~/stores/user';
-
+definePageMeta({
+    middleware: 'auth',
+});
 const userData = useUserStore();
 const config = useRuntimeConfig();
 const productData = reactive({ orderedProducts: [] });
