@@ -119,15 +119,8 @@
             </form>
             <template #footer>
                 <div class="inline-flex justify-center items-center gap-5">
-                    <va-button
-                        :disabled="() => !isValid()"
-                        v-if="props.product"
-                        @click="updateHandler"
-                        >Ažuriraj</va-button
-                    >
-                    <va-button :disabled="() => !isValid()" v-else @click="submitHandler"
-                        >Kreiraj</va-button
-                    >
+                    <va-button v-if="props.product" @click="updateHandler">Ažuriraj</va-button>
+                    <va-button v-else @click="submitHandler">Kreiraj</va-button>
 
                     <va-button @click="() => emits('close-modal')"> Odustani </va-button>
                 </div>
