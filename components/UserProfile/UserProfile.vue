@@ -3,7 +3,7 @@
         <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">Profil</h1>
         <div class="w-5/6 mx-auto mb-10">
             <div class="inline-flex w-full gap-10 justify-center items-center">
-                <h2 class="text-center text-2xl">{{ data.username }}</h2>
+                <h2 class="text-center text-2xl">{{ props.personalDetails.username }}</h2>
                 <nuxt-link v-if="userData.type === 2" to="/dashboard" class="cursor-pointer"
                     ><va-chip>Upravljačka Ploča</va-chip></nuxt-link
                 >
@@ -23,7 +23,24 @@
                 </div>
                 <div>
                     <h3 class="mb-4 text-xl">Narudžbe</h3>
-                    <va-data-table :columns="columns" striped :items="data.orders"></va-data-table>
+                    <va-data-table
+                        :columns="columns"
+                        striped
+                        :items="orders.currentData"
+                        :per-page="orders.perPage"
+                    >
+                        <template #bodyAppend>
+                            <tr>
+                                <td colspan="8" class="table-example--pagination">
+                                    <va-pagination
+                                        v-model="orders.currentPage"
+                                        :pages="orders.pages || 1"
+                                        @update:model-value="handlePageChangeOrders"
+                                    />
+                                </td>
+                            </tr>
+                        </template>
+                    </va-data-table>
                 </div>
             </div>
             <va-data-table
@@ -69,7 +86,20 @@ const props = defineProps({
     orderedProducts: Array,
 });
 
-const { data } = props.personalDetails;
+console.log(props.personalDetails);
+
+const data = props.personalDetails.orders;
+
+const orders = reactive({
+    orderCollection: data,
+    currentPage: 1,
+    perPage: 5,
+    pages: 1,
+    currentData: data,
+});
+
+orders.pages = orders.orderCollection?.length / orders.perPage || 1;
+
 const modal = reactive({
     isVisible: false,
     productTitle: '',
@@ -82,12 +112,12 @@ const { init } = useToast();
 const config = useRuntimeConfig();
 
 const personalData = reactive({
-    firstName: data.first_name,
-    lastName: data.last_name,
-    city: data.city,
-    country: data.country,
-    zipcode: data.zipcode,
-    phone: data.phone,
+    firstName: props.personalDetails.first_name,
+    lastName: props.personalDetails.last_name,
+    city: props.personalDetails.city,
+    country: props.personalDetails.country,
+    zipcode: props.personalDetails.zipcode,
+    phone: props.personalDetails.phone,
     isChanged: true,
 });
 
@@ -150,6 +180,12 @@ const handleRowClick = (args) => {
     modal.isVisible = true;
     modal.productId = args.item.id;
     modal.productTitle = args.item.title;
+};
+
+const handlePageChangeOrders = (value) => {
+    const start = (value - 1) * orders.perPage;
+    const end = start + orders.perPage;
+    orders.currentData = orders.orderCollection.slice(start, end);
 };
 
 const handleReview = () => {
