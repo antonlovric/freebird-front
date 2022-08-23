@@ -48,9 +48,6 @@ const getDetails = async () => {
             'phone',
             'carts',
         ],
-        onResponse({ response }) {
-            console.log(response);
-        },
     });
     profileData.personalDetails = responseDetails.data.value;
 };

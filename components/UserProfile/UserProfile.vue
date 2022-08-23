@@ -86,8 +86,6 @@ const props = defineProps({
     orderedProducts: Array,
 });
 
-console.log(props.personalDetails);
-
 const data = props.personalDetails.orders;
 
 const orders = reactive({
