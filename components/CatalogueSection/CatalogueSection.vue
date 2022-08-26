@@ -21,6 +21,7 @@
                         :key="index"
                         :imageSource="product?.url"
                         :productLink="`products/${product?.id}`"
+                        :productName="product?.title"
                     />
                 </div>
                 <div class="w-11/12 mx-auto my-12 flex flex-col sm:flex-row justify-center gap-8">
