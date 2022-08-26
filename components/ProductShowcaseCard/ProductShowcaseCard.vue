@@ -1,6 +1,10 @@
 <template>
     <va-card class="product-showcase-card">
-        <img :src="props.imageSource" style="width: 250px; height: 250px" alt="" />
+        <img
+            :src="props.imageSource"
+            style="width: 250px; height: 250px"
+            :alt="props.productName"
+        />
         <div class="text-white mt-2 text-xl">{{ props.productName }}</div>
         <va-card-actions align="center" class="bg-primary shadow-none">
             <nuxt-link :to="props.productLink">
