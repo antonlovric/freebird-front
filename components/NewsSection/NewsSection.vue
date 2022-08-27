@@ -22,7 +22,7 @@
                     :key="index"
                     :postTitle="post.heading"
                     :postDescription="post.subheading"
-                    :image="post.images[0]?.url"
+                    :image="post?.images[0]?.url"
                     :postId="post.id"
                 />
             </div>
@@ -36,8 +36,9 @@ const posts = reactive({ postCollection: [] });
 const config = useRuntimeConfig();
 
 const fetchItems = async () => {
-    const response = await useFetch(`${config.API_BASE_URL}/posts/latest`);
-    posts.postCollection = response.data?.value;
+    const response = await fetch(`${config.API_BASE_URL}/posts/latest`);
+    posts.postCollection = await response.json();
+    posts.postCollection = posts.postCollection;
 };
 
 await fetchItems();
