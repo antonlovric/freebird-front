@@ -114,6 +114,12 @@ const addCartItem = async () => {
             },
             discount: props.discount,
         });
+        init({
+            title: 'Dodavanje Proizvoda',
+            position: 'bottom-right',
+            message: 'Proizvod uspješno dodan u košaricu!',
+            color: 'success',
+        });
     } else {
         const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
             method: 'POST',
@@ -126,7 +132,7 @@ const addCartItem = async () => {
             initialCache: false,
             async onResponseError({ response }) {
                 init({
-                    title: 'Kreiranje Proizvoda',
+                    title: 'Dodavanje Proizvoda',
                     position: 'bottom-right',
                     message: 'Greška prilikom dodavanja proizvoda u košaricu!',
                     color: 'warning',
@@ -134,7 +140,7 @@ const addCartItem = async () => {
             },
             async onResponse({ request, options, response }) {
                 init({
-                    title: 'Kreiranje Proizvoda',
+                    title: 'Dodavanje Proizvoda',
                     position: 'bottom-right',
                     message: 'Proizvod uspješno dodan u košaricu!',
                     color: 'success',
