@@ -11,5 +11,14 @@
 <script setup>
 useHead({
     title: 'Free Bird Music',
+    meta: [
+        {
+            name: 'description',
+            content: 'Domaća stranica Free Bird Music glazbenog dućana.',
+        },
+    ],
+    htmlAttrs: {
+        lang: 'hr',
+    },
 });
 </script>
