@@ -20,12 +20,12 @@
                         <a
                             aria-label="visit facebook page"
                             href="https://www.facebook.com/Free-Bird-Music-Shop-149579005105474/"
-                            ><img src="~/assets/facebook-brands.svg"
+                            ><img alt="facebook" src="~/assets/facebook-brands.svg"
                         /></a>
                         <a
                             aria-label="visit instagram page"
                             href="https://www.instagram.com/freebirdmusicshop1/"
-                            ><img src="~/assets/instagram-brands.svg"
+                            ><img alt="instagram" src="~/assets/instagram-brands.svg"
                         /></a>
                     </div>
                 </li>

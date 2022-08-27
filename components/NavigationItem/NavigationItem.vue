@@ -5,6 +5,7 @@
                 :to="props.path"
                 class="inline-flex items-center justify-center px-1 py-1"
                 v-if="props.type === 'link'"
+                :aria-label="props.text"
             >
                 <va-icon v-if="props.icon" :name="props.iconName" />
                 <span v-else>{{ props.text }}</span>
@@ -18,6 +19,7 @@
             <span v-else>{{ props.text }}</span>
         </span>
         <nuxt-link
+            :aria-label="props.text"
             :to="products.cartQuantity > 0 ? props.path : '#'"
             v-on:mouseenter="handleCartHover"
             v-on:mouseleave="handleCartHoverOut"
