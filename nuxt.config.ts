@@ -49,17 +49,6 @@ export default defineNuxtConfig({
         viewer: true,
     },
 
-    googleFonts: {
-        families: {
-            Roboto: true,
-            Raleway: {
-                wght: [100, 400, 600],
-                ital: [100],
-            },
-            'Russo+One': true,
-        },
-    },
-
     vuestic: {
         config: {
             colors: {
