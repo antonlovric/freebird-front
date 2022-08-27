@@ -18,7 +18,7 @@
             <span v-else>{{ props.text }}</span>
         </span>
         <nuxt-link
-            :to="products.cartQuantity > 0 ? props.path : ''"
+            :to="products.cartQuantity > 0 ? props.path : '#'"
             v-on:mouseenter="handleCartHover"
             v-on:mouseleave="handleCartHoverOut"
             v-if="props.type === 'cart'"

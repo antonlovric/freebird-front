@@ -2,15 +2,6 @@
     <div
         class="homepage-hero-container relative h-[100vh] w-[100vw] flex justify-center items-center flex-col"
     >
-        <Head>
-            <Link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin
-            /></Link>
-            <Link
-                href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
-                rel="stylesheet"
-            />
-        </Head>
         <div
             class="inline-flex gap-3 flex-col justify-center items-center text-center w-full h-full mt-auto"
         >
@@ -18,7 +9,7 @@
             <h2 class="px-3 text-2xl sm:text-3xl">Najveći glazbeni dućan u Hrvatskoj</h2>
         </div>
         <img
-            src="~/assets/HeroSplashImage.png"
+            src="~/assets/HeroSplashImage.webp"
             class="object-cover absolute w-full h-full brightness-50 top-0 -z-10"
             alt=""
         />
