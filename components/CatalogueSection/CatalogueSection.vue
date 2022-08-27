@@ -51,15 +51,11 @@ const config = useRuntimeConfig();
 const products = reactive({ collection: [] });
 
 const fetchItems = async () => {
-    await useFetch(`${config.API_BASE_URL}/products/featured`, {
-        server: false,
-        async onResponse({ response }) {
-            products.collection = response._data.data;
-        },
-    });
+    const response = await useFetch(`${config.API_BASE_URL}/products/featured`);
+    products.collection = response.data?.value?.data;
 };
 
-fetchItems();
+await fetchItems();
 </script>
 
 <style scoped>
