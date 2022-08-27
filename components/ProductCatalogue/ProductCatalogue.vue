@@ -85,7 +85,6 @@
                                 :mediaCondition="product.media_condition"
                                 :sleeveCondition="product.sleeve_condition"
                                 :productType="product.product_type"
-                                :productData="product"
                             />
                         </li>
                     </ul>
@@ -147,6 +146,7 @@ const filters = reactive({
         { filter: 'genre', activeFilters: [] },
         { filter: 'media_condition', activeFilters: [] },
         { filter: 'sleeve_condition', activeFilters: [] },
+        { filter: 'tags', activeFilters: [] },
     ],
 });
 
@@ -179,6 +179,10 @@ const dropdownOptions = [
     },
     {
         title: 'Stanje Omota',
+        content: [],
+    },
+    {
+        title: 'Oznake',
         content: [],
     },
 ];
@@ -215,6 +219,24 @@ const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions
     async onResponse({ request, response, options }) {
         dropdownOptions[3].content = response._data;
         dropdownOptions[4].content = response._data;
+    },
+    initialCache: false,
+});
+
+const responseTags = await useLazyFetch(`${config.API_BASE_URL}/tags`, {
+    method: 'GET',
+    async onResponseError({ response }) {
+        errorStatus.value = response.status;
+        init({
+            title: 'Dohvaćanje Oznaka',
+            position: 'bottom-right',
+            message: 'Greška prilikom dohvaćanja oznaka!',
+            color: 'danger',
+            duration: 5000,
+        });
+    },
+    async onResponse({ request, response, options }) {
+        dropdownOptions[5].content = response._data;
     },
     initialCache: false,
 });
@@ -289,6 +311,7 @@ const filterHandler = async () => {
             media_condition: filters.selectedFilters[3].activeFilters,
             sleeve_condition: filters.selectedFilters[4].activeFilters,
             title: input.searchQuery,
+            tags: filters.selectedFilters[5].activeFilters,
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;

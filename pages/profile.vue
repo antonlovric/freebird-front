@@ -1,9 +1,16 @@
 <template>
     <div>
         <the-header />
+        <div
+            v-if="!profileData.personalDetails || !profileData.orderedProducts"
+            class="h-1/2 m-auto w-full"
+        >
+            Greška prilikom učitavanja!
+        </div>
         <user-profile
-            :personalDetails="responseDetails?.data.value"
-            :orderedProducts="productData?.orderedProducts"
+            v-else
+            :personalDetails="profileData.personalDetails"
+            :orderedProducts="profileData?.orderedProducts"
         />
         <the-footer />
     </div>
@@ -16,15 +23,19 @@ definePageMeta({
 });
 const userData = useUserStore();
 const config = useRuntimeConfig();
-const productData = reactive({ orderedProducts: [] });
+const profileData = reactive({
+    orderedProducts: [],
+    personalDetails: [],
+});
 
-const responseDetails = await useAsyncData('personal_details', () =>
-    useFetch(`${config.API_BASE_URL}/users/session`, {
+const getDetails = async () => {
+    const responseDetails = await useFetch(`${config.API_BASE_URL}/users/session`, {
         params: {
             session_id: userData.session_id,
         },
         headers: {
             Authorization: `Bearer ${userData.token}`,
+            Accept: 'application/json',
         },
         pick: [
             'username',
@@ -37,11 +48,14 @@ const responseDetails = await useAsyncData('personal_details', () =>
             'phone',
             'carts',
         ],
-    })
-);
+    });
+    profileData.personalDetails = responseDetails.data.value;
+};
 
-const responseProducts = await useAsyncData('ordered_products', () =>
-    useFetch(`${config.API_BASE_URL}/orders/products`, {
+await getDetails();
+
+const getProducts = async () => {
+    const productDetails = await useFetch(`${config.API_BASE_URL}/orders/products`, {
         params: {
             session_id: userData.session_id,
         },
@@ -49,12 +63,12 @@ const responseProducts = await useAsyncData('ordered_products', () =>
             Authorization: `Bearer ${userData.token}`,
             Accept: 'application/json',
         },
-    })
-);
+    });
 
-if (responseProducts?.data?.value?.data) {
-    productData.orderedProducts = responseProducts?.data?.value?.data;
-}
+    profileData.orderedProducts = productDetails.data.value;
+};
+
+await getProducts();
 
 useHead({
     title: 'Profil',

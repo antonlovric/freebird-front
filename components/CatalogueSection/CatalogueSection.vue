@@ -17,10 +17,11 @@
                 </p>
                 <div class="mt-10 inline-flex flex-col justify-center gap-14 sm:flex-row">
                     <product-showcase-card
-                        v-for="(product, index) in products.collection"
-                        :key="index"
-                        :imageSource="product?.url"
-                        :productLink="`products/${product?.id}`"
+                        v-for="product in products.collection"
+                        :key="product.id"
+                        :imageSource="product.url"
+                        :productLink="`products/${product.id}`"
+                        :productName="product.title"
                     />
                 </div>
                 <div class="w-11/12 mx-auto my-12 flex flex-col sm:flex-row justify-center gap-8">
@@ -50,16 +51,12 @@ const config = useRuntimeConfig();
 const products = reactive({ collection: [] });
 
 const fetchItems = async () => {
-    await useFetch(`${config.API_BASE_URL}/products/featured`, {
-        server: false,
-        initialCache: false,
-        async onResponse({ response }) {
-            products.collection = response._data.data;
-        },
-    });
+    const response = await fetch(`${config.API_BASE_URL}/products/featured`);
+    products.collection = await response.json();
+    products.collection = products.collection?.data;
 };
 
-fetchItems();
+await fetchItems();
 </script>
 
 <style scoped>

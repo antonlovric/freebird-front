@@ -93,6 +93,18 @@
                     track-by="id"
                     value-by="id"
                 />
+                <va-select
+                    v-model="productData.tags"
+                    color="#000"
+                    label="Oznake"
+                    id="product_type_id"
+                    searchable
+                    multiple
+                    :options="props.predefinedData.tags"
+                    text-by="name"
+                    track-by="id"
+                    value-by="id"
+                />
                 <va-input
                     v-model="productData.edition"
                     color="#000"
@@ -141,6 +153,7 @@ const props = defineProps({
         productTypes: Array,
         conditions: Array,
         genres: Array,
+        tags: Array,
     },
 });
 
@@ -166,6 +179,7 @@ const productData = ref({
     genre_id: props.product?.genre_id,
     edition: props.product?.edition,
     stock: props.product?.stock,
+    tags: [],
     image: '',
 });
 
@@ -179,8 +193,7 @@ const isValid = () => {
     const { initial_price, discount, stock, image } = productData.value;
     if (Object.values(productData.value).some((prop) => prop === null || prop === undefined))
         return false;
-    if (discount < 0 || discount > 100 || stock < 0 || image === '' || initial_price < 0)
-        return false;
+    if (discount < 0 || discount > 100 || stock < 0 || initial_price < 0) return false;
     return true;
 };
 
@@ -214,6 +227,7 @@ const updateHandler = async () => {
             edition: productData.value.edition,
             stock: productData.value.stock,
             discount: productData.value.discount,
+            tags: productData.value.tags,
         },
         headers: {
             Authorization: `Bearer ${userData.token}`,

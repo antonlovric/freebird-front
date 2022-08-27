@@ -1,6 +1,6 @@
 <template>
     <div class="inline-flex justify-center items-center flex-col">
-        <va-icon class="mb-2" :color="props.iconColor" size="2.5rem" :name="props.icon" />
+        <va-icon class="mb-2 text-lg" :color="props.iconColor" size="3rem" :name="props.icon" />
         <span>{{ props.text }}</span>
     </div>
 </template>

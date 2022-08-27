@@ -2,13 +2,15 @@
     <ul
         class="inline-flex flex-row items-center justify-center w-full px-4 bg-primary bg-opacity-40 fixed pt-3 z-50"
     >
-        <div class="flex items-center justify-around w-1/3">
+        <li class="flex items-center justify-around w-1/3">
             <navigation-item class="inline-flex justify-start" text="Naslovnica" />
             <navigation-item class="inline-flex justify-start" path="/catalogue" text="Katalog" />
             <navigation-item class="inline-flex justify-start" path="/blogPosts" text="Novosti" />
-        </div>
-        <img src="~/assets/logo_transparent2.png" alt="Freebird logo" />
-        <div class="flex items-center justify-end w-1/3">
+        </li>
+        <li>
+            <img src="~/assets/logo_transparent2.png" alt="Freebird logo" />
+        </li>
+        <li class="flex items-center justify-end w-1/3">
             <navigation-item
                 v-if="!userData.token"
                 class="inline-flex justify-end"
@@ -41,7 +43,7 @@
                 icon-name="shopping_cart"
                 type="cart"
             />
-        </div>
+        </li>
     </ul>
 </template>
 

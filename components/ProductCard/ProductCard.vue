@@ -1,6 +1,13 @@
 <template>
     <va-card>
-        <va-image v-on:mouseenter="handleHover" class="product-image" :src="props.imgSrc" />
+        <div class="relative">
+            <span class="absolute inline-flex flex-wrap gap-2 z-10 left-2 top-1">
+                <va-chip size="small" v-for="(tag, index) in props?.tags" :key="index">{{
+                    tag.name
+                }}</va-chip>
+            </span>
+            <va-image v-on:mouseenter="handleHover" class="product-image" :src="props.imgSrc" />
+        </div>
         <va-card-content class="px-2 py-1">
             <div class="inline-flex items-center justify-between w-full mt-1">
                 <nuxt-link :to="`/products/${props.productId}`">{{ props.productTitle }}</nuxt-link>
@@ -76,6 +83,10 @@ const props = defineProps({
     discount: {
         type: Number,
         default: 0,
+    },
+    tags: {
+        type: Array,
+        default: [],
     },
 });
 

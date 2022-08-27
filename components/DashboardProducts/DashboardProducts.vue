@@ -97,6 +97,7 @@ const predefinedData = reactive({
     productTypes: [],
     conditions: [],
     genres: [],
+    tags: [],
 });
 
 const emits = defineEmits(['change_page']);
@@ -194,7 +195,29 @@ const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
         }
     },
 });
-predefinedData.genres = responseGenres.data.value;
+
+const responseTags = await useFetch(`${config.API_BASE_URL}/tags`, {
+    method: 'GET',
+    initialCache: false,
+    headers: {
+        Authorization: `Bearer ${userData.token}`,
+        Accept: 'application/json',
+    },
+    async onResponseError({ response }) {
+        init({
+            title: 'Dohvaćanje oznaka',
+            position: 'bottom-right',
+            message: 'Greška prilikom dohvaćanja oznaka!',
+            color: 'danger',
+            duration: 5000,
+        });
+    },
+    async onResponse({ response }) {
+        if (response.status === 200) {
+            predefinedData.tags = response._data;
+        }
+    },
+});
 </script>
 
 <style>

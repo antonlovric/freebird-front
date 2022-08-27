@@ -61,9 +61,9 @@ const notLoggedUser = ref([
     { name: 'Naslovnica', icon: 'home', route: '/' },
     { name: 'Katalog', icon: 'library_music', route: '/catalogue' },
     { name: 'Novosti', icon: 'feed', route: '/blogPosts' },
+    { name: 'Košarica', icon: 'shopping_cart', route: '/cart' },
     { name: 'Registracija', icon: 'how_to_reg', route: '/registration' },
     { name: 'Prijava', icon: 'login', route: '/login' },
-    { name: 'Košarica', icon: 'cart', route: '/cart' },
 ]);
 
 const loggedInUser = ref([
