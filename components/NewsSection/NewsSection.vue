@@ -40,5 +40,5 @@ const fetchItems = async () => {
     posts.postCollection = response.data?.value;
 };
 
-fetchItems();
+await fetchItems();
 </script>
