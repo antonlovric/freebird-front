@@ -2,17 +2,6 @@ import { defineNuxtConfig } from 'nuxt';
 import { createIconsConfig } from 'vuestic-ui';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-const fonts = [
-    {
-        name: 'mdi-{icon}',
-        resolve: ({ icon }) => ({
-            class: 'material-icons-outlined',
-            content: icon,
-            attrs: '',
-            tag: 'span',
-        }),
-    },
-];
 export default defineNuxtConfig({
     build: {
         postcss: {
