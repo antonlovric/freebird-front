@@ -204,10 +204,13 @@ const responseGenres = await useLazyFetch(`${config.API_BASE_URL}/genres`, {
     initialCache: false,
 });
 
+if (!responseGenres.error.value) {
+    dropdownOptions[2].content = responseGenres.data.value;
+}
+
 const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions`, {
     method: 'GET',
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Stanja',
             position: 'bottom-right',
@@ -304,14 +307,14 @@ const filterHandler = async () => {
     await useFetch(`${config.API_BASE_URL}/products`, {
         method: 'GET',
         params: {
-            format: filters.selectedFilters[0].activeFilters,
+            format: JSON.stringify(filters.selectedFilters[0].activeFilters),
             min_price: input.priceFilter.min,
             max_price: input.priceFilter.max,
-            genre: filters.selectedFilters[2].activeFilters,
-            media_condition: filters.selectedFilters[3].activeFilters,
-            sleeve_condition: filters.selectedFilters[4].activeFilters,
+            genre: JSON.stringify(filters.selectedFilters[2].activeFilters),
+            media_condition: JSON.stringify(filters.selectedFilters[3].activeFilters),
+            sleeve_condition: JSON.stringify(filters.selectedFilters[4].activeFilters),
             title: input.searchQuery,
-            tags: filters.selectedFilters[5].activeFilters,
+            tags: JSON.stringify(filters.selectedFilters[5].activeFilters),
         },
         async onResponseError({ response }) {
             errorStatus.value = response.status;
