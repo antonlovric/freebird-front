@@ -102,6 +102,7 @@ const handleSubmit = async () => {
     const response = await useFetch(`${config.API_BASE_URL}/auth/register`, {
         method: 'POST',
         body: formData,
+        initialCache: false,
         onResponseError({ response }) {
             init({
                 title: 'Registracija',

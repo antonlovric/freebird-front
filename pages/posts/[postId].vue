@@ -17,7 +17,6 @@ const id = route.params.postId;
 const postResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
     method: 'GET',
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje podataka o objavi',
             position: 'bottom-right',

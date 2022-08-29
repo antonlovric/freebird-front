@@ -1,6 +1,6 @@
 <template>
     <div class="ml-4 font-sans inline-flex justify-center relative w-11/12 text-center">
-        <div class="md:pt-[20vh] inline-flex justify-center flex-col text-left gap-8 mb-20">
+        <div class="md:pt-[5vh] inline-flex justify-center flex-col text-left gap-8 mb-20 relative">
             <div class="inline-flex flex-col md:flex-row w-full justify-center gap-8">
                 <div class="w-[400px] h-[400px] hidden md:block">
                     <img class="w-[400px] h-[400px] object-cover" :src="props.product.url" />
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="inline-flex flex-col">
+            <div class="flex flex-col w-[80vw]">
                 <h2 class="md:text-4xl">Opis</h2>
                 <div class="h-0.5 mb-2 mt-1 w-full bg-orange md:w-24" />
                 <p class="text-xl">{{ props.product.description }}</p>

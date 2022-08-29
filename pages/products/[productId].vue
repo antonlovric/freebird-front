@@ -2,10 +2,12 @@
     <div>
         <the-header />
         <div class="min-h-[80vh] pt-[10vh] relative">
-            <product-details
-                v-if="productResponse.data.value"
-                :product="productResponse.data.value"
-            />
+            <va-inner-loading :loading="productResponse.pending.value">
+                <product-details
+                    v-if="productResponse.data.value"
+                    :product="productResponse.data.value"
+                />
+            </va-inner-loading>
         </div>
         <the-footer />
     </div>
@@ -16,7 +18,7 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const id = route.params.productId;
 
-const productResponse = useFetch(`${config.API_BASE_URL}/products/${id}`, {
+const productResponse = useLazyFetch(`${config.API_BASE_URL}/products/${id}`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
