@@ -104,6 +104,7 @@
                     text-by="name"
                     track-by="id"
                     value-by="id"
+                    @update:model-value="handleTagChange"
                 />
                 <va-input
                     v-model="productData.edition"
@@ -164,13 +165,14 @@ const predefinedData = reactive({
     productTypes: [],
     conditions: [],
     genres: [],
+    tags: [],
 });
 
 const productData = ref({
     title: props.product?.title,
     description: props.product?.description,
-    sleeve_condition: props.product?.sleeve_condition,
-    media_condition: props.product?.media_condition,
+    sleeve_condition: props.product?.sleeve_condition?.id,
+    media_condition: props.product?.media_condition?.id,
     sku: props.product?.sku,
     initial_price: props.product?.initial_price,
     discount: props.product?.discount || 0,
@@ -179,9 +181,13 @@ const productData = ref({
     genre_id: props.product?.genre_id,
     edition: props.product?.edition,
     stock: props.product?.stock,
-    tags: [],
+    tags: props.product?.tags,
     image: '',
 });
+
+const handleTagChange = (event) => {
+    productData.value.tags = event.map((tag) => tag.id || tag);
+};
 
 const emits = defineEmits(['close-modal']);
 

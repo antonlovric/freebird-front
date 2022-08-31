@@ -85,6 +85,7 @@
                                 :mediaCondition="product.media_condition"
                                 :sleeveCondition="product.sleeve_condition"
                                 :productType="product.product_type"
+                                :tags="product.tags"
                             />
                         </li>
                     </ul>
@@ -229,7 +230,6 @@ const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions
 const responseTags = await useLazyFetch(`${config.API_BASE_URL}/tags`, {
     method: 'GET',
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Oznaka',
             position: 'bottom-right',
@@ -293,6 +293,7 @@ const searchHandler = async () => {
         async onResponse({ request, response, options }) {
             products.isLoading = false;
             products.productCollection = response._data.data;
+            input.totalPages = response._data.last_page;
         },
         initialCache: false,
     });
@@ -330,6 +331,7 @@ const filterHandler = async () => {
         async onResponse({ request, response, options }) {
             products.isLoading = false;
             products.productCollection = response._data.data;
+            input.totalPages = response._data.last_page;
         },
         initialCache: false,
     });

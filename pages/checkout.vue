@@ -118,9 +118,10 @@ const handleCheckout = async (order) => {
             comment: order.paymentDetails.comment,
             payment_type: order.paymentDetails.selectedPayment.label,
             shipping_type: order.paymentDetails.selectedShipping.label,
+            personalDetails: order.personalDetails,
+            cart_items: !userData.token ? cartData.cartItems : null,
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dovršavanje narudžbe',
                 position: 'bottom-right',
@@ -129,7 +130,7 @@ const handleCheckout = async (order) => {
             });
         },
         async onResponse({ response }) {
-            if (response.status === 201) {
+            if (response.status === 201 || response.status === 200) {
                 init({
                     title: 'Dovršavanje narudžbe',
                     position: 'bottom-right',
