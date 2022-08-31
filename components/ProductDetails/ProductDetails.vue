@@ -15,7 +15,7 @@
                             <span class="text-green-500" v-if="isInStock">Ima na zalihi</span>
                             <span class="text-red-600" v-else>Nedostupno</span>
                         </span>
-                        <va-rating color="#f97316" v-model="props.product.rating" />
+                        <va-rating readonly color="#f97316" v-model="props.product.rating" />
                     </div>
                     <div class="w-[200px] h-[200px] my-4 md:hidden">
                         <img class="w-[200px] h-[200px] object-cover" :src="props.product.url" />
