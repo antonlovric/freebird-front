@@ -49,7 +49,6 @@ import { useUserStore } from '~~/stores/user';
 
 const isShown = reactive({ minimized: true });
 const userData = useUserStore();
-const errorStatus = ref(null);
 const { init } = useToast();
 const config = useRuntimeConfig();
 
@@ -89,7 +88,6 @@ const handleLogout = async (event) => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Odjava',
                 position: 'bottom-right',

@@ -252,7 +252,6 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
         page_size: 10,
     },
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Proizvoda',
             position: 'bottom-right',
@@ -280,7 +279,6 @@ const searchHandler = async () => {
             page_size: 10,
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
                 position: 'bottom-right',
@@ -318,7 +316,6 @@ const filterHandler = async () => {
             tags: JSON.stringify(filters.selectedFilters[5].activeFilters),
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
                 position: 'bottom-right',

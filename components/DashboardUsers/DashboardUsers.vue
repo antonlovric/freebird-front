@@ -31,7 +31,6 @@
 <script setup>
 import { useUserStore } from '~~/stores/user';
 
-const errorStatus = ref(null);
 const porukaBrisanje = ref('Sigurni ste da želite obrisati korisnika? ');
 const { init } = useToast();
 const config = useRuntimeConfig();
@@ -66,7 +65,6 @@ const removeHandler = async () => {
             ids: items.ids,
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Odjava',
                 position: 'bottom-right',
