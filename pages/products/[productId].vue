@@ -2,10 +2,13 @@
     <div>
         <the-header />
         <div class="min-h-[80vh] pt-[10vh] relative">
-            <va-inner-loading :loading="productResponse.pending.value">
+            <va-inner-loading
+                :loading="productResponse.pending.value || reviewsResponse.pending.value"
+            >
                 <product-details
                     v-if="productResponse.data.value"
                     :product="productResponse.data.value"
+                    :reviews="reviewsResponse.data.value"
                 />
             </va-inner-loading>
         </div>
@@ -30,6 +33,19 @@ const productResponse = useLazyFetch(`${config.API_BASE_URL}/products/${id}`, {
         });
     },
     initialCache: false,
+});
+
+const reviewsResponse = useLazyFetch(`${config.API_BASE_URL}/productReviews/${id}`, {
+    method: 'GET',
+    initialCache: false,
+    async onResponseError({ response }) {
+        init({
+            title: 'Dohvaćanje recenzija',
+            position: 'bottom-right',
+            message: 'Greška prilikom dohvaćanja recenzija!',
+            color: 'warning',
+        });
+    },
 });
 
 useHead({

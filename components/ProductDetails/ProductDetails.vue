@@ -44,9 +44,29 @@
                 </div>
             </div>
             <div class="flex flex-col w-[80vw]">
-                <h2 class="md:text-4xl">Opis</h2>
+                <h2 class="md:text-4xl text-3xl">Opis</h2>
                 <div class="h-0.5 mb-2 mt-1 w-full bg-orange md:w-24" />
                 <p class="text-xl">{{ props.product.description }}</p>
+            </div>
+            <div class="w-[80vw]" v-if="props.reviews.length > 0">
+                <h2 class="md:text-4xl text-3xl">Recenzije</h2>
+                <div class="h-0.5 mb-9 mt-1 w-full bg-orange md:w-24" />
+                <div v-for="(review, index) in props.reviews" :key="review.id">
+                    <div class="inline-flex items-center w-full justify-between">
+                        <div class="flex gap-3 items-center">
+                            <va-icon size="2rem" name="account_circle" />
+                            <h3 class="text-2xl">{{ review.user.username }}</h3>
+                        </div>
+                        <va-rating readonly color="#f97316" v-model="review.rating" />
+                    </div>
+                    <p class="text-lg pl-11 mt-2">
+                        {{ review?.review }}
+                    </p>
+                    <div
+                        class="h-0.5 my-4 w-full bg-orange"
+                        v-if="index < props.reviews.length - 1"
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -57,6 +77,7 @@ import { useUserStore } from '~~/stores/user';
 
 const props = defineProps({
     product: Object,
+    reviews: Array,
 });
 const { init } = useToast();
 const config = useRuntimeConfig();
