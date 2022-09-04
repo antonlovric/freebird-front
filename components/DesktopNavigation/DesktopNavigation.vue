@@ -78,19 +78,20 @@ const handleLogout = async (event) => {
                 duration: 5000,
             });
         },
-        async onResponse() {
-            userData.resetStore();
-            cartData.clearCart();
-            const rememberCookie = useCookie('remember_token');
-            rememberCookie.value = null;
-            init({
-                title: 'Odjava',
-                position: 'bottom-right',
-                message: 'Uspješna odjava!',
-                color: 'success',
-                duration: 5000,
-            });
-        },
     });
+
+    if (!response.error?.value) {
+        userData.resetStore();
+        cartData.clearCart();
+        const rememberCookie = useCookie('remember_token');
+        rememberCookie.value = null;
+        init({
+            title: 'Odjava',
+            position: 'bottom-right',
+            message: 'Uspješna odjava!',
+            color: 'success',
+            duration: 5000,
+        });
+    }
 };
 </script>

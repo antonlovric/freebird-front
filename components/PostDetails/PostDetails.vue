@@ -1,6 +1,6 @@
 <template>
-    <div class="min-h-[80vh] pt-[5vh] relative">
-        <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">
+    <div class="min-h-[80vh] relative">
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">
             {{ props.post.heading }}
         </h1>
         <p class="text-center mb-5">Vrijeme objave: {{ formattedDate }}</p>

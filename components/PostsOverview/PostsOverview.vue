@@ -1,9 +1,13 @@
 <template>
-    <div class="min-h-[80vh] pt-[10vh] relative sm:w-9/12 w-10/12 mx-auto">
-        <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">Novosti</h1>
+    <div class="min-h-[80vh] pt-10 sm:pt-[10vh] relative sm:w-9/12 w-10/12 mx-auto">
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Novosti</h1>
         <div class="inline-flex mt-7 flex-col">
-            <div class="inline-flex gap-4">
-                <va-input label="Pretraživanje" class="w-[40ch]" v-model="input.searchQuery" />
+            <div class="inline-flex gap-4 flex-col sm:flex-row">
+                <va-input
+                    label="Pretraživanje"
+                    class="w-full sm:w-[40ch]"
+                    v-model="input.searchQuery"
+                />
                 <va-button @click="searchHandler" type="submit" color="#f97316" text-color="#fff"
                     >Pretraga</va-button
                 >
