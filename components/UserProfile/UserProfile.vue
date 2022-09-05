@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-[80vh] pt-[5vh] sm:pt-[10vh] relative">
-        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Profil</h1>
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl text-center">Profil</h1>
         <div class="w-5/6 mx-auto mb-10">
             <div class="inline-flex w-full gap-10 justify-center items-center">
                 <h2 class="text-center text-2xl">{{ props.personalDetails.username }}</h2>

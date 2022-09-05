@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-[80vh] pt-10 sm:pt-[10vh] relative sm:w-9/12 w-10/12 mx-auto">
-        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Novosti</h1>
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl text-center">Novosti</h1>
         <div class="inline-flex mt-7 flex-col">
             <div class="inline-flex gap-4 flex-col sm:flex-row">
                 <va-input
