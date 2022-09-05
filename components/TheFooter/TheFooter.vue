@@ -11,7 +11,7 @@
                 <li><nuxt-link to="/grading">Sustav Ocjenjivanja</nuxt-link></li>
             </ul>
         </div>
-        <div class="">
+        <div>
             <h2>Služba za korisnike</h2>
             <ul class="flex flex-col mb-4 mt-2 gap-2">
                 <li><nuxt-link to="/contact">Kontakt</nuxt-link></li>
@@ -87,7 +87,7 @@ const handleNewsletter = () => {
 
 <style scoped>
 a {
-    font-size: 20px;
+    font-size: 18px;
     position: relative;
     display: inline-block;
 }
@@ -126,7 +126,7 @@ a:hover::after {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 0.5rem;
 }
 
