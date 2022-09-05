@@ -63,7 +63,7 @@
                 <div class="inline-flex flex-col sm:flex-row gap-4">
                     <va-input
                         label="Pretraživanje"
-                        class="w-full sm:w-[40ch]"
+                        class="w-full sm:w-full sm:w-[40ch]"
                         v-model="input.searchQuery"
                     />
                     <va-button
