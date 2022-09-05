@@ -1,6 +1,6 @@
 <template>
     <div
-        class="homepage-hero-container relative h-[100vh] w-[100vw] flex justify-center items-center flex-col"
+        class="homepage-hero-container relative h-[90vh] w-[100vw] flex justify-center items-center flex-col"
     >
         <div
             class="inline-flex gap-3 flex-col justify-center items-center text-center w-full h-full mt-auto"

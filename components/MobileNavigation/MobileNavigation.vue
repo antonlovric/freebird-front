@@ -45,11 +45,12 @@
 
 <script setup>
 import { VaSidebar } from 'vuestic-ui';
+import { useCartStore } from '~~/stores/cart';
 import { useUserStore } from '~~/stores/user';
 
 const isShown = reactive({ minimized: true });
 const userData = useUserStore();
-const errorStatus = ref(null);
+const cartData = useCartStore();
 const { init } = useToast();
 const config = useRuntimeConfig();
 
@@ -89,7 +90,6 @@ const handleLogout = async (event) => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Odjava',
                 position: 'bottom-right',
@@ -98,22 +98,20 @@ const handleLogout = async (event) => {
                 duration: 5000,
             });
         },
-        async onResponse({ response }) {
-            if (response.status === 200) {
-                userData.resetStore();
-                cartData.clearCart();
-                const rememberCookie = useCookie('remember_token');
-                rememberCookie.value = null;
-                init({
-                    title: 'Odjava',
-                    position: 'bottom-right',
-                    message: 'Uspješna odjava!',
-                    color: 'success',
-                    duration: 5000,
-                });
-            }
-        },
     });
+    if (!response.error?.value) {
+        userData.resetStore();
+        cartData.clearCart();
+        const rememberCookie = useCookie('remember_token');
+        rememberCookie.value = null;
+        init({
+            title: 'Odjava',
+            position: 'bottom-right',
+            message: 'Uspješna odjava!',
+            color: 'success',
+            duration: 5000,
+        });
+    }
 };
 </script>
 

@@ -2,7 +2,7 @@
     <div>
         <the-header />
         <div class="min-h-screen mb-14 pt-[10vh]">
-            <h1 class="text-2xl sm:text-5xl sm:mt-4 text-center">Pregled Košarice</h1>
+            <h1 class="text-5xl mb-9 sm:text-6xl sm:mt-4 text-center">Pregled Košarice</h1>
             <va-inner-loading :loading="items.pending">
                 <cart-section
                     v-if="items.cartItems.length !== 0"

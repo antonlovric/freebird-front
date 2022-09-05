@@ -248,7 +248,6 @@ const fileAddHandler = (files, isDisplay) => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Prijenos fotografije',
                 position: 'bottom-right',
@@ -286,7 +285,6 @@ const fileRemoveHandler = (file, isDisplay) => {
         },
         initialCache: false,
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Brisanje fotografije',
                 position: 'bottom-right',

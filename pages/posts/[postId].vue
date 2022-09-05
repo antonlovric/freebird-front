@@ -1,7 +1,7 @@
 <template>
     <div>
         <the-header />
-        <div class="min-h-[80vh] pt-[10vh] relative">
+        <div class="min-h-[80vh] pt-10 sm:pt-[10vh] relative">
             <va-inner-loading :loading="postResponse.pending.value">
                 <post-details v-if="!postResponse.pending.value" :post="postResponse.data.value" />
             </va-inner-loading>

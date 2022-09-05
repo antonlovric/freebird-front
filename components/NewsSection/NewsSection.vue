@@ -2,7 +2,7 @@
     <section class="bg-primary text-center">
         <div class="my-24 mb-14 h-0.5 w-full mx-auto bg-orange sm:w-11/12" />
         <div class="relative">
-            <h2 class="text-2xl mb-4 sm:mb-0 sm:text-6xl">Novosti</h2>
+            <h2 class="text-5xl mb-4 sm:mb-0 sm:text-6xl">Novosti</h2>
             <nuxt-link to="/blogPosts">
                 <va-button
                     class="sm:mt-0 sm:!absolute sm:top-0 sm:translate-y-1/2 sm:right-40"

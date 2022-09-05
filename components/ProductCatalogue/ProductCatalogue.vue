@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="grid sm:grid-cols-[30%_1fr] grid-rows-1 min-h-screen px-2 sm:px-3">
-            <div class="mt-4">
+            <div v-if="!products.isLoading" class="mt-4">
                 <component
                     :is="props.isMobile ? VaSidebar : 'span'"
                     v-model="props.isSidebarVisible"
@@ -57,15 +57,18 @@
                     </component>
                 </component>
             </div>
-            <div class="inline-flex flex-col">
+            <div class="inline-flex flex-col w-9/12 mx-auto sm:mx-0 sm:w-auto">
                 <div class="inline-flex flex-col sm:flex-row gap-4">
-                    <va-input label="Pretraživanje" class="w-[40ch]" v-model="input.searchQuery" />
+                    <va-input
+                        label="Pretraživanje"
+                        class="w-full sm:w-[40ch]"
+                        v-model="input.searchQuery"
+                    />
                     <va-button
                         @click="searchHandler"
                         type="submit"
                         color="#f97316"
                         text-color="#fff"
-                        class="w-1/3 sm:w-auto"
                         >Pretraga</va-button
                     >
                 </div>
@@ -252,7 +255,6 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
         page_size: 10,
     },
     async onResponseError({ response }) {
-        errorStatus.value = response.status;
         init({
             title: 'Dohvaćanje Proizvoda',
             position: 'bottom-right',
@@ -280,7 +282,6 @@ const searchHandler = async () => {
             page_size: 10,
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
                 position: 'bottom-right',
@@ -318,7 +319,6 @@ const filterHandler = async () => {
             tags: JSON.stringify(filters.selectedFilters[5].activeFilters),
         },
         async onResponseError({ response }) {
-            errorStatus.value = response.status;
             init({
                 title: 'Dohvaćanje Proizvoda',
                 position: 'bottom-right',

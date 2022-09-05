@@ -1,6 +1,6 @@
 <template>
-    <div class="min-h-[80vh] pt-[10vh] relative">
-        <h1 class="text-3xl mb-4 sm:mb-0 sm:text-5xl sm:mt-4 text-center">Profil</h1>
+    <div class="min-h-[80vh] pt-[5vh] sm:pt-[10vh] relative">
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl sm:mt-4 text-center">Profil</h1>
         <div class="w-5/6 mx-auto mb-10">
             <div class="inline-flex w-full gap-10 justify-center items-center">
                 <h2 class="text-center text-2xl">{{ props.personalDetails.username }}</h2>
@@ -23,24 +23,27 @@
                 </div>
                 <div>
                     <h3 class="mb-4 text-xl">Narudžbe</h3>
-                    <va-data-table
-                        :columns="columns"
-                        striped
-                        :items="orders.currentData"
-                        :per-page="orders.perPage"
-                    >
-                        <template #bodyAppend>
-                            <tr>
-                                <td colspan="8" class="table-example--pagination">
-                                    <va-pagination
-                                        v-model="orders.currentPage"
-                                        :pages="orders.pages || 1"
-                                        @update:model-value="handlePageChangeOrders"
-                                    />
-                                </td>
-                            </tr>
-                        </template>
-                    </va-data-table>
+                    <div class="max-w-[90%] overflow-x-scroll">
+                        <va-data-table
+                            :columns="columns"
+                            striped
+                            :items="orders.currentData"
+                            :per-page="orders.perPage"
+                        >
+                            <template #bodyAppend>
+                                <tr>
+                                    <td colspan="8" class="table-example--pagination">
+                                        <va-pagination
+                                            v-model="orders.currentPage"
+                                            :pages="orders.pages || 1"
+                                            :visible-pages="3"
+                                            @update:model-value="handlePageChangeOrders"
+                                        />
+                                    </td>
+                                </tr>
+                            </template>
+                        </va-data-table>
+                    </div>
                 </div>
             </div>
             <va-data-table
