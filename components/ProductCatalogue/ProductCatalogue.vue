@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="grid sm:grid-cols-[30%_1fr] grid-rows-1 min-h-screen px-2 sm:px-3">
-            <div v-if="!products.isLoading" class="mt-4">
+            <div class="mt-4 absolute sm:relative sm:block">
                 <component
                     :is="props.isMobile ? VaSidebar : 'span'"
                     v-model="props.isSidebarVisible"
@@ -29,10 +29,12 @@
                                         <va-input
                                             label="Najmanja cijena"
                                             class="my-3"
+                                            :outline="props.isMobile"
                                             v-model="input.priceFilter.min"
                                         />
                                         <va-input
                                             label="Najveća cijena"
+                                            :outline="props.isMobile"
                                             v-model="input.priceFilter.max"
                                         />
                                     </div>
@@ -57,7 +59,7 @@
                     </component>
                 </component>
             </div>
-            <div class="inline-flex flex-col w-9/12 mx-auto sm:mx-0 sm:w-auto">
+            <div class="inline-flex flex-col w-full sm:w-9/12">
                 <div class="inline-flex flex-col sm:flex-row gap-4">
                     <va-input
                         label="Pretraživanje"
