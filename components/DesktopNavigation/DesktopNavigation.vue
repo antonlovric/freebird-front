@@ -1,6 +1,6 @@
 <template>
     <ul
-        class="inline-flex flex-row items-center justify-center w-full px-4 bg-primary bg-opacity-40 fixed pt-3 z-50"
+        class="inline-flex flex-row items-center justify-center w-full px-4 bg-primary fixed pt-3 z-50"
     >
         <li class="flex items-center justify-around w-1/3">
             <navigation-item class="inline-flex justify-start" text="Naslovnica" />
