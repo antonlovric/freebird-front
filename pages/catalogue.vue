@@ -10,7 +10,7 @@
             v-if="screen.isMobile"
             @click="() => (screen.isSidebarVisible = !screen.isSidebarVisible)"
         ></va-button>
-        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl text-center pt-10 sm:pt-24">Katalog</h1>
+        <h1 class="text-5xl mb-4 sm:mb-0 sm:text-6xl text-center pt-10 sm:pt-[10vh]">Katalog</h1>
         <product-catalogue
             :isMobile="screen.isMobile"
             :isSidebarVisible="screen.isSidebarVisible"

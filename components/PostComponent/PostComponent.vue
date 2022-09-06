@@ -1,7 +1,7 @@
 <template>
     <nuxt-link :to="`/posts/${props.postId}`">
-        <va-card>
-            <div class="max-w-[500px] max-h-[150px] overflow-hidden">
+        <va-card class="h-[300px]">
+            <div class="max-w-[500px] overflow-hidden">
                 <img
                     :src="props.image"
                     :alt="props.postTitle"
