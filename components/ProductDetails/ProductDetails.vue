@@ -151,7 +151,8 @@ const addCartItem = async () => {
 };
 
 const handleAddToCart = async () => {
-    if (!userData.token) addCartItem();
+    if (!userData.token) return addCartItem();
+
     const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
         method: 'POST',
         body: {
