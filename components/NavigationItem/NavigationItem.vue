@@ -91,7 +91,6 @@ const { cartItems, cartQuantity } = storeToRefs(cartStore);
 const cartHover = reactive({ isVisible: false });
 const userData = useUserStore();
 const { token } = storeToRefs(userData);
-const loggedIn = token.value;
 const config = useRuntimeConfig();
 const products = reactive({
     cartItems: cartItems.value,
