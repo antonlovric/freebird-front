@@ -1,10 +1,11 @@
 <template>
     <div>
-        <the-header />
+       <!-- <the-header />
         <homepage-hero />
         <catalogue-section />
         <news-section />
-        <the-footer />
+        <the-footer />   -->
+        <h1 class="text-center text-6xl">Under Maintenance :)</h1>
     </div>
 </template>
 

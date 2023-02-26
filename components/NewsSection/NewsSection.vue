@@ -36,9 +36,15 @@ const posts = reactive({ postCollection: [] });
 const config = useRuntimeConfig();
 
 const fetchItems = async () => {
-    const response = await fetch(`${config.API_BASE_URL}/posts/latest`);
-    posts.postCollection = await response.json();
-    posts.postCollection = posts.postCollection;
+    try {
+        const response = await fetch(`${config.API_BASE_URL}/posts/latest`);
+        console.log(response)
+        posts.postCollection = await response.json();
+        posts.postCollection = posts.postCollection;
+        
+    } catch (error) {
+        console.log(error)
+    }
 };
 
 await fetchItems();
