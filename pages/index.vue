@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <h2 class="text-2xl text-center">Under maintenance :)</h2>
+  <!-- <div>
     <the-header />
     <homepage-hero />
     <catalogue-section />
     <news-section />
     <the-footer />
-  </div>
+  </div> -->
 </template>
 
 <script setup>
