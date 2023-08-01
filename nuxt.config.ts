@@ -15,7 +15,9 @@ export default defineNuxtConfig({
   vuestic: {
     config: {
       colors: {
-        primary: '#f97316',
+        variables: {
+          primary: '#f97316',
+        },
       },
       components: {
         VaInput: {
@@ -39,5 +41,4 @@ export default defineNuxtConfig({
   },
 
   ssr: false,
-  target: 'server',
 });
