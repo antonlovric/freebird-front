@@ -2,13 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: [
-    '@vuestic/nuxt',
-    // '@pinia/nuxt',
-    // '@nuxtjs/eslint-module',
-    '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
-  ],
+  modules: ['@vuestic/nuxt', '@pinia/nuxt', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
   $meta: { name: 'FreeBirdMusic' },
   css: ['@/assets/css/main.css'],
   postcss: {
