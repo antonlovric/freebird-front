@@ -24,7 +24,7 @@ const {
     pending,
     refresh,
 } = useLazyAsyncData('posts', () =>
-    $fetch(`${config.API_BASE_URL}/posts`, {
+    $fetch(`${config.public.API_BASE_URL}/posts`, {
         params: {
             page: page.currentPage,
             page_size: 10,

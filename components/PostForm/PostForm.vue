@@ -103,7 +103,7 @@ const isValid = () => {
 };
 
 const assignImagesToPost = (postId) => {
-    const responseAssign = useFetch(`${config.API_BASE_URL}/postImages/assign`, {
+    const responseAssign = useFetch(`${config.public.API_BASE_URL}/postImages/assign`, {
         method: 'POST',
         body: {
             ids: getImageIds(),
@@ -150,7 +150,7 @@ const submitHandler = () => {
         message: 'Pričekajte...',
     });
 
-    const responsePost = useFetch(`${config.API_BASE_URL}/posts`, {
+    const responsePost = useFetch(`${config.public.API_BASE_URL}/posts`, {
         method: 'POST',
         body: {
             heading: postData.value.heading,
@@ -195,7 +195,7 @@ const updateHandler = () => {
         message: 'Pričekajte...',
     });
 
-    const responsePost = useFetch(`${config.API_BASE_URL}/posts`, {
+    const responsePost = useFetch(`${config.public.API_BASE_URL}/posts`, {
         method: 'PUT',
         body: {
             heading: postData.value.heading,
@@ -240,7 +240,7 @@ const fileAddHandler = (files, isDisplay) => {
         message: 'Pričekajte...',
     });
 
-    const fileUploadResponse = useFetch(`${config.API_BASE_URL}/postImages`, {
+    const fileUploadResponse = useFetch(`${config.public.API_BASE_URL}/postImages`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -277,7 +277,7 @@ const fileRemoveHandler = (file, isDisplay) => {
         message: 'Pričekajte...',
     });
 
-    const fileDeleteResponse = useFetch(`${config.API_BASE_URL}/postImages/deleteImage`, {
+    const fileDeleteResponse = useFetch(`${config.public.API_BASE_URL}/postImages/deleteImage`, {
         method: 'DELETE',
         body: { filename: file.name },
         headers: {

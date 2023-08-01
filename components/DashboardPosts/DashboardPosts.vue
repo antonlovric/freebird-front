@@ -95,7 +95,7 @@ const removeHandler = async () => {
         message: 'Pričekajte...',
         duration: 5000,
     });
-    const response = await useFetch(`${config.API_BASE_URL}/posts/deletePosts`, {
+    const response = await useFetch(`${config.public.API_BASE_URL}/posts/deletePosts`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,

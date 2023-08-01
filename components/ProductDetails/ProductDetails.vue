@@ -102,7 +102,7 @@ const addCartItem = async () => {
         return;
     }
 
-    const responseCartItem = await useFetch(`${config.API_BASE_URL}/cartItems`, {
+    const responseCartItem = await useFetch(`${config.public.API_BASE_URL}/cartItems`, {
         method: 'POST',
         body: {
             cart_id: cartCookie.value,
@@ -153,7 +153,7 @@ const addCartItem = async () => {
 const handleAddToCart = async () => {
     if (!userData.token) return addCartItem();
 
-    const responseCart = await useFetch(`${config.API_BASE_URL}/carts`, {
+    const responseCart = await useFetch(`${config.public.API_BASE_URL}/carts`, {
         method: 'POST',
         body: {
             session_id: userData.session_id,

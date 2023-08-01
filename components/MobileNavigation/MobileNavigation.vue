@@ -83,7 +83,7 @@ const handleLogout = async (event) => {
         message: 'Pričekajte...',
         duration: 5000,
     });
-    const response = await useFetch(`${config.API_BASE_URL}/auth/logout`, {
+    const response = await useFetch(`${config.public.API_BASE_URL}/auth/logout`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,

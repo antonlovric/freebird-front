@@ -150,7 +150,7 @@ const productColumns = [
 ];
 
 const handleDetailsChange = () => {
-    useFetch(`${config.API_BASE_URL}/users/${userData.session_id}`, {
+    useFetch(`${config.public.API_BASE_URL}/users/${userData.session_id}`, {
         method: 'PUT',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -190,7 +190,7 @@ const handlePageChangeOrders = (value) => {
 };
 
 const handleReview = () => {
-    useFetch(`${config.API_BASE_URL}/productReviews`, {
+    useFetch(`${config.public.API_BASE_URL}/productReviews`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,

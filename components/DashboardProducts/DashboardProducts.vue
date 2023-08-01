@@ -107,7 +107,7 @@ const handlePageChange = () => {
 };
 
 const removeHandler = async () => {
-  const response = useFetch(`${config.API_BASE_URL}/products/deleteProducts`, {
+  const response = useFetch(`${config.public.API_BASE_URL}/products/deleteProducts`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${userData.token}`,
@@ -144,7 +144,7 @@ const columns = [
   { key: 'url', name: 'image', label: 'image' },
 ];
 
-const responseProductTypes = await useFetch(`${config.API_BASE_URL}/productTypes`);
+const responseProductTypes = await useFetch(`${config.public.API_BASE_URL}/productTypes`);
 
 if (!responseProductTypes.error.value) {
   predefinedData.productTypes = responseProductTypes.data.value;
@@ -158,7 +158,7 @@ if (!responseProductTypes.error.value) {
   });
 }
 
-const responseConditions = await useFetch(`${config.API_BASE_URL}/conditions`, {
+const responseConditions = await useFetch(`${config.public.API_BASE_URL}/conditions`, {
   method: 'GET',
   initialCache: false,
   async onResponseError({ response }) {
@@ -177,7 +177,7 @@ const responseConditions = await useFetch(`${config.API_BASE_URL}/conditions`, {
   },
 });
 
-const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
+const responseGenres = await useFetch(`${config.public.API_BASE_URL}/genres`, {
   method: 'GET',
   initialCache: false,
   async onResponseError({ response }) {
@@ -196,7 +196,7 @@ const responseGenres = await useFetch(`${config.API_BASE_URL}/genres`, {
   },
 });
 
-const responseTags = await useFetch(`${config.API_BASE_URL}/tags`, {
+const responseTags = await useFetch(`${config.public.API_BASE_URL}/tags`, {
   method: 'GET',
   initialCache: false,
   headers: {

@@ -51,7 +51,7 @@ const handleSubmit = async (event) => {
         message: 'Pričekajte...',
     });
 
-    const response = await useFetch(`${config.API_BASE_URL}/auth/login`, {
+    const response = await useFetch(`${config.public.API_BASE_URL}/auth/login`, {
         method: 'POST',
         body: {
             email: loginData.email,
@@ -90,7 +90,7 @@ const handleSubmit = async (event) => {
                 }, 500);
             }
             const responseProduct = await useFetch(
-                `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+                `${config.public.API_BASE_URL}/cartItems/${cartCookie.value}`,
                 {
                     method: 'GET',
                     initialCache: false,

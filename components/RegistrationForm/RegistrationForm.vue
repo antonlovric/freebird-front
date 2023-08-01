@@ -99,7 +99,7 @@ const handleSubmit = async () => {
         message: 'Pričekajte...',
     });
 
-    const response = await useFetch(`${config.API_BASE_URL}/auth/register`, {
+    const response = await useFetch(`${config.public.API_BASE_URL}/auth/register`, {
         method: 'POST',
         body: formData,
         initialCache: false,

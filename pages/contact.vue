@@ -48,7 +48,7 @@ const openRequest = reactive({ name: '', email: '', request: '' });
 const config = useRuntimeConfig();
 const { init } = useToast();
 const submitHandler = () => {
-    const response = useFetch(`${config.API_BASE_URL}/openRequests`, {
+    const response = useFetch(`${config.public.API_BASE_URL}/openRequests`, {
         method: 'POST',
         body: {
             name: openRequest.name,

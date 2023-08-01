@@ -19,7 +19,7 @@ const rememberCookie = useCookie('remember_token').value;
 const config = useRuntimeConfig();
 
 if (rememberCookie) {
-    const responseUserInfo = useFetch(`${config.API_BASE_URL}/auth/remember`, {
+    const responseUserInfo = useFetch(`${config.public.API_BASE_URL}/auth/remember`, {
         method: 'POST',
         body: {
             remember_token: rememberCookie,

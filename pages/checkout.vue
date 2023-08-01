@@ -39,12 +39,12 @@ const user = reactive({ details: [] });
 const cartCookie = useCookie('cart_id');
 if (userData.session_id) {
     const responseCartItems = await useFetch(
-        `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+        `${config.public.API_BASE_URL}/cartItems/${cartCookie.value}`,
         {
             initialCache: false,
         }
     );
-    const personalData = await useFetch(`${config.API_BASE_URL}/users/${userData.session_id}`, {
+    const personalData = await useFetch(`${config.public.API_BASE_URL}/users/${userData.session_id}`, {
         headers: {
             Authorization: `Bearer ${userData.token}`,
         },
@@ -97,7 +97,7 @@ const handleCheckout = async (order) => {
         position: 'bottom-right',
         message: 'Pričekajte...',
     });
-    const responseOrder = await useFetch(`${config.API_BASE_URL}/orders`, {
+    const responseOrder = await useFetch(`${config.public.API_BASE_URL}/orders`, {
         method: 'POST',
         initialCache: false,
         body: {
@@ -139,7 +139,7 @@ const handleCheckout = async (order) => {
                 });
                 cartData.clearCart();
                 const responseDisableCart = useFetch(
-                    `${config.API_BASE_URL}/carts/${cartCookie.value}`,
+                    `${config.public.API_BASE_URL}/carts/${cartCookie.value}`,
                     {
                         method: 'PUT',
                         initialCache: false,

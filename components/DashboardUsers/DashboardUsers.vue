@@ -135,7 +135,7 @@ const columns =
     ] || [];
 
 const deleteHandler = async () => {
-    const response = await useLazyFetch(`${config.API_BASE_URL}/users/deleteUsers`, {
+    const response = await useLazyFetch(`${config.public.API_BASE_URL}/users/deleteUsers`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -166,7 +166,7 @@ const deleteHandler = async () => {
 };
 
 const adminHandler = async () => {
-    const response = await useLazyFetch(`${config.API_BASE_URL}/users/makeAdmin`, {
+    const response = await useLazyFetch(`${config.public.API_BASE_URL}/users/makeAdmin`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,
@@ -196,7 +196,7 @@ const adminHandler = async () => {
     }
 };
 const removeAdminHandler = async () => {
-    const response = await useLazyFetch(`${config.API_BASE_URL}/users/removeAdmin`, {
+    const response = await useLazyFetch(`${config.public.API_BASE_URL}/users/removeAdmin`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${userData.token}`,

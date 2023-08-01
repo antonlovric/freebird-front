@@ -69,7 +69,7 @@ const { init } = useToast();
 const userData = useUserStore();
 
 const handleRemoveItem = async (productId) => {
-    const responseRemove = await useFetch(`${config.API_BASE_URL}/cartItems/${productId}`, {
+    const responseRemove = await useFetch(`${config.public.API_BASE_URL}/cartItems/${productId}`, {
         method: 'DELETE',
         initialCache: false,
         async onResponseError({ response }) {

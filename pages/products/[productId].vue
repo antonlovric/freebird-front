@@ -21,7 +21,7 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const id = route.params.productId;
 
-const productResponse = useLazyFetch(`${config.API_BASE_URL}/products/${id}`, {
+const productResponse = useLazyFetch(`${config.public.API_BASE_URL}/products/${id}`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
@@ -35,7 +35,7 @@ const productResponse = useLazyFetch(`${config.API_BASE_URL}/products/${id}`, {
     initialCache: false,
 });
 
-const reviewsResponse = useLazyFetch(`${config.API_BASE_URL}/productReviews/${id}`, {
+const reviewsResponse = useLazyFetch(`${config.public.API_BASE_URL}/productReviews/${id}`, {
     method: 'GET',
     initialCache: false,
     async onResponseError({ response }) {

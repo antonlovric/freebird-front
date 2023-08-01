@@ -192,7 +192,7 @@ const dropdownOptions = [
     },
 ];
 
-const responseGenres = await useLazyFetch(`${config.API_BASE_URL}/genres`, {
+const responseGenres = await useLazyFetch(`${config.public.API_BASE_URL}/genres`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
@@ -213,7 +213,7 @@ if (!responseGenres.error.value) {
     dropdownOptions[2].content = responseGenres.data.value;
 }
 
-const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions`, {
+const responseConditions = await useLazyFetch(`${config.public.API_BASE_URL}/conditions`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
@@ -231,7 +231,7 @@ const responseConditions = await useLazyFetch(`${config.API_BASE_URL}/conditions
     initialCache: false,
 });
 
-const responseTags = await useLazyFetch(`${config.API_BASE_URL}/tags`, {
+const responseTags = await useLazyFetch(`${config.public.API_BASE_URL}/tags`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
@@ -248,7 +248,7 @@ const responseTags = await useLazyFetch(`${config.API_BASE_URL}/tags`, {
     initialCache: false,
 });
 
-const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
+const responseProducts = await useLazyFetch(`${config.public.API_BASE_URL}/products`, {
     method: 'GET',
     params: {
         title: '',
@@ -275,7 +275,7 @@ const responseProducts = await useLazyFetch(`${config.API_BASE_URL}/products`, {
 
 const searchHandler = async () => {
     products.isLoading = true;
-    await useFetch(`${config.API_BASE_URL}/products`, {
+    await useFetch(`${config.public.API_BASE_URL}/products`, {
         method: 'GET',
         params: {
             title: input.searchQuery,
@@ -307,7 +307,7 @@ const resetHandler = () => {
 };
 
 const filterHandler = async () => {
-    await useFetch(`${config.API_BASE_URL}/products`, {
+    await useFetch(`${config.public.API_BASE_URL}/products`, {
         method: 'GET',
         params: {
             format: JSON.stringify(filters.selectedFilters[0].activeFilters),

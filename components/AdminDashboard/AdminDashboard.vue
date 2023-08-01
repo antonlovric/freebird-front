@@ -46,7 +46,7 @@ const inputUsers = reactive({
 });
 
 const responseProducts = await useAsyncData('products', () =>
-    $fetch(`${config.API_BASE_URL}/products`, {
+    $fetch(`${config.public.API_BASE_URL}/products`, {
         params: {
             title: '',
             page: inputProducts.page,
@@ -56,7 +56,7 @@ const responseProducts = await useAsyncData('products', () =>
 );
 
 const responsePosts = await useAsyncData('posts', () =>
-    $fetch(`${config.API_BASE_URL}/posts`, {
+    $fetch(`${config.public.API_BASE_URL}/posts`, {
         params: {
             page: inputPosts.page,
             page_size: 5,
@@ -65,7 +65,7 @@ const responsePosts = await useAsyncData('posts', () =>
 );
 
 const responseUsers = await useAsyncData('users-dashboard', () =>
-    $fetch(`${config.API_BASE_URL}/users`, {
+    $fetch(`${config.public.API_BASE_URL}/users`, {
         params: {
             page: inputUsers.page,
             page_size: 5,

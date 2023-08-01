@@ -57,7 +57,7 @@ const config = useRuntimeConfig();
 const { init } = useToast();
 
 const handleNewsletter = () => {
-    const responseNewsletter = useFetch(`${config.API_BASE_URL}/newsletter/subscribe`, {
+    const responseNewsletter = useFetch(`${config.public.API_BASE_URL}/newsletter/subscribe`, {
         method: 'POST',
         body: {
             email: input.email,

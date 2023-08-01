@@ -218,7 +218,7 @@ const updateHandler = async () => {
         position: 'bottom-right',
         message: 'Pričekajte...',
     });
-    const submitResponse = await useFetch(`${config.API_BASE_URL}/products/${props.product.id}`, {
+    const submitResponse = await useFetch(`${config.public.API_BASE_URL}/products/${props.product.id}`, {
         method: 'PUT',
         body: {
             title: productData.value.title,
@@ -283,7 +283,7 @@ const submitHandler = async () => {
         position: 'bottom-right',
         message: 'Pričekajte...',
     });
-    const submitResponse = await useFetch(`${config.API_BASE_URL}/products`, {
+    const submitResponse = await useFetch(`${config.public.API_BASE_URL}/products`, {
         method: 'POST',
         body: formData,
         headers: {

@@ -14,7 +14,7 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 const id = route.params.postId;
-const postResponse = useLazyFetch(`${config.API_BASE_URL}/posts/${id}`, {
+const postResponse = useLazyFetch(`${config.public.API_BASE_URL}/posts/${id}`, {
     method: 'GET',
     async onResponseError({ response }) {
         init({
