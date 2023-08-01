@@ -14,7 +14,7 @@
 
 body {
   overflow-x: hidden;
-  background-color: #17191e;
+  background-color: #17191e !important;
   min-height: 100vh;
   color: white !important;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

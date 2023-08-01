@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
   ],
   $meta: { name: 'FreeBirdMusic' },
-  css: ['~/assets/css/main.css'],
+  css: ['@/assets/css/main.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
