@@ -124,16 +124,19 @@ const removeHandler = async () => {
         duration: 5000,
       });
     },
+    async onResponse({ response }) {
+      if (response.ok) {
+        init({
+          title: 'Brisanje Proizvoda',
+          position: 'bottom-right',
+          message: 'Proizvodi uspješno obrisani!',
+          color: 'success',
+          duration: 5000,
+        });
+        items.ids = [];
+      }
+    },
   });
-  if (response.data.value) {
-    init({
-      title: 'Brisanje Proizvoda',
-      position: 'bottom-right',
-      message: 'Proizvodi uspješno obrisani!',
-      color: 'success',
-      duration: 5000,
-    });
-  }
 };
 
 const columns = [
