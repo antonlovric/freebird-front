@@ -118,7 +118,6 @@
 </style>
 
 <script setup>
-import { VaSidebar, VaSidebarItem } from '~~/.nuxt/components';
 
 const { init } = useToast();
 const config = useRuntimeConfig();

@@ -37,10 +37,8 @@ const config = useRuntimeConfig();
 
 const fetchItems = async () => {
     try {
-        const response = await fetch(`${config.API_BASE_URL}/posts/latest`);
-        console.log(response)
-        posts.postCollection = await response.json();
-        posts.postCollection = posts.postCollection;
+        const response = await $fetch(`${config.API_BASE_URL}/posts/latest`);
+        posts.postCollection = response.data  ||[];
         
     } catch (error) {
         console.log(error)

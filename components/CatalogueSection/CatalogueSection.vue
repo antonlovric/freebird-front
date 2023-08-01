@@ -52,9 +52,8 @@ const products = reactive({ collection: [] });
 
 const fetchItems = async () => {
     try {
-        const response = await fetch(`${config.API_BASE_URL}/products/featured`);
-        products.collection = await response.json();
-        products.collection = products.collection?.data;
+        const response = await $fetch(`${config.public.API_BASE_URL}/products/featured`);
+        products.collection = response.data || [];
         
     } catch (error) {
         console.log(error)
