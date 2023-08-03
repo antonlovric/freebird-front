@@ -10,6 +10,8 @@
                 :key="option.title"
                 :header="option.title"
                 :color="!props.isMobile && '#17191E'"
+                :solid="true"
+                class="border border-orange border-solid"
               >
                 <div class="inline-flex flex-wrap pl-2 py-3 gap-3">
                   <va-checkbox
@@ -65,7 +67,7 @@
           >
         </div>
         <va-inner-loading :loading="products.isLoading" class="col-span-6">
-          <ul class="grid grid-cols-2 sm:grid-cols-4 mt-5 gap-10">
+          <ul class="grid grid-cols-2 md:grid-cols-4 mt-5 gap-10">
             <li v-for="product in products.productCollection" :key="product.id">
               <product-card
                 v-if="product.stock > 0"
