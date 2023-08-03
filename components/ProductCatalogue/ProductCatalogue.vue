@@ -52,9 +52,9 @@
           </component>
         </component>
       </div>
-      <div class="inline-flex flex-col w-full">
+      <div class="inline-flex flex-col w-10/12">
         <div class="grid grid-cols-6 gap-4">
-          <va-input label="Pretraživanje" class="col-span-4" v-model="input.searchQuery" />
+          <va-input label="Pretraživanje" class="col-span-5" v-model="input.searchQuery" />
           <va-button
             @click="searchHandler"
             class="col-span-1"
@@ -64,8 +64,8 @@
             >Pretraga</va-button
           >
         </div>
-        <va-inner-loading :loading="products.isLoading">
-          <ul class="inline-flex gap-8 flex-wrap sm:justify-start my-5 text-sm">
+        <va-inner-loading :loading="products.isLoading" class="col-span-6">
+          <ul class="grid grid-cols-2 sm:grid-cols-4 mt-5 gap-10">
             <li v-for="product in products.productCollection" :key="product.id">
               <product-card
                 v-if="product.stock > 0"
