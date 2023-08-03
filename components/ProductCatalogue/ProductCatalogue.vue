@@ -55,17 +55,12 @@
         </component>
       </div>
       <div class="inline-flex flex-col w-10/12">
-        <div class="grid grid-cols-6 gap-4">
+        <form @submit="searchHandler" class="grid grid-cols-6 gap-4">
           <va-input label="Pretraživanje" class="col-span-5" v-model="input.searchQuery" />
-          <va-button
-            @click="searchHandler"
-            class="col-span-1"
-            type="submit"
-            color="#f97316"
-            text-color="#fff"
+          <va-button class="col-span-1" type="submit" color="#f97316" text-color="#fff"
             >Pretraga</va-button
           >
-        </div>
+        </form>
         <va-inner-loading :loading="products.isLoading" class="col-span-6">
           <ul class="grid grid-cols-2 md:grid-cols-4 mt-5 gap-10">
             <li v-for="product in products.productCollection" :key="product.id">
@@ -262,7 +257,8 @@ const responseProducts = await useLazyFetch(`${config.public.API_BASE_URL}/produ
   initialCache: false,
 });
 
-const searchHandler = async () => {
+const searchHandler = async (e) => {
+  e.preventDefault();
   products.isLoading = true;
   await useFetch(`${config.public.API_BASE_URL}/products`, {
     method: 'GET',
