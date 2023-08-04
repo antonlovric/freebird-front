@@ -4,14 +4,13 @@
       <div class="mt-4 absolute sm:relative sm:block">
         <component :is="props.isMobile ? VaSidebar : 'span'" v-model="props.isSidebarVisible">
           <component :is="props.isMobile ? VaSidebarItem : 'span'">
-            <va-accordion class="w-11/12 md:w-2/3 md:mx-auto">
+            <va-accordion class="w-11/12 md:w-2/3 md:mx-auto" multiple>
               <va-collapse
                 v-for="(option, index) in dropdownOptions"
                 :key="option.title"
                 :header="option.title"
                 :color="!props.isMobile && '#17191E'"
                 :solid="true"
-                class="border border-orange border-solid"
               >
                 <div class="inline-flex flex-wrap pl-2 py-3 gap-3">
                   <va-checkbox
@@ -27,7 +26,7 @@
                   <div v-if="option.cijena">
                     <va-input
                       label="Najmanja cijena"
-                      class="my-3"
+                      class="my-3 text-black"
                       :outline="props.isMobile"
                       v-model="input.priceFilter.min"
                     />
@@ -35,6 +34,7 @@
                       label="Najveća cijena"
                       :outline="props.isMobile"
                       v-model="input.priceFilter.max"
+                      class="text-black"
                     />
                   </div>
                 </div>
