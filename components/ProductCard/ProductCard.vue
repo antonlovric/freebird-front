@@ -1,5 +1,5 @@
 <template>
-  <va-card>
+  <va-card class="h-[280px]">
     <div class="relative">
       <span class="absolute inline-flex flex-wrap gap-2 z-10 left-2 top-1">
         <va-chip size="small" v-for="(tag, index) in props?.tags" :key="index">{{
@@ -7,11 +7,14 @@
         }}</va-chip>
       </span>
       <nuxt-link :to="`/products/${props.productId}`">
-        <va-image v-on:mouseenter="handleHover" class="product-image" :src="props.imgSrc"
+        <va-image
+          v-on:mouseenter="handleHover"
+          class="object-cover max-h-[200px]"
+          :src="props.imgSrc"
       /></nuxt-link>
     </div>
     <va-card-content class="px-2 py-1">
-      <div class="inline-flex items-center justify-between w-full mt-1">
+      <div class="inline-flex justify-between w-full mt-1">
         <nuxt-link :to="`/products/${props.productId}`">{{ props.productTitle }}</nuxt-link>
         <span class="cursor-pointer"
           ><va-icon @click="handleAddToCart" name="shopping_cart"
@@ -197,12 +200,3 @@ const handleAddToCart = async () => {
   }
 };
 </script>
-
-<style scoped>
-img,
-.product-image {
-  height: 250px;
-  width: 250px;
-  object-fit: cover;
-}
-</style>

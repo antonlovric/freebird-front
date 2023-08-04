@@ -176,7 +176,6 @@ const handleDetailsChange = () => {
 };
 
 const handleRowClick = (args) => {
-  const product = args.item;
   modal.isVisible = true;
   modal.productId = args.item.id;
   modal.productTitle = args.item.title;

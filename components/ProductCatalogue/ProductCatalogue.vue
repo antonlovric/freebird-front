@@ -62,7 +62,7 @@
           >
         </form>
         <va-inner-loading :loading="products.isLoading" class="col-span-6">
-          <ul class="grid grid-cols-2 md:grid-cols-4 mt-5 gap-10">
+          <ul class="grid grid-cols-2 md:grid-cols-4 mt-5 gap-5">
             <li v-for="product in products.productCollection" :key="product.id">
               <product-card
                 v-if="product.stock > 0"
