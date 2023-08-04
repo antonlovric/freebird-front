@@ -1,6 +1,5 @@
 <template>
-  <!-- <h2 class="text-2xl text-center">Under maintenance :)</h2> -->
-  <div>
+ <div>
     <the-header />
     <homepage-hero />
     <catalogue-section />
