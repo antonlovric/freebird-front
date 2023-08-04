@@ -24,7 +24,7 @@
             <li>Format: {{ props.product.product_type?.name }}</li>
             <li>Stanje Omota: {{ props.product.sleeve_condition?.name }}</li>
             <li>Stanje Medija: {{ props.product.media_condition?.name }}</li>
-            <li>Izdanje: {{ props.product.edition }}</li>
+            <li>Izdavač: {{ props.product.edition }}</li>
             <li>
               Cijena:
               <span class="font-semibold">{{ props.product.initial_price }}kn</span>

@@ -103,7 +103,7 @@
         <va-input
           v-model="productData.edition"
           color="#000"
-          label="Izdanje"
+          label="Izdavač"
           type="text"
           id="edition"
         />
