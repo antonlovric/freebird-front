@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.va-data-table {
+  --va-data-table-striped-tr-background-color: #f97316 !important;
+  --va-data-table-striped-tr-opacity: 0.3 !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --va-toast-title-color: #fff;
+}
+
+.nav-link .router-link-exact-active {
+  border-bottom: 1px solid #f97316;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #17191e !important;
+  min-height: 100vh;
+  color: white !important;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}

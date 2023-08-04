@@ -104,7 +104,7 @@ const getQuantity = () => products.cartItems.reduce((prev, next) => prev + next?
 const refreshItems = async () => {
     if (token.value && props.type === 'cart') {
         const responseCartItems = await useAsyncData('cart-details', () =>
-            useFetch(`${config.API_BASE_URL}/cartItems/${cartCookie.value}`, {
+            useFetch(`${config.public.API_BASE_URL}/cartItems/${cartCookie.value}`, {
                 onResponse({ response }) {
                     const data = response._data.data;
                     products.cartItems = data.map((item) => {

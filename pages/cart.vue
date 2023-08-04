@@ -33,7 +33,7 @@ const items = reactive({ cartItems: [], pending: true });
 const refreshItems = () => {
     if (userData.token) {
         const responseCartItems = useLazyFetch(
-            `${config.API_BASE_URL}/cartItems/${cartCookie.value}`,
+            `${config.public.API_BASE_URL}/cartItems/${cartCookie.value}`,
             {
                 initialCache: false,
                 onResponse({ response }) {

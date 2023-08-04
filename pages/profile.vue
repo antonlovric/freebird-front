@@ -29,7 +29,7 @@ const profileData = reactive({
 });
 
 const getDetails = async () => {
-    const responseDetails = await useFetch(`${config.API_BASE_URL}/users/session`, {
+    const responseDetails = await useFetch(`${config.public.API_BASE_URL}/users/session`, {
         params: {
             session_id: userData.session_id,
         },
@@ -55,7 +55,7 @@ const getDetails = async () => {
 await getDetails();
 
 const getProducts = async () => {
-    const productDetails = await useFetch(`${config.API_BASE_URL}/orders/products`, {
+    const productDetails = await useFetch(`${config.public.API_BASE_URL}/orders/products`, {
         params: {
             session_id: userData.session_id,
         },

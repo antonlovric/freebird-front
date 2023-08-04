@@ -1,66 +1,44 @@
-import { defineNuxtConfig } from 'nuxt';
-import { createIconsConfig } from 'vuestic-ui';
+import { defineNuxtConfig } from 'nuxt/config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    build: {
-        postcss: {
-            postcssOptions: {
-                plugins: {
-                    tailwindcss: {},
-                    autoprefixer: {},
-                },
-            },
+  modules: ['@vuestic/nuxt', '@pinia/nuxt', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
+  $meta: { name: 'FreeBirdMusic' },
+  css: ['@/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+  vuestic: {
+    config: {
+      colors: {
+        variables: {
+          primary: '#f97316',
         },
-    },
-    css: ['~/assets/css/tailwind.css'],
-    modules: ['@vuestic/nuxt'],
-
-    head: {
-        title: 'Test',
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
-    },
-
-    app: {
-        head: {
-            link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      },
+      components: {
+        VaInput: {
+          color: '#000',
         },
-    },
-
-    buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss', '@pinia/nuxt'],
-
-    tailwindcss: {
-        cssPath: '~/assets/css/tailwind.css',
-        configPath: 'tailwind.config.js',
-        exposeConfig: false,
-        config: {},
-        injectPosition: 0,
-        viewer: true,
-    },
-
-    vuestic: {
-        config: {
-            colors: {
-                primary: '#f97316',
-            },
-            components: {
-                VaInput: {
-                    color: '#000',
-                },
-                VaSelect: {
-                    color: '#000',
-                },
-                VaButton: {
-                    textColor: '#fff',
-                },
-            },
+        VaSelect: {
+          color: '#000',
         },
-        css: ['grid', 'reset', 'typography'],
+        VaButton: {
+          textColor: '#fff',
+        },
+      },
     },
+    css: ['grid', 'reset', 'typography'],
+  },
 
-    publicRuntimeConfig: {
-        API_BASE_URL: process.env.API_BASE_URL,
+  runtimeConfig: {
+    public: {
+      API_BASE_URL: process.env.API_BASE_URL || '',
     },
-    ssr: true,
-    target: 'server',
+  },
+
+  ssr: false,
 });
