@@ -120,7 +120,7 @@
           v-model="productData.image"
           id="image"
           type="gallery"
-          file-types="jpg,png,webp"
+          file-types="jpg,jpeg,png,webp"
           ref="file"
         />
       </form>
