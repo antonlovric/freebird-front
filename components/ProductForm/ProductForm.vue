@@ -201,7 +201,7 @@ const updateHandler = async () => {
   if (!isValid()) {
     init({
       title: 'Ažuriranje Proizvoda',
-      position: 'bottom-right',
+      position: 'top-right',
       color: 'danger',
       message: 'Neispravan unos!',
     });
@@ -209,7 +209,7 @@ const updateHandler = async () => {
   }
   init({
     title: 'Ažuriranje Proizvoda',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
   productData.value.tags = productData.value.tags.filter((tag) => typeof tag === 'string');
@@ -239,7 +239,7 @@ const updateHandler = async () => {
       async onResponseError({ response }) {
         init({
           title: 'Ažuriranje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'danger',
           message: 'Greška prilikom ažuriranje proizvoda!',
         });
@@ -249,7 +249,7 @@ const updateHandler = async () => {
         if (response.status === 200) {
           init({
             title: 'Kreiranje Proizvoda',
-            position: 'bottom-right',
+            position: 'top-right',
             color: 'success',
             message: 'Proizvod uspješno kreiran!',
           });
@@ -264,7 +264,7 @@ const submitHandler = async () => {
   if (!isValid()) {
     init({
       title: 'Kreiranje Proizvoda',
-      position: 'bottom-right',
+      position: 'top-right',
       color: 'danger',
       message: 'Neispravan unos!',
     });
@@ -280,7 +280,7 @@ const submitHandler = async () => {
   for (const prop in productData.value) formData.append(prop, productData.value[prop]);
   init({
     title: 'Kreiranje Proizvoda',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
   const submitResponse = await useFetch(`${config.public.API_BASE_URL}/products`, {
@@ -293,7 +293,7 @@ const submitHandler = async () => {
     async onResponseError({ response }) {
       init({
         title: 'Kreiranje Proizvoda',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom kreiranja proizvoda!',
       });
@@ -302,7 +302,7 @@ const submitHandler = async () => {
       if (response.status === 201) {
         init({
           title: 'Kreiranje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Proizvod uspješno kreiran!',
         });

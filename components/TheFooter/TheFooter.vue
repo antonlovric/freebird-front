@@ -66,7 +66,7 @@ const handleNewsletter = () => {
     async onResponseError({ response }) {
       init({
         title: 'Prijavlijvanje na newsletter',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom prijavljivanja na newsletter!',
       });
@@ -75,7 +75,7 @@ const handleNewsletter = () => {
       if (response.status === 200) {
         init({
           title: 'Prijavlijvanje na newsletter',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Uspješno ste prijavljeni na FreeBirdMusic newsletter!',
         });

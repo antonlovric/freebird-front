@@ -121,7 +121,7 @@ const addCartItem = async () => {
     });
     init({
       title: 'Dodavanje Proizvoda',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Proizvod uspješno dodan u košaricu!',
       color: 'success',
     });
@@ -138,7 +138,7 @@ const addCartItem = async () => {
       async onResponseError({ response }) {
         init({
           title: 'Dodavanje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           message: 'Greška prilikom dodavanja proizvoda u košaricu!',
           color: 'warning',
         });
@@ -146,7 +146,7 @@ const addCartItem = async () => {
       async onResponse({ request, options, response }) {
         init({
           title: 'Dodavanje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           message: 'Proizvod uspješno dodan u košaricu!',
           color: 'success',
         });
@@ -187,7 +187,7 @@ const handleAddToCart = async () => {
       async onResponseError({ response }) {
         init({
           title: 'Dodavanje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           message: 'Greška prilikom dodavanja proizvoda u košaricu!',
           color: 'warning',
         });

@@ -114,7 +114,7 @@ const assignImagesToPost = (postId) => {
     async onResponseError({ response }) {
       init({
         title: 'Dodjeljivanje fotografija objavi',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom dodjeljivanje fotagrafija objavi!',
       });
@@ -123,7 +123,7 @@ const assignImagesToPost = (postId) => {
       if (response.status === 201) {
         init({
           title: 'Kreiranje objave',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Objava uspješno kreirana!',
         });
@@ -136,7 +136,7 @@ const submitHandler = () => {
   if (!isValid()) {
     init({
       title: 'Kreiranje Objave',
-      position: 'bottom-right',
+      position: 'top-right',
       color: 'danger',
       message: 'Ispunite sva polja!',
     });
@@ -144,7 +144,7 @@ const submitHandler = () => {
   }
   init({
     title: 'Kreiranje Objave',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
 
@@ -163,7 +163,7 @@ const submitHandler = () => {
     async onResponseError({ response }) {
       init({
         title: 'Kreiranje objave',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom kreiranja objave!',
       });
@@ -181,7 +181,7 @@ const updateHandler = () => {
   if (!isValid()) {
     init({
       title: 'Ažuriranje Objave',
-      position: 'bottom-right',
+      position: 'top-right',
       color: 'danger',
       message: 'Ispunite sva polja!',
     });
@@ -189,7 +189,7 @@ const updateHandler = () => {
   }
   init({
     title: 'Ažuriranje Objave',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
 
@@ -208,7 +208,7 @@ const updateHandler = () => {
     async onResponseError({ response }) {
       init({
         title: 'Ažuriranje objave',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom ažuriranja objave!',
       });
@@ -217,7 +217,7 @@ const updateHandler = () => {
       if (response.status === 201) {
         init({
           title: 'Ažuriranje objave',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Objava uspješno ažurirana!',
         });
@@ -234,7 +234,7 @@ const fileAddHandler = (files, isDisplay) => {
 
   init({
     title: 'Prijenos Fotografije',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
 
@@ -248,7 +248,7 @@ const fileAddHandler = (files, isDisplay) => {
     async onResponseError({ response }) {
       init({
         title: 'Prijenos fotografije',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom prijenosa fotografije!',
       });
@@ -257,7 +257,7 @@ const fileAddHandler = (files, isDisplay) => {
       if (response.status === 201) {
         init({
           title: 'Prijenos fotografije',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Fotografija uspješno prenesena!',
         });
@@ -271,7 +271,7 @@ const fileAddHandler = (files, isDisplay) => {
 const fileRemoveHandler = (file, isDisplay) => {
   init({
     title: 'Brisanje Fotografije',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
   });
 
@@ -285,7 +285,7 @@ const fileRemoveHandler = (file, isDisplay) => {
     async onResponseError({ response }) {
       init({
         title: 'Brisanje fotografije',
-        position: 'bottom-right',
+        position: 'top-right',
         color: 'danger',
         message: 'Greška prilikom brisanja fotografije!',
       });
@@ -294,7 +294,7 @@ const fileRemoveHandler = (file, isDisplay) => {
       if (response.status === 200) {
         init({
           title: 'Brisanje fotografije',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Fotografija uspješno izbrisana!',
         });

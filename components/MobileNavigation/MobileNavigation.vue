@@ -79,7 +79,7 @@ const loggedInUser = ref([
 const handleLogout = async (event) => {
   init({
     title: 'Odjava',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Pričekajte...',
     duration: 5000,
   });
@@ -92,7 +92,7 @@ const handleLogout = async (event) => {
     async onResponseError({ response }) {
       init({
         title: 'Odjava',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom odjave!',
         color: 'danger',
         duration: 5000,
@@ -108,7 +108,7 @@ const handleLogout = async (event) => {
   if (!response.error?.value) {
     init({
       title: 'Odjava',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Uspješna odjava!',
       color: 'success',
       duration: 5000,

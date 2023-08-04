@@ -181,7 +181,7 @@ const responseGenres = await useLazyFetch(`${config.public.API_BASE_URL}/genres`
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje Žanrova',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja žanrova!',
       color: 'danger',
       duration: 5000,
@@ -202,7 +202,7 @@ const responseConditions = await useLazyFetch(`${config.public.API_BASE_URL}/con
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje Stanja',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja stanja!',
       color: 'danger',
       duration: 5000,
@@ -220,7 +220,7 @@ const responseTags = await useLazyFetch(`${config.public.API_BASE_URL}/tags`, {
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje Oznaka',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja oznaka!',
       color: 'danger',
       duration: 5000,
@@ -242,7 +242,7 @@ const responseProducts = await useLazyFetch(`${config.public.API_BASE_URL}/produ
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje Proizvoda',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja proizvoda!',
       color: 'danger',
       duration: 5000,
@@ -270,7 +270,7 @@ const searchHandler = async (e) => {
     async onResponseError({ response }) {
       init({
         title: 'Dohvaćanje Proizvoda',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom dohvaćanja proizvoda!',
         color: 'danger',
         duration: 5000,
@@ -307,7 +307,7 @@ const filterHandler = async () => {
     async onResponseError({ response }) {
       init({
         title: 'Dohvaćanje Proizvoda',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom dohvaćanja proizvoda!',
         color: 'danger',
         duration: 5000,

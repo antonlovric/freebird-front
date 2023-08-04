@@ -118,7 +118,7 @@ const removeHandler = async () => {
     async onResponseError({ response, error }) {
       init({
         title: 'Odjava',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom brisanja!',
         color: 'danger',
         duration: 5000,
@@ -128,7 +128,7 @@ const removeHandler = async () => {
       if (response.ok) {
         init({
           title: 'Brisanje Proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           message: 'Proizvodi uspješno obrisani!',
           color: 'success',
           duration: 5000,
@@ -154,7 +154,7 @@ if (!responseProductTypes.error.value) {
 } else {
   init({
     title: 'Dohvaćanje stanja proizvoda',
-    position: 'bottom-right',
+    position: 'top-right',
     message: 'Greška prilikom dohvaćanja stanja proizvoda!',
     color: 'danger',
     duration: 5000,
@@ -167,7 +167,7 @@ const responseConditions = await useFetch(`${config.public.API_BASE_URL}/conditi
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje stanja proizvoda',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja stanja proizvoda!',
       color: 'danger',
       duration: 5000,
@@ -186,7 +186,7 @@ const responseGenres = await useFetch(`${config.public.API_BASE_URL}/genres`, {
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje žanrova',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja žanrova!',
       color: 'danger',
       duration: 5000,
@@ -209,7 +209,7 @@ const responseTags = await useFetch(`${config.public.API_BASE_URL}/tags`, {
   async onResponseError({ response }) {
     init({
       title: 'Dohvaćanje oznaka',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Greška prilikom dohvaćanja oznaka!',
       color: 'danger',
       duration: 5000,

@@ -166,7 +166,7 @@ const handleDetailsChange = () => {
       if (response.status === 200) {
         init({
           title: 'Izmjenjivanje osobnih podataka',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Podaci uspješno izmijenjeni!',
         });
@@ -203,7 +203,7 @@ const handleReview = () => {
       if (response.status === 201) {
         init({
           title: 'Ocjenjivanje proizvoda',
-          position: 'bottom-right',
+          position: 'top-right',
           color: 'success',
           message: 'Proizvod uspješno ocijenjen!',
         });

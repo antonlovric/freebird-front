@@ -146,7 +146,7 @@ const deleteHandler = async () => {
     async onResponseError({ response }) {
       init({
         title: 'Brisanje Korisnika',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom brisanja!',
         color: 'danger',
         duration: 5000,
@@ -157,7 +157,7 @@ const deleteHandler = async () => {
   if (!response.error?.value) {
     init({
       title: 'Brisanje Korisnika',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Korisnici uspješno obrisani!',
       color: 'success',
       duration: 5000,
@@ -177,7 +177,7 @@ const adminHandler = async () => {
     async onResponseError({ response }) {
       init({
         title: 'Kreiranje Admina',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom kreiranja admina!',
         color: 'danger',
         duration: 5000,
@@ -188,7 +188,7 @@ const adminHandler = async () => {
   if (!response.error?.value) {
     init({
       title: 'Kreiranje Admina',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Uspješno dodijeljena administratorska prava!',
       color: 'success',
       duration: 5000,
@@ -207,7 +207,7 @@ const removeAdminHandler = async () => {
     async onResponseError({ response }) {
       init({
         title: 'Brisanje Admina',
-        position: 'bottom-right',
+        position: 'top-right',
         message: 'Greška prilikom kreiranja admina!',
         color: 'danger',
         duration: 5000,
@@ -218,7 +218,7 @@ const removeAdminHandler = async () => {
   if (!response.error?.value === 204) {
     init({
       title: 'Kreiranje Admina',
-      position: 'bottom-right',
+      position: 'top-right',
       message: 'Uspješno oduzeta administratorska prava!',
       color: 'success',
       duration: 5000,
