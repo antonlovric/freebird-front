@@ -6,10 +6,12 @@
   --va-data-table-striped-tr-background-color: #f97316 !important;
   --va-data-table-striped-tr-opacity: 0.3 !important;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --va-toast-title-color: #fff;
 }
 
 .nav-link .router-link-exact-active {
