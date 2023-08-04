@@ -57,7 +57,7 @@ const props = defineProps({
     default: '',
   },
   initialPrice: {
-    type: String,
+    type: Number,
     default: '',
   },
   mediaCondition: {

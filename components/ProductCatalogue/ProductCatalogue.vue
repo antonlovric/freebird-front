@@ -258,7 +258,7 @@ const responseProducts = await useLazyFetch(`${config.public.API_BASE_URL}/produ
 });
 
 const searchHandler = async (e) => {
-  e.preventDefault();
+  e?.preventDefault();
   products.isLoading = true;
   await useFetch(`${config.public.API_BASE_URL}/products`, {
     method: 'GET',
