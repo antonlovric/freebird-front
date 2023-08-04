@@ -1,5 +1,5 @@
 <template>
-  <va-card class="h-[280px]">
+  <div class="h-[280px] bg-white text-black rounded-md">
     <div class="relative">
       <span class="absolute inline-flex flex-wrap gap-2 z-10 left-2 top-1">
         <va-chip size="small" v-for="(tag, index) in props?.tags" :key="index">{{
@@ -7,9 +7,9 @@
         }}</va-chip>
       </span>
       <nuxt-link :to="`/products/${props.productId}`">
-        <va-image
+        <img
           v-on:mouseenter="handleHover"
-          class="object-cover max-h-[200px]"
+          class="object-cover h-[200px] w-full"
           :src="props.imgSrc"
       /></nuxt-link>
     </div>
@@ -30,7 +30,7 @@
         </span>
       </div>
     </va-card-content>
-  </va-card>
+  </div>
 </template>
 
 <script setup>
