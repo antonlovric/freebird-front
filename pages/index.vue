@@ -1,5 +1,6 @@
 <template>
- <div>
+  <h2>Under maintentance :)</h2>
+  <!-- <div>
     <the-header />
     <homepage-hero />
     <catalogue-section />
