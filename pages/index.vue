@@ -6,7 +6,7 @@
     <catalogue-section />
     <news-section />
     <the-footer />
-  </div> -->
+  </div>
 </template>
 
 <script setup>
