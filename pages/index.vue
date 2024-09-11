@@ -1,5 +1,5 @@
 <template>
-  <h2>Under maintentance :)</h2>
+  <h2>Under maintenance :)</h2>
   <!--  <div>
     <the-header />
     <homepage-hero />
