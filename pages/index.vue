@@ -1,12 +1,12 @@
 <template>
   <h2>Under maintentance :)</h2>
-  <!-- <div>
+  <!--  <div>
     <the-header />
     <homepage-hero />
     <catalogue-section />
     <news-section />
     <the-footer />
-  </div>
+  </div> -->
 </template>
 
 <script setup>
